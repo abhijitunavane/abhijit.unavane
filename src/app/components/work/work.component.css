@@ -1,0 +1,7 @@
+.projects-container {
+    @apply
+    mx-0 md:mx-8
+    gap-x-8
+    gap-y-10 md:gap-y-32
+    grid grid-cols-12 md:grid-cols-24;
+}

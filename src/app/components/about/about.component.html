@@ -1,0 +1,52 @@
+<div class="mt-16 md:mt-10 mb-16 space-y-11">
+    <div class="text-center p-4 md:p-14">
+        <h1 class="header">I'm Abhijit.</h1>
+    </div>
+    <div class="intro">
+        <div class="flex flex-col col-start-3 col-span-2 md:col-span-3 lg:col-span-2 md:col-start-2 lg:col-start-3 rounded-t-full">
+            <img class="bg-white bg-opacity-15 w-full h-full object-cover rounded-t-full"
+                src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg" alt="">
+            <div class="bg-quaternary w-full h-20"></div>
+        </div>
+        <div class="mt-4 w-full col-span-full px-6 md:col-start-6 lg:col-start-6 md:col-end-12 flex flex-col gap-11">
+            <h2 class="sub-header">
+                I'm a software developer working from India.
+            </h2>
+            <div class="summary">
+                <p>Over the past 2+ years, I've been working in a software industry. I have worked in various areas of
+                    software development such as mobile applications, web applications and also cross platform
+                    applications.</p>
+                <p>These days, I focus on learning new technologies / frameworks such as angular, flutter.</p>
+            </div>
+        </div>
+    </div>
+    <div class="space-y-11 px-6 md:px-48">
+        <h2 class="sub-header">Let's collaborate and help each other by sharing knowledge.</h2>
+        <p class="summary">Embrace collaborative learning to dive into the latest technologies. Together, we'll navigate
+            challenges, share insights, and empower each other to become tech trailblazers. Let's embark on this
+            exciting journey to unlock a world of limitless possibilities through collective knowledge and
+            collaboration!</p>
+    </div>
+    <div class="mx-0 md:mx-20 p-6 md:p-10 lg:p-20 xl:p-32 space-y-7 md:space-y-11 bg-white bg-opacity-5 md:rounded-3xl">
+        <h2 class="sub-header">My experiences</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="text-xl" *ngFor="let experience of experiences; index as i">
+                <h3 class="text-2xl md:text-4xl mb-4 text-tertiary font-bold">{{(i + 1).toLocaleString('en-US', {
+                    minimumIntegerDigits: 2,
+                    useGrouping: false })}}</h3>
+                <p class="text-xl md:text-3xl font-semibold mb-2 text-quaternary">{{experience.role}}</p>
+                <a class="block text-lg md:text-xl mb-2 underline underline-offset-4 decoration-quaternary" target="_blank" href="{{experience.companyLink}}">{{experience.companyName}}</a>
+                <div class="mb-2 experience-details">
+                    <p class="mb-1 text-base">{{experience.type}}</p>
+                    <p class="mb-1 text-base">{{experience.period}}</p>
+                    <p class="mb-1 text-base">{{experience.location}}</p>
+                </div>
+                <p class="mb-2">{{experience.summary}}</p>
+                <div class="flex space-x-2">
+                    <p class="font-semibold">Skills:</p>
+                    <p>{{experience.skills}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

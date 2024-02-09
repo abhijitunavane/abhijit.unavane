@@ -1,0 +1,36 @@
+.hamburger {
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    @apply cursor-pointer flex flex-col space-y-1 p-2 active:bg-white active:bg-opacity-10 md:hidden;
+}
+
+.hamburger>span {
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+    @apply w-10 bg-white p-1;
+}
+
+.animate.hamburger>span:first-child {
+    @apply relative top-3 rotate-45;
+}
+
+.animate.hamburger>span:nth-child(2) {
+    @apply opacity-0;
+}
+
+.animate.hamburger>span:last-child {
+    @apply relative bottom-3 -rotate-45;
+}
+
+.active {
+    @apply bg-white bg-opacity-10;
+}
+
+ul {
+    border-color: rgba(255, 255, 255, 0.3);
+    @apply hidden md:flex space-x-4 rounded-full py-4 px-4 backdrop-blur-lg border;
+}

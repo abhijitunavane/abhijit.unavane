@@ -1,0 +1,14 @@
+<nav class="flex justify-center sticky top-6">
+    <div (onclick)="showOrCloseDialog()" [ngClass]="!dialogShown ? 'hamburger' : 'hamburger animate'">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+        <li *ngFor="let nav of navs">
+            <a class="py-2 px-4 rounded-3xl font-semibold text-lg" routerLink={{nav.route}} routerLinkActive="active">
+                {{nav.label}}
+            </a>
+        </li>
+    </ul>
+</nav>

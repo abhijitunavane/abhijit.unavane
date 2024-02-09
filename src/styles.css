@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gradient-to-b from-secondary via-40% via-primary to-primary text-white;
+}
+
+::selection {
+    @apply bg-quaternary text-primary
+}
+
+.header {
+    @apply text-5xl md:text-8xl font-semibold text-quaternary;
+}
+
+.sub-header {
+    @apply text-4xl md:text-5xl font-semibold text-quaternary text-center md:text-start;
+}

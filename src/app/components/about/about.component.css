@@ -1,0 +1,16 @@
+
+.summary {
+    @apply text-lg md:text-xl space-y-8;
+}
+
+.intro {
+    @apply w-full grid grid-cols-6 md:grid-cols-12;
+}
+
+.experience-details {
+    @apply flex flex-wrap gap-2;
+}
+
+.experience-details > p {
+    @apply bg-white bg-opacity-10 px-2 rounded-full;
+}
