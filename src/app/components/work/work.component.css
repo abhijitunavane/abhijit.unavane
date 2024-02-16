@@ -8,15 +8,15 @@
 
 .projects-container > div {
     transition: transform 500ms ease-in-out;
-    @apply cursor-pointer overflow-clip rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
+    @apply h-80 md:h-102 lg:h-110 overflow-hidden cursor-pointer overflow-clip rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
 }
 
 .projects-container > div:hover {
-    transform: translateY(-0.5em);
+    @apply md:-translate-y-2;
 }
 
 .projects-container > div:hover > .project-thumbnail {
-    transform: translateY(1.5em);
+    @apply md:translate-y-6;
 }
 
 .project-header {
@@ -25,5 +25,7 @@
 
 .project-thumbnail {
     transition: transform 500ms ease-in-out;
-    @apply h-full object-cover rounded-tl-xl;
+    max-width: inherit;
+    width: 1200px;
+    @apply rounded-tl-xl;
 }

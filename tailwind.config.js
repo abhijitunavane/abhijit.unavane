@@ -19,7 +19,11 @@ export const theme = {
       '4xl': '4rem'
     },
     height: {
-      '102': '28rem'
+      '102': '28rem',
+      '104': '30rem',
+      '106': '32rem',
+      '108': '34rem',
+      '110': '36rem',
     },
     gridTemplateColumns: {
       '24': 'repeat(24, minmax(0, 1fr))'
