@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
 import { WorkComponent } from './components/work/work.component';
+import { GithubCornerComponent } from './components/github-corner/github-corner.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { WorkComponent } from './components/work/work.component';
     NavbarComponent,
     FooterComponent,
     AboutComponent,
-    WorkComponent
+    WorkComponent,
+    GithubCornerComponent
   ],
   imports: [
     BrowserModule,

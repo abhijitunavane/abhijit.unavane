@@ -26,6 +26,5 @@ export class NavbarComponent {
   @HostListener("click")
   showOrCloseDialog() {
     this.dialogShown = !this.dialogShown;
-    
   }
 }
