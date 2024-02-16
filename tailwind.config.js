@@ -6,8 +6,8 @@ export const content = [
 ];
 export const theme = {
   extend: {
-    FontFamily: {
-      sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+    fontFamily: {
+      sans: ['Poppins', ...defaultTheme.fontFamily.sans]
     },
     colors: {
       'primary': '#1A374D',
@@ -23,7 +23,7 @@ export const theme = {
       '104': '30rem',
       '106': '32rem',
       '108': '34rem',
-      '110': '36rem',
+      '110': '36rem'
     },
     gridTemplateColumns: {
       '24': 'repeat(24, minmax(0, 1fr))'
