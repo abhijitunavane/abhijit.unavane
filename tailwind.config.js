@@ -6,6 +6,9 @@ export const content = [
 ];
 export const theme = {
   extend: {
+    fontSize: {
+      'xxs': '0.5rem'
+    },
     fontFamily: {
       sans: ['Poppins', ...defaultTheme.fontFamily.sans]
     },

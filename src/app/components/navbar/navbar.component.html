@@ -1,14 +1,29 @@
 <nav class="flex justify-center sticky top-6 z-40">
-    <div (onclick)="showOrCloseDialog()" [ngClass]="!dialogShown ? 'hamburger' : 'hamburger animate'">
+    <div (click)="menuClickListener()" [ngClass]="!shouldShowMenu ? 'hamburger' : 'hamburger animate'">
         <span></span>
         <span></span>
         <span></span>
     </div>
-    <ul>
+    <ul class="navs">
         <li *ngFor="let nav of navs">
-            <a class="py-2 px-4 rounded-3xl font-semibold text-lg" routerLink={{nav.route}} routerLinkActive="active">
-                {{nav.label}}
+            <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center" routerLink={{nav.route}}
+                routerLinkActive="active">
+                <span>{{nav.label}}</span>
+                <span
+                    class="flex justify-center items-center rounded ms-2 w-5 h-5 text-xxs border"
+                    *ngIf="nav.label === 'Work'"> /
+                </span>
             </a>
         </li>
     </ul>
+    <div *ngIf="shouldShowMenu" class="nav-menu-container">
+        <ul class="nav-menu">
+            <li *ngFor="let nav of navs">
+                <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center justify-center" routerLink={{nav.route}}
+                    routerLinkActive="active">
+                    <span>{{nav.label}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>

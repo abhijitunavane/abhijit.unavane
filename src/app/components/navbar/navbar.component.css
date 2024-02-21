@@ -30,7 +30,20 @@
     @apply bg-white bg-opacity-10;
 }
 
-ul {
+.navs {
     border-color: rgba(255, 255, 255, 0.3);
-    @apply hidden md:flex space-x-4 rounded-full py-4 px-4 backdrop-blur-lg border;
+    @apply hidden md:flex space-x-4 rounded-full p-4 backdrop-blur-lg border;
+}
+
+.nav-menu-container {
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    @apply absolute top-20 aspect-auto rounded-2xl bg-black bg-opacity-60 backdrop-blur-lg flex justify-center;
+}
+
+.nav-menu {
+    border-color: rgba(255, 255, 255, 0.3);
+    @apply w-fit h-fit flex flex-col space-y-4 p-4;
 }

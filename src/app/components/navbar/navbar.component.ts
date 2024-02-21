@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { Link } from '../../utils/link';
 
 @Component({
@@ -21,10 +21,9 @@ export class NavbarComponent {
       route: '#',
     },
   ];
-  dialogShown: boolean = false;
+  shouldShowMenu: boolean = false;
 
-  @HostListener("click")
-  showOrCloseDialog() {
-    this.dialogShown = !this.dialogShown;
+  menuClickListener() {
+    this.shouldShowMenu = !this.shouldShowMenu;
   }
 }
