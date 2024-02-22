@@ -16,10 +16,10 @@
             </a>
         </li>
     </ul>
-    <div *ngIf="shouldShowMenu" class="nav-menu-container">
+    <div [@openClose]="shouldShowMenu ? 'open' : 'closed'" class="nav-menu-container">
         <ul class="nav-menu">
             <li *ngFor="let nav of navs">
-                <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center justify-center" routerLink={{nav.route}}
+                <a (click)="closeMenu()" class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center justify-center" routerLink={{nav.route}}
                     routerLinkActive="active">
                     <span>{{nav.label}}</span>
                 </a>
