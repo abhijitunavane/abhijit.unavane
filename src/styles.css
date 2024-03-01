@@ -18,3 +18,11 @@ body {
 .sub-header {
     @apply text-4xl md:text-5xl font-semibold text-quaternary text-center md:text-start;
 }
+
+.badge {
+    @apply place-self-center py-1 px-4 bg-quaternary rounded-full text-lg text-primary;
+}
+
+.icon-button {
+    @apply hover:bg-black hover:bg-opacity-5 active:bg-opacity-10 p-2 rounded-full;
+}

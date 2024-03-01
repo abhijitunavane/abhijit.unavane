@@ -6,17 +6,33 @@
     grid grid-cols-12 md:grid-cols-24;
 }
 
-.projects-container > div {
+.projects-container > a {
     transition: transform 500ms ease-in-out;
-    @apply h-80 md:h-102 lg:h-110 overflow-hidden cursor-pointer overflow-clip rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
+    @apply h-80 md:h-102 lg:h-110 overflow-hidden cursor-pointer rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
 }
 
-.projects-container > div:hover {
+.projects-container > a:hover {
     @apply md:-translate-y-2;
 }
 
-.projects-container > div:hover > .project-thumbnail {
+.projects-container > a:hover > .project-thumbnail {
     @apply md:translate-y-6;
+}
+
+.project-item-l1 {
+    @apply col-span-full md:col-span-8;
+}
+
+.project-item-r1 {
+    @apply col-span-full md:col-start-10;
+}
+
+.project-item-l2 {
+    @apply col-span-full md:col-span-16;
+}
+
+.project-item-r2 {
+    @apply col-span-full md:col-span-8;
 }
 
 .project-header {

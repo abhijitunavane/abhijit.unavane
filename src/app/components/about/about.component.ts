@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Experience } from '../../utils/experience';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -39,4 +40,8 @@ export class AboutComponent {
       skills: ['Android'].join('•'),
     },
   ];
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Abhijit Unavane • About');
+  }
 }
