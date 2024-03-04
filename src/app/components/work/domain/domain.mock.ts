@@ -10,7 +10,7 @@ export const domainMock: Domain[] = [
             {
                 name: 'Android Project',
                 description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae similique libero ea hic sit saepe, cum rem dolore, voluptas quam culpa. Maiores, assumenda odio possimus officia ab culpa doloribus molestiae!',
-                projectPath: '',
+                projectPath: '/work/android/sample',
                 photoUrl: 'http://localhost:4200/assets/react-movies-pedia.png',
                 isLiked: false
             },
@@ -60,11 +60,11 @@ export interface Domain {
     name: String;
     overview: String;
     projectDescription: String;
-    projectList: Project[];
+    projectList: WorkProject[];
     nextDomainLink: Link;
 }
 
-export interface Project {
+export interface WorkProject {
     name: String;
     description: String;
     projectPath: String;

@@ -3,18 +3,19 @@
     <div class="mx-4 md:mx-16 lg:mx-32">
         <img class="rounded-xl" src="../../../../assets/react-movies-pedia.png" alt="">
     </div>
-    <div class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
+    <div *ngIf="domain.overview" class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
         <h2 class="sub-header">Overview</h2>
-        <p>
+        <p class="summary">
             {{domain.overview}}
         </p>
     </div>
-    <div class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
+    <div *ngIf="domain.projectList.length > 0"
+        class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
         <div class="flex space-x-4">
             <h2 class="sub-header">Projects</h2>
-            <div *ngIf="domain.projectList.length > 0" class="badge">{{domain.projectList.length}}</div>
+            <div class="badge">{{domain.projectList.length}}</div>
         </div>
-        <p>
+        <p class="summary">
             {{domain.projectDescription}}
         </p>
     </div>
@@ -26,19 +27,18 @@
             <div class="bg-white pt-6 px-6 text-2xl font-semibold uppercase">
                 {{project.name}}
             </div>
-            <div class="bg-white pt-2 px-6 text-xl line-clamp-2">
+            <div class=" bg-white pt-2 px-6 text-xl line-clamp-2">
                 {{project.description}}
             </div>
             <div class="bg-white pt-3 px-6 pb-4 flex stroke-purple-800 justify-between">
-                <a class="transition-all text-md p-2 bg-gray-800 active:bg-opacity-100 hover:bg-opacity-85 text-white" routerLink="{{project.projectPath}}">Know more <span>></span></a>
+                <a class="transition-all text-md p-2 bg-gray-800 active:bg-opacity-100 hover:bg-opacity-85 text-white"
+                    routerLink="{{project.projectPath}}">Know more <span>></span></a>
                 <div class="space-x-6">
                     <button class="icon-button">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-                            <path
-                                [ngClass]="project.isLiked ? 'fill-red-500': 'fill-none'"
+                            <path [ngClass]="project.isLiked ? 'fill-red-500': 'fill-none'"
                                 class="stroke-red-500 stroke-2"
-                                d="M12,8,10.7,6.8a4.7,4.7,0,0,0-6.4,0,4.7,4.7,0,0,0,0,6.4L12,21l7.7-7.8a4.7,4.7,0,0,0,0-6.4,4.7,4.7,0,0,0-6.4,0Z"
-                                />
+                                d="M12,8,10.7,6.8a4.7,4.7,0,0,0-6.4,0,4.7,4.7,0,0,0,0,6.4L12,21l7.7-7.8a4.7,4.7,0,0,0,0-6.4,4.7,4.7,0,0,0-6.4,0Z" />
                         </svg>
                     </button>
                     <button class="icon-button">
@@ -55,6 +55,6 @@
         </div>
     </div>
     <div class="flex justify-center pt-12">
-        <a class="next-domain-link" routerLink="{{domain.nextDomainLink.route}}">{{domain.nextDomainLink.label}}</a>
+        <a class="next-link" routerLink="{{domain.nextDomainLink.route}}">{{domain.nextDomainLink.label}}</a>
     </div>
 </div>
