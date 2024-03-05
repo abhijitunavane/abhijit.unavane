@@ -1,0 +1,13 @@
+<!-- Light style tooltip -->
+
+<div *ngIf="true" role="tooltip" class="tooltip tooltip-light">
+    {{toolTipContent}}
+    <div class="tooltip-arrow"></div>
+</div>
+
+<!-- Dark style tooltip -->
+
+<div *ngIf="false" role="tooltip" class="tooltip tooltip-dark">
+    {{toolTipContent}}
+    <div class="tooltip-arrow"></div>
+</div>

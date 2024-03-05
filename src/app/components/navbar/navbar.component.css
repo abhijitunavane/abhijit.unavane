@@ -32,7 +32,11 @@
 
 .navs {
     border-color: rgba(255, 255, 255, 0.3);
-    @apply hidden md:flex space-x-4 rounded-full p-4 backdrop-blur-lg border;
+    @apply hidden md:flex space-x-4 rounded-full p-3 ;
+}
+
+.navs.highlight {
+    @apply bg-primary bg-opacity-65 backdrop-blur-lg border;
 }
 
 .nav-menu-container {

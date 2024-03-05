@@ -18,3 +18,31 @@ body {
 .sub-header {
     @apply text-4xl md:text-5xl font-semibold text-quaternary text-center md:text-start;
 }
+
+.summary {
+    @apply text-lg md:text-xl space-y-8;
+}
+
+.badge {
+    @apply place-self-center py-1 px-4 bg-quaternary rounded-full text-lg text-primary;
+}
+
+.icon-button {
+    @apply hover:bg-black hover:bg-opacity-5 active:bg-opacity-10 p-2 rounded-full;
+}
+
+.icon-button-white:hover .tooltip-dark, .icon-button-white:hover .tooltip-light {
+    @apply visible;
+}
+
+.icon-button:hover .tooltip-dark, .icon-button:hover .tooltip-light {
+    @apply visible;
+}
+
+.icon-button-white {
+    @apply hover:bg-white hover:bg-opacity-5 active:bg-opacity-10 p-2 rounded-full;
+}
+
+.next-link {
+    @apply block transition-all w-max p-10 md:p-20 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold rounded-full border-tertiary border-2 border-opacity-0 hover:border-opacity-100 hover:-translate-y-2;
+}

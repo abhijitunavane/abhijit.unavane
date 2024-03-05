@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Link } from '../../utils/link';
 import {
   trigger,
@@ -6,7 +6,6 @@ import {
   style,
   animate,
   transition,
-  // ...
 } from '@angular/animations';
 
 @Component({
@@ -16,18 +15,17 @@ import {
   animations: [
     trigger('openClose', [
       state('open', style({
-        visibility: 'visible',        
+        visibility: 'visible'
       })),
       state('closed', style({
         visibility: 'hidden',
         opacity: 0,
-        transform: 'scale(0.5)'
       })),
       transition('open => closed', [
-        animate('0.3s ease-out'),
+        animate('0.2ms ease-out'),
       ]),
       transition('closed => open', [
-        animate('0.15s ease-in')
+        animate('0.1ms ease-in')
       ])
   ])
 ]
@@ -48,6 +46,7 @@ export class NavbarComponent {
     },
   ];
   shouldShowMenu: boolean = false;
+  shouldHighlightNavbar: boolean = false;
 
   menuClickListener() {
     this.shouldShowMenu = !this.shouldShowMenu;
@@ -56,4 +55,17 @@ export class NavbarComponent {
   closeMenu() {
     this.shouldShowMenu = false;
   }
+
+  /**
+   * Listener method to add background to navbar 
+   * when scroll position is greater than 50
+   */
+  @HostListener('window:scroll', ['$event']) 
+    highlightNavbar() {
+      if (window.scrollY > 50) {
+        this.shouldHighlightNavbar = true;
+      } else {
+        this.shouldHighlightNavbar = false;
+      }
+    }
 }

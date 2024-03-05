@@ -7,21 +7,12 @@
         <p class="text-lg">I'm passionate about creating softwares that are engaging and user centric.</p>
     </div>
     <div class="projects-container">
-        <div style="background-color: #D09CFA;" class="col-span-full md:col-span-8">
-            <h2 class="project-header">Android</h2>
-            <img class="project-thumbnail" src="../../../assets/react-movies-pedia.png" alt="react-movies-pedia">
-        </div>
-        <div style="background-color: #B9F3FC;" class="col-span-full md:col-start-10">
-            <h2 class="project-header">Angular</h2>
-            <img class="project-thumbnail" src="../../../assets/react-movies-pedia.png" alt="react-movies-pedia">
-        </div>
-        <div style="background-color: #FFD495;" class="col-span-full md:col-span-16">
-            <h2 class="project-header">React</h2>
-            <img class="project-thumbnail" src="../../../assets/react-movies-pedia.png" alt="react-movies-pedia">
-        </div>
-        <div style="background-color: #B1D7B4;" class="col-span-full md:col-span-8">
-            <h2 class="project-header">Flutter</h2>
-            <img class="project-thumbnail" src="../../../assets/react-movies-pedia.png" alt="react-movies-pedia">
-        </div>
+        <a *ngFor="let work of workList" 
+            routerLink="{{work.link.route}}" 
+            [ngStyle]="{'background-color': work.bgColor}" 
+            ngClass="{{work.styleClass}}">
+            <h2 class="project-header">{{work.name}}</h2>
+            <img class="project-thumbnail" [src]="work.image" alt="react-movies-pedia">
+        </a>
     </div>
 </div>
