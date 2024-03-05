@@ -19,7 +19,7 @@
             {{domain.projectDescription}}
         </p>
     </div>
-    <div *ngIf="domain.projectList.length > 0" class="grid lg:grid-cols-2 gap-8 mx-4 md:mx-40">
+    <div *ngIf="domain.projectList.length > 0" ngClass="{{domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'}}" class="grid gap-8 mx-4 md:mx-40">
         <div *ngFor="let project of domain.projectList" class="text-black rounded-xl overflow-clip">
             <div>
                 <img src="{{project.photoUrl}}" class="">

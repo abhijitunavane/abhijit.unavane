@@ -10,7 +10,8 @@ export const projectMock: Project[] = [
             label: 'Sample 2',
             route: "/work/android/sample2"
         },
-        featureImageUrls: [],
+        features: [],
+        featuresDescription: '',
         githubUrl: 'https://github.com/abhijitunavane/React-Movies-App',
         isLiked: true
     },
@@ -21,14 +22,16 @@ export const projectMock: Project[] = [
         headerImageUrl: 'http://localhost:4200/assets/react-movies-pedia.png',
         nextProjectLink: {
             label: 'Sample',
-            route: "/work/android/sample2"
+            route: "/work/android/sample"
         },
-        featureImageUrls: [
-            'http://localhost:4200/assets/react-movies-pedia.png',
-            'http://localhost:4200/assets/react-movies-pedia.png',
-            'http://localhost:4200/assets/react-movies-pedia.png',
-            'http://localhost:4200/assets/react-movies-pedia.png',
+        features: [
+            {
+                name: 'Search feature',
+                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae similique libero ea hic sit saepe, cum rem dolore, voluptas quam culpa. Maiores, assumenda odio possimus officia ab culpa doloribus molestiae!',
+                imageUrls: ['http://localhost:4200/assets/react-movies-pedia.png', ],
+            }
         ],
+        featuresDescription: 'Top features of this project',
         githubUrl: 'https://github.com/abhijitunavane/React-Movies-App',
         isLiked: true
     },
@@ -40,7 +43,14 @@ export interface Project {
     description: String;
     githubUrl: String;
     headerImageUrl: String;
-    featureImageUrls: String[];
+    features: Feature[];
+    featuresDescription: String;
     isLiked: Boolean;
     nextProjectLink: Link;
+}
+
+export interface Feature {
+    name: String;
+    description: String;
+    imageUrls: String[];
 }

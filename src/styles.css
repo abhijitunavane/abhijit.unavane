@@ -31,6 +31,14 @@ body {
     @apply hover:bg-black hover:bg-opacity-5 active:bg-opacity-10 p-2 rounded-full;
 }
 
+.icon-button-white:hover .tooltip-dark, .icon-button-white:hover .tooltip-light {
+    @apply visible;
+}
+
+.icon-button:hover .tooltip-dark, .icon-button:hover .tooltip-light {
+    @apply visible;
+}
+
 .icon-button-white {
     @apply hover:bg-white hover:bg-opacity-5 active:bg-opacity-10 p-2 rounded-full;
 }

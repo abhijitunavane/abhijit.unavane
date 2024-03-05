@@ -11,7 +11,8 @@ import {
   WorkComponent,
   GithubCornerComponent,
   DomainComponent,
-  ProjectComponent } from './components/components';
+  ProjectComponent,
+  TooltipComponent } from './components/components';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {
     WorkComponent,
     GithubCornerComponent,
     DomainComponent,
-    ProjectComponent
+    ProjectComponent,
+    TooltipComponent
   ],
   imports: [
     BrowserModule,
