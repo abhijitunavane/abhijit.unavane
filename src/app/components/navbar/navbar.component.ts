@@ -42,7 +42,7 @@ export class NavbarComponent {
     },
     {
       label: 'Photography',
-      route: '#',
+      route: 'photography',
     },
   ];
   shouldShowMenu: boolean = false;

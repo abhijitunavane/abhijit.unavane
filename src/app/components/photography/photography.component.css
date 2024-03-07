@@ -1,0 +1,15 @@
+.photo {
+    @apply aspect-square object-cover box-content;
+}
+
+.photo-container {
+    @apply relative;
+}
+
+.photo-container:hover .overlay {
+    @apply visible;
+}
+
+.overlay {
+    @apply invisible absolute w-full h-full bg-cover bg-black bg-opacity-40;
+}
