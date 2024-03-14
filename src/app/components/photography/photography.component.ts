@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { photosMock, Photo } from './photography.mock';
+import { Photo, photosMock, photosWithCategoryMock } from './photography.mock';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -10,10 +10,10 @@ import { Title } from '@angular/platform-browser';
 export class PhotographyComponent implements OnInit {
   
   photos: Photo[] | undefined;
-  selectedPhoto?: Photo | null = photosMock[0];
+  selectedPhoto?: Photo | null;
 
   constructor(private titleService: Title) {
-    titleService.setTitle('Abhijit Unavane • Photography');
+    this.titleService.setTitle('Abhijit Unavane • Photography');
   }
 
   ngOnInit(): void {

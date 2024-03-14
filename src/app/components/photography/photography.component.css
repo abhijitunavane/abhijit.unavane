@@ -10,6 +10,10 @@
     @apply visible;
 }
 
+.photo-item {
+    @apply w-full h-full bg-cover bg-black bg-opacity-30;
+}
+
 .overlay {
-    @apply invisible absolute w-full h-full bg-cover bg-black bg-opacity-40;
+    @apply invisible z-10 absolute w-full h-full bg-cover bg-white bg-opacity-10;
 }
