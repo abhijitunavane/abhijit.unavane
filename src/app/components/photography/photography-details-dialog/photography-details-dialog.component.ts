@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Photo } from '../photography.mock';
 
 @Component({
@@ -11,6 +11,12 @@ export class PhotographyDetailsDialogComponent {
   @Input() selectedPhoto: Photo | undefined | null;
   @Output() togglePhotoDialog: EventEmitter<Photo | undefined | null> = new EventEmitter();
 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.code === 'Escape' && event.type == 'keyup') {
+      this.onTogglePhotoDialog(null);
+    }    
+  }
 
   onTogglePhotoDialog(photo: Photo | null) {
     this.togglePhotoDialog.emit(photo);

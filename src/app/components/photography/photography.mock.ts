@@ -4,30 +4,15 @@ export const photosMock: Photo[] = [
         description: 'Photo description',
         imageUrl: 'http://localhost:4200/assets/react-movies-pedia.png',
         instagramUrl: 'https://www.instagram.com/caynayphoto/p/C4MZ84HBElu/',
-        categoryName: "Category 1",
-        categoryDescription: 'Category description',
+        categoryId: 1
     },
     {
         title: "Photo title 2",
         description: 'Photo description 2',
         imageUrl: 'http://localhost:4200/assets/react-movies-pedia.png',
         instagramUrl: 'https://www.instagram.com/caynayphoto/p/C4MZ84HBElu/',
-        categoryName: "Category 2",
-        categoryDescription: 'Category description 2',
+        categoryId: 2
     },
-];
-
-export const photosWithCategoryMock: Photo[] = [
-    {
-        categoryName: "Category 1",
-        categoryDescription: 'Category description 1',
-        imageUrl: 'http://localhost:4200/assets/react-movies-pedia.png'
-    },
-    {
-        categoryName: "Category 2",
-        categoryDescription: 'Category description 2',
-        imageUrl: 'http://localhost:4200/assets/react-movies-pedia.png'
-    }
 ];
 
 export interface Photo {
@@ -35,6 +20,5 @@ export interface Photo {
     description?: String;
     imageUrl: String;
     instagramUrl?: String;
-    categoryName?: String;
-    categoryDescription?: String;
+    categoryId?: Number;
 }

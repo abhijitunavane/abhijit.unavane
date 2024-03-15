@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Photo, photosMock, photosWithCategoryMock } from './photography.mock';
+import { Photo, photosMock } from './photography.mock';
 import { Title } from '@angular/platform-browser';
+import RouteUtils from '../../utils/RouteUtil';
 
 @Component({
   selector: 'app-photography',
@@ -10,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 export class PhotographyComponent implements OnInit {
   
   photos: Photo[] | undefined;
-  selectedPhoto?: Photo | null;
+  categoryRoute: String | undefined;
 
   constructor(private titleService: Title) {
     this.titleService.setTitle('Abhijit Unavane • Photography');
@@ -20,11 +21,11 @@ export class PhotographyComponent implements OnInit {
     this.photos = photosMock;
   }
 
-  togglePhotoDialog(photo: Photo | null) {
-    if (photo === null) {
-      this.selectedPhoto = null;
-    } else {
-      this.selectedPhoto = photo;
+  getCategoryRoute(categoryId: Number | undefined) {
+    if (categoryId === undefined || categoryId === null) {
+      return "";
     }
+
+    return RouteUtils.createCategoryUrl(categoryId);
   }
 }

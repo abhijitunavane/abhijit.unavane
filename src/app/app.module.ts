@@ -13,8 +13,9 @@ import {
   DomainComponent,
   ProjectComponent,
   TooltipComponent,
-  PhotographyComponent } from './components/components';
-import { PhotographyDetailsDialogComponent } from './components/photography/photography-details-dialog/photography-details-dialog.component';
+  PhotographyComponent,
+  PhotographyDetailsDialogComponent,
+  PhotographyCategoryComponent } from './components/components';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PhotographyDetailsDialogComponent } from './components/photography/phot
     ProjectComponent,
     TooltipComponent,
     PhotographyComponent,
-    PhotographyDetailsDialogComponent
+    PhotographyDetailsDialogComponent,
+    PhotographyCategoryComponent
   ],
   imports: [
     BrowserModule,
