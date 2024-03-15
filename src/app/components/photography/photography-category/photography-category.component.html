@@ -1,0 +1,30 @@
+<div *ngIf="category">
+    <app-photography-details-dialog 
+        [selectedPhoto]="selectedPhoto"
+        (togglePhotoDialog)="togglePhotoDialog(null)"></app-photography-details-dialog>
+
+    <div class="flex justify-center mt-16 md:mt-10">
+        <h1 class="header p-4 md:p-14">{{category.name}}</h1>
+    </div>
+
+    <div class="my-16 grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
+        <div *ngFor="let photo of category.photos" class="cursor-pointer" (click)="togglePhotoDialog(photo)">
+            <div class="photo-container">
+                <div class="overlay">
+                    <div class="absolute top-2 right-2 p-1 bg-white bg-opacity-60 icon-button-white hover:bg-opacity-80">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 fill-black">
+                            <polyline points="21 10 21 3 14 3" fill="none" stroke="#000" stroke-miterlimit="10" />
+                            <line x1="21" y1="3" x2="14" y2="10" fill="none" stroke="#000" stroke-miterlimit="10" />
+                            <polyline points="3 14 3 21 10 21" fill="none" stroke="#000" stroke-miterlimit="10" />
+                            <line x1="3" y1="21" x2="9.5" y2="14.5" fill="none" stroke="#000" stroke-miterlimit="10" />
+                        </svg>
+
+                        <app-tooltip toolTipContent="View details"></app-tooltip>
+                    </div>
+                </div>
+
+                <img class="photo" [src]="photo.imageUrl" alt="Photo">
+            </div>
+        </div>
+    </div>
+</div>

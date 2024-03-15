@@ -12,7 +12,10 @@ import {
   GithubCornerComponent,
   DomainComponent,
   ProjectComponent,
-  TooltipComponent } from './components/components';
+  TooltipComponent,
+  PhotographyComponent,
+  PhotographyDetailsDialogComponent,
+  PhotographyCategoryComponent } from './components/components';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import {
     GithubCornerComponent,
     DomainComponent,
     ProjectComponent,
-    TooltipComponent
+    TooltipComponent,
+    PhotographyComponent,
+    PhotographyDetailsDialogComponent,
+    PhotographyCategoryComponent
   ],
   imports: [
     BrowserModule,
