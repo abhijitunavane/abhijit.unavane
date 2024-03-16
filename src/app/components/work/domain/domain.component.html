@@ -13,13 +13,16 @@
         class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
         <div class="flex space-x-4">
             <h2 class="sub-header">Projects</h2>
-            <div class="badge">{{domain.projectList.length}}</div>
+            <div class="relative badge">
+                <span>{{domain.projectList.length}}</span>
+                <app-tooltip toolTipContent="Total projects"></app-tooltip>
+            </div>
         </div>
         <p class="summary">
             {{domain.projectDescription}}
         </p>
     </div>
-    <div *ngIf="domain.projectList.length > 0" ngClass="{{domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'}}" class="grid gap-8 mx-4 md:mx-40">
+    <div *ngIf="domain.projectList.length > 0" [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" class="grid gap-8 mx-4 md:mx-40">
         <div *ngFor="let project of domain.projectList" class="text-black rounded-xl overflow-clip">
             <div>
                 <img src="{{project.photoUrl}}" class="">
@@ -31,17 +34,18 @@
                 {{project.description}}
             </div>
             <div class="bg-white pt-3 px-6 pb-4 flex stroke-purple-800 justify-between">
-                <a class="transition-all text-md p-2 bg-gray-800 active:bg-opacity-100 hover:bg-opacity-85 text-white"
+                <a class="button transition-all text-md p-2 bg-gray-800 active:bg-opacity-100 hover:bg-opacity-85 text-white"
                     routerLink="{{project.projectPath}}">Know more <span>></span></a>
                 <div class="space-x-6">
-                    <button class="icon-button">
+                    <button class="relative icon-button">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
                             <path [ngClass]="project.isLiked ? 'fill-red-500': 'fill-none'"
                                 class="stroke-red-500 stroke-2"
                                 d="M12,8,10.7,6.8a4.7,4.7,0,0,0-6.4,0,4.7,4.7,0,0,0,0,6.4L12,21l7.7-7.8a4.7,4.7,0,0,0,0-6.4,4.7,4.7,0,0,0-6.4,0Z" />
                         </svg>
+                        <app-tooltip toolTipContent="Like"></app-tooltip>
                     </button>
-                    <button class="icon-button">
+                    <button class="relative icon-button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
                             <circle cx="18.5" cy="5" r="3.5" fill="none" stroke="#000" />
                             <circle cx="18.5" cy="19" r="3.5" fill="none" stroke="#000" />
@@ -49,6 +53,7 @@
                             <line x1="8.58" y1="13.66" x2="15.42" y2="17.34" fill="none" stroke="#000" />
                             <line x1="15.42" y1="6.66" x2="8.58" y2="10.34" fill="none" stroke="#000" />
                         </svg>
+                        <app-tooltip toolTipContent="Share"></app-tooltip>
                     </button>
                 </div>
             </div>
