@@ -1,14 +1,14 @@
 .projects-container {
     @apply
     mx-4 md:mx-8
-    gap-x-8
+    min-[1600px]:w-2/3
     gap-y-10 md:gap-y-32
     grid grid-cols-12 md:grid-cols-24;
 }
 
 .projects-container > a {
     transition: transform 500ms ease-in-out;
-    @apply h-80 md:h-102 lg:h-110 overflow-hidden cursor-pointer rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
+    @apply h-80 md:h-102 lg:h-108 overflow-hidden cursor-pointer rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
 }
 
 .projects-container > a:hover {
@@ -20,19 +20,19 @@
 }
 
 .project-item-l1 {
-    @apply col-span-full md:col-span-8;
+    @apply col-span-full md:col-span-9;
 }
 
 .project-item-r1 {
-    @apply col-span-full md:col-start-10;
+    @apply col-span-full md:col-start-11;
 }
 
 .project-item-l2 {
-    @apply col-span-full md:col-span-16;
+    @apply col-span-full md:col-span-14;
 }
 
 .project-item-r2 {
-    @apply col-span-full md:col-span-8;
+    @apply col-span-full md:col-start-16;
 }
 
 .project-header {
@@ -41,7 +41,5 @@
 
 .project-thumbnail {
     transition: transform 500ms ease-in-out;
-    max-width: inherit;
-    width: 1200px;
-    @apply rounded-tl-xl;
+    @apply min-w-[800px] rounded-xl;
 }
