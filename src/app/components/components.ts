@@ -9,3 +9,5 @@ export { TooltipComponent } from './common/tooltip/tooltip.component';
 export { PhotographyComponent } from './photography/photography.component';
 export { PhotographyDetailsDialogComponent } from './photography/photography-details-dialog/photography-details-dialog.component';
 export { PhotographyCategoryComponent } from './photography/photography-category/photography-category.component';
+export { ToastComponent } from './common/toast/toast.component';
+export { SquareSpinnerComponent } from './common/spinners/square.spinner/square.spinner.component';

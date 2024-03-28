@@ -1,4 +1,4 @@
-<div class="mt-16 md:mt-10 mb-16 space-y-10">
+<div class="mt-16 md:mt-10 mb-16 space-y-10 flex flex-col items-center">
     <div class="text-center p-4 md:p-14 space-y-10">
         <div class="header flex flex-col">
             <span>Hi. I'm Abhijit.</span>
@@ -6,13 +6,15 @@
         </div>
         <p class="summary">I'm passionate about creating softwares that are engaging and user centric.</p>
     </div>
+    <app-square-spinner [isLoading]="isLoading"></app-square-spinner>  
     <div class="projects-container">
-        <a *ngFor="let work of workList" 
-            routerLink="{{work.link.route}}" 
-            [ngStyle]="{'background-color': work.bgColor}" 
-            ngClass="{{work.styleClass}}">
+        <a *ngFor="let work of workList; index as index"
+            routerLink="{{work.link?.route}}" 
+            [ngStyle]="{'background-color': getBgColor(index)}" 
+            [ngClass]="getStyleClass(index)">
             <h2 class="project-header">{{work.name}}</h2>
-            <img class="project-thumbnail" [src]="work.image" alt="react-movies-pedia">
+            <img *ngIf="work.image" class="project-thumbnail" [src]="work.image">
         </a>
     </div>
 </div>
+<app-toast *ngIf="error" text="Something went wrong!"></app-toast>

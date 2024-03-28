@@ -15,7 +15,9 @@ import {
   TooltipComponent,
   PhotographyComponent,
   PhotographyDetailsDialogComponent,
-  PhotographyCategoryComponent } from './components/components';
+  PhotographyCategoryComponent,
+  ToastComponent,
+  SquareSpinnerComponent } from './components/components';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import {
     TooltipComponent,
     PhotographyComponent,
     PhotographyDetailsDialogComponent,
-    PhotographyCategoryComponent
+    PhotographyCategoryComponent,
+    ToastComponent,
+    SquareSpinnerComponent,
   ],
   imports: [
     BrowserModule,
