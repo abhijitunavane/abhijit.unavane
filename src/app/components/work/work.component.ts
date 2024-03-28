@@ -46,7 +46,6 @@ export class WorkComponent implements OnInit {
       this.workList?.map(async work => {
         if (work.image !== null) {
           const { data } = await this.service.workImage(work.image);
-          console.log(data.publicUrl);
           
           if (data !== null && data.publicUrl !== null) {
             work.image = data.publicUrl;
@@ -74,7 +73,7 @@ export class WorkComponent implements OnInit {
                 work.image = data.publicUrl;
               }
             }
-            this.workList.push();
+            this.workList.push(work);
             break;
           }
           case UPDATE: {
@@ -96,7 +95,7 @@ export class WorkComponent implements OnInit {
             break;
           }
           case DELETE: {
-            this.workList = this.workList.filter(work => work.id === oldData.id);
+            this.workList = this.workList.filter(work => work.id !== oldData.id);
             break;
           }
         }
