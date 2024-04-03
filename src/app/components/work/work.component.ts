@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Tables } from '../../types/database.types';
-import { WorkService } from '../../services/work.service';
+import { WorkService } from '../../services/work/work.service';
 import { DELETE, INSERT, UPDATE } from '../../constants/superbase/superbase.tables.constant';
 
 @Component({
@@ -45,7 +45,7 @@ export class WorkComponent implements OnInit {
       this.workList = data;
       this.workList?.map(async work => {
         if (work.image !== null) {
-          const { data } = await this.service.workImage(work.image);
+          const { data } = this.service.workImage(work.image);
           
           if (data !== null && data.publicUrl !== null) {
             work.image = data.publicUrl;
@@ -56,7 +56,7 @@ export class WorkComponent implements OnInit {
   
     this.isLoading = false;
     
-    this.service.workChanges().subscribe(async update => {
+    this.service.workChanges().subscribe(update => {
       if (update !== null) {
         if (this.workList === undefined || this.workList === null) {
           return;
@@ -68,7 +68,7 @@ export class WorkComponent implements OnInit {
           case INSERT: {
             const work: Tables<'work'> = newData as Tables<'work'>;
             if (work.image !== null) {
-              const { data } = await this.service.workImage(work.image);
+              const { data } = this.service.workImage(work.image);
               if (data !== null && data.publicUrl !== null) {
                 work.image = data.publicUrl;
               }
@@ -78,11 +78,11 @@ export class WorkComponent implements OnInit {
           }
           case UPDATE: {
             if (this.workList.length > 0) {
-              this.workList.map(async (work, index) => {
-                if (work.id == newData.id) {
+              this.workList.map((work, index) => {
+                if (work.id === newData.id) {
                   const work: Tables<'work'> = newData as Tables<'work'>;
                   if (work.image !== null) {
-                    const { data } = await this.service.workImage(work.image);
+                    const { data } = this.service.workImage(work.image);
                     if (data !== null && data.publicUrl !== null) {
                       work.image = data.publicUrl;
                     }

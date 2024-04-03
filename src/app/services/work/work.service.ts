@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SupabaseService } from './supabase/supabase.service';
+import { SupabaseService } from '../supabase/supabase.service';
 import { QueryData } from '@supabase/supabase-js';
-import { Tables } from '../types/database.types';
-import { SELECT_ALL, WORK_TABLE } from '../constants/superbase/superbase.tables.constant';
+import { Tables } from '../../types/database.types';
+import { SELECT_ALL, WORK_TABLE } from '../../constants/superbase/superbase.tables.constant';
 import { Observable } from 'rxjs';
-import { WORK_PATH } from '../constants/superbase/superbase.storage.constant';
+import { WORK_PATH } from '../../constants/superbase/superbase.storage.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class WorkService {
   constructor(private supabaseService: SupabaseService) { }
 
   /**
-   * Method to get work table data from supabase
+   * Method to get work table data from supabase tables
    * 
    * @returns Result of data {@link QueryData} of {@link Tables}
    */
@@ -23,18 +23,18 @@ export class WorkService {
   }
 
   /**
-   * Method to get work table data changes from supabase
+   * Method to get work table data changes from supabase tables
    * 
    * @returns Observable data {@link Observable}
    */
   workChanges(): Observable<any> {
-    return this.supabaseService.getChanges(WORK_TABLE, '*');
+    return this.supabaseService.getChanges(WORK_TABLE, SELECT_ALL);
   }
 
   /**
-   * Method to get work table data changes from supabase
+   * Method to get work image from supabase storage
    * 
-   * @returns Observable data {@link Observable}
+   * @returns Public image url
    */
   workImage(imageName: String): any {
     return this.supabaseService.getImage(`${WORK_PATH}/${imageName}`);

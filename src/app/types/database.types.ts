@@ -9,24 +9,92 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      domain: {
+        Row: {
+          id: string
+          image: string | null
+          name: string
+          next: Database["public"]["CompositeTypes"]["link"] | null
+          overview: string
+          projectDescription: string
+          projectList: Database["public"]["Tables"]["project"]["Row"][] | null
+        }
+        Insert: {
+          id: string
+          image?: string | null
+          name: string
+          next?: Database["public"]["CompositeTypes"]["link"] | null
+          overview: string
+          projectDescription: string
+          projectList?: Database["public"]["Tables"]["project"]["Row"][] | null
+        }
+        Update: {
+          id?: string
+          image?: string | null
+          name?: string
+          next?: Database["public"]["CompositeTypes"]["link"] | null
+          overview?: string
+          projectDescription?: string
+          projectList?: Database["public"]["Tables"]["project"]["Row"][] | null
+        }
+        Relationships: []
+      }
+      project: {
+        Row: {
+          description: string
+          domainId: string | null
+          id: string
+          image: string
+          isLiked: boolean | null
+          name: string
+          projectPath: string
+        }
+        Insert: {
+          description: string
+          domainId?: string | null
+          id: string
+          image: string
+          isLiked?: boolean | null
+          name: string
+          projectPath: string
+        }
+        Update: {
+          description?: string
+          domainId?: string | null
+          id?: string
+          image?: string
+          isLiked?: boolean | null
+          name?: string
+          projectPath?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_project_domainId_fkey"
+            columns: ["domainId"]
+            isOneToOne: false
+            referencedRelation: "domain"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       work: {
         Row: {
           id: number
           image: string | null
           link: Database["public"]["CompositeTypes"]["link"] | null
-          name: string | null
+          name: string
         }
         Insert: {
           id: number
           image?: string | null
           link?: Database["public"]["CompositeTypes"]["link"] | null
-          name?: string | null
+          name: string
         }
         Update: {
           id?: number
           image?: string | null
           link?: Database["public"]["CompositeTypes"]["link"] | null
-          name?: string | null
+          name?: string
         }
         Relationships: []
       }
