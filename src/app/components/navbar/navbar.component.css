@@ -40,10 +40,10 @@
 }
 
 .nav-menu-container {
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
     @apply absolute top-20 aspect-auto rounded-2xl bg-black bg-opacity-60 backdrop-blur-lg flex justify-center;
 }
 

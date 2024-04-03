@@ -31,6 +31,19 @@ export class SupabaseService {
   }
 
   /**
+   * Method to find data from supabase
+   * 
+   * @param tableName Table from which data should be fetched
+   * @param query Query of the data
+   * @param column Column from the table which should be queried
+   * @param value Value that the column should have
+   * @returns Data {@link T} Should be of type {@link QueryResult} or {@link QueryData}
+   */
+  find<T>(tableName: any, query: any, column: any, value: any): any {
+    return this.supabase.from(tableName).select(query).eq(column, value).returns<T>();
+  }
+
+  /**
    * Method to get data changes for the specified table from supabase
    * 
    * @param tableName Table to subscribe for any changes

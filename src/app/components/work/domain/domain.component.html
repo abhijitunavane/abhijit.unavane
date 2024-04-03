@@ -1,7 +1,9 @@
+<app-square-spinner [isLoading]="isLoading"></app-square-spinner>
+
 <div *ngIf="domain" class="space-y-16 mb-16">
     <h1 class="header text-center p-4 md:p-14 mt-16">{{domain.name}}</h1>
-    <div class="mx-4 md:mx-16 lg:mx-32">
-        <img class="rounded-xl" src="../../../../assets/react-movies-pedia.png" alt="">
+    <div *ngIf="domain.image" class="mx-4 md:mx-16 lg:mx-32">
+        <img class="w-full rounded-xl" [src]="domain.image" alt="">
     </div>
     <div *ngIf="domain.overview" class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
         <h2 class="sub-header">Overview</h2>
@@ -9,7 +11,7 @@
             {{domain.overview}}
         </p>
     </div>
-    <div *ngIf="domain.projectList.length > 0"
+    <div *ngIf="domain.projectList !== null && domain.projectList.length > 0"
         class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
         <div class="flex space-x-4">
             <h2 class="sub-header">Projects</h2>
@@ -22,11 +24,11 @@
             {{domain.projectDescription}}
         </p>
     </div>
-    <div *ngIf="domain.projectList.length > 0" [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" class="grid gap-8 mx-4 md:mx-40">
+    <div *ngIf="domain.projectList && domain.projectList.length > 0" 
+        [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" 
+        class="grid gap-8 mx-4 md:mx-16 lg:mx-32">
         <div *ngFor="let project of domain.projectList" class="text-black rounded-xl overflow-clip">
-            <div>
-                <img src="{{project.photoUrl}}" class="">
-            </div>
+            <img *ngIf="project.image" src="{{project.image}}" class="w-full">
             <div class="bg-white pt-6 px-6 text-2xl font-semibold uppercase">
                 {{project.name}}
             </div>
@@ -60,6 +62,6 @@
         </div>
     </div>
     <div class="flex justify-center pt-12">
-        <a class="next-link" routerLink="{{domain.nextDomainLink.route}}">{{domain.nextDomainLink.label}}</a>
+        <a class="next-link" routerLink="{{domain.next?.route}}">{{domain.next?.label}}</a>
     </div>
 </div>

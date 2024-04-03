@@ -21,12 +21,6 @@ import {
         visibility: 'hidden',
         opacity: 0,
       })),
-      transition('open => closed', [
-        animate('0.2ms ease-out'),
-      ]),
-      transition('closed => open', [
-        animate('0.1ms ease-in')
-      ])
   ])
 ]
 })
