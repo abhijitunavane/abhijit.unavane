@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TooltipComponent {
 
-  @Input() toolTipContent: String | undefined;
+  @Input() toolTipContent: string | undefined;
 }

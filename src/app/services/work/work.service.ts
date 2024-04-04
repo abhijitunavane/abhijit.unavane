@@ -36,7 +36,7 @@ export class WorkService {
    * 
    * @returns Public image url
    */
-  workImage(imageName: String): any {
+  workImage(imageName: string): any {
     return this.supabaseService.getImage(`${WORK_PATH}/${imageName}`);
   }
 }

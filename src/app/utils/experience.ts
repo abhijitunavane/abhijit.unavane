@@ -1,10 +1,10 @@
 export interface Experience {
-    role: String,
-    companyName: String,
-    companyLink: String,
-    type: String,
-    period: String,
-    location: String,
-    summary: String,
-    skills: String
+    role: string,
+    companyName: string,
+    companyLink: string,
+    type: string,
+    period: string,
+    location: string,
+    summary: string,
+    skills: string
 }

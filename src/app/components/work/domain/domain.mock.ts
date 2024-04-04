@@ -56,18 +56,18 @@ export const domainMock: Domain[] = [
 ];
 
 export interface Domain {
-    id: String,
-    name: String;
-    overview: String;
-    projectDescription: String;
+    id: string,
+    name: string;
+    overview: string;
+    projectDescription: string;
     projectList: WorkProject[];
     nextDomainLink: Link;
 }
 
 export interface WorkProject {
-    name: String;
-    description: String;
-    projectPath: String;
-    photoUrl: String;
-    isLiked: Boolean;
+    name: string;
+    description: string;
+    projectPath: string;
+    photoUrl: string;
+    isLiked: boolean;
 }

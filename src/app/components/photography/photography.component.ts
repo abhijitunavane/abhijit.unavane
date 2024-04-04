@@ -11,7 +11,7 @@ import RouteUtils from '../../utils/RouteUtil';
 export class PhotographyComponent implements OnInit {
   
   photos: Photo[] | undefined;
-  categoryRoute: String | undefined;
+  categoryRoute: string | undefined;
 
   constructor(private titleService: Title) {
     this.titleService.setTitle('Abhijit Unavane • Photography');
@@ -21,7 +21,7 @@ export class PhotographyComponent implements OnInit {
     this.photos = photosMock;
   }
 
-  getCategoryRoute(categoryId: Number | undefined) {
+  getCategoryRoute(categoryId: number | undefined) {
     if (categoryId === undefined || categoryId === null) {
       return "";
     }

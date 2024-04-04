@@ -1,13 +1,13 @@
 import { Link } from "../../utils/link";
 
-const bgColorList: String[] = [
+const bgColorList: string[] = [
   '#D09CFA',
   '#B9F3FC',
   '#B9F3FC',
   '#FFD495'
 ];
 
-const styleClassList: String[] = [
+const styleClassList: string[] = [
   'project-item-l1',
   'project-item-r1',
   'project-item-l2',
@@ -58,9 +58,9 @@ export const workMockList: WorkDomain[] = [
 ];
 
 export interface WorkDomain {
-  name: String;
-  image: String;
+  name: string;
+  image: string;
   link: Link;
-  bgColor: String;
-  styleClass: String;
+  bgColor: string;
+  styleClass: string;
 }

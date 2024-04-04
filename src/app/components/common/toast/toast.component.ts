@@ -32,7 +32,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
 
-  @Input() text: String | undefined;
+  @Input() text: string | undefined;
   showToast: boolean = true;
 
   ngOnInit(): void {

@@ -16,9 +16,9 @@ export const photosMock: Photo[] = [
 ];
 
 export interface Photo {
-    title?: String;
-    description?: String;
-    imageUrl: String;
-    instagramUrl?: String;
-    categoryId?: Number;
+    title?: string;
+    description?: string;
+    imageUrl: string;
+    instagramUrl?: string;
+    categoryId?: number;
 }

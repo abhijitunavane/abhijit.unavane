@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Photo, photosMock } from '../photography.mock';
+import { Component, OnInit } from '@angular/core';
+import { Photo } from '../photography.mock';
 import { Title } from '@angular/platform-browser';
 import { PhotographyCategory, photographyCategoryListMock } from './photography-category.mock';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './photography-category.component.html',
   styleUrls: ['./photography-category.component.css', '../photography.component.css']
 })
-export class PhotographyCategoryComponent {
+export class PhotographyCategoryComponent implements OnInit {
 
   category: PhotographyCategory | undefined;
   selectedPhoto?: Photo | null;
