@@ -28,7 +28,7 @@
         [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" 
         class="grid gap-8 mx-4 md:mx-16 lg:mx-32">
         <div *ngFor="let project of domain.projectList" class="text-black rounded-xl overflow-clip">
-            <img *ngIf="project.image" src="{{project.image}}" class="w-full">
+            <img *ngIf="project.image" src="{{project.image}}" alt="project-image" class="w-full">
             <div class="bg-white pt-6 px-6 text-2xl font-semibold uppercase">
                 {{project.name}}
             </div>
@@ -65,3 +65,4 @@
         <a class="next-link" routerLink="{{domain.next?.route}}">{{domain.next?.label}}</a>
     </div>
 </div>
+<app-toast *ngIf="isError" text="Something went wrong!"></app-toast>

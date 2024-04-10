@@ -1,7 +1,19 @@
 <!-- Photo Dialog -->
-<div *ngIf="selectedPhoto" class="fixed z-50 p-12 w-full h-full top-0 bottom-0 left-0 right-0 bg-black bg-opacity-40" (click)="onTogglePhotoDialog(null)">
-    <div class="w-full h-full" (click)="$event.stopPropagation()">
-        <div (click)="onTogglePhotoDialog(null)" class="transition-all icon-button-white absolute top-16 right-16">
+<div *ngIf="selectedPhoto"
+    class="fixed z-50 p-12 w-full h-full top-0 bottom-0 left-0 right-0 bg-black bg-opacity-40"
+    (click)="onTogglePhotoDialog(null)"
+    (keyup)="onTogglePhotoDialog(null)"
+    role="region"
+    tabindex="0">
+    <div class="w-full h-full"
+        (click)="$event.stopPropagation()"
+        (keyup)="$event.stopPropagation()"
+        role="none" tabindex="0">
+        <div (click)="onTogglePhotoDialog(null)" 
+            role="navigation" 
+            tabindex="0" 
+            class="transition-all icon-button-white absolute top-16 right-16"
+            (keyup)="onTogglePhotoDialog(null)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
                  class="w-10 fill-white stroke-white cursor-pointer">
                 <line x1="19" y1="5" x2="5" y2="19" stroke-miterlimit="10" />

@@ -38,19 +38,19 @@ export const projectMock: Project[] = [
 ];
 
 export interface Project {
-    id: String;
-    name: String;
-    description: String;
-    githubUrl: String;
-    headerImageUrl: String;
+    id: string;
+    name: string;
+    description: string;
+    githubUrl: string;
+    headerImageUrl: string;
     features: Feature[];
-    featuresDescription: String;
-    isLiked: Boolean;
+    featuresDescription: string;
+    isLiked: boolean;
     nextProjectLink: Link;
 }
 
 export interface Feature {
-    name: String;
-    description: String;
-    imageUrls: String[];
+    name: string;
+    description: string;
+    imageUrls: string[];
 }

@@ -1,5 +1,9 @@
 <nav class="flex justify-center sticky top-6 z-40">
-    <div (click)="menuClickListener()" [ngClass]="!shouldShowMenu ? 'hamburger' : 'hamburger animate'">
+    <div (click)="menuClickListener()" 
+        role="menu"
+        (keyup)="menuClickListener()"
+        tabindex="0"
+        [ngClass]="!shouldShowMenu ? 'hamburger' : 'hamburger animate'">
         <span></span>
         <span></span>
         <span></span>

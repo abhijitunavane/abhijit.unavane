@@ -13,7 +13,7 @@
             [ngStyle]="{'background-color': getBgColor(index)}" 
             [ngClass]="getStyleClass(index)">
             <h2 class="project-header">{{work.name}}</h2>
-            <img *ngIf="work.image" class="project-thumbnail" [src]="work.image">
+            <img *ngIf="work.image" class="project-thumbnail" [src]="work.image" alt="work-image">
         </a>
     </div>
 </div>

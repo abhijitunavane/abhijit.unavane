@@ -1,4 +1,4 @@
 export interface Link {
-  label: String;
-  route: String;
+  label: string;
+  route: string;
 }

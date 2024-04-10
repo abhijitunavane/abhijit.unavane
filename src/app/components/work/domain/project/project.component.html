@@ -43,7 +43,7 @@
             <div ngClass="{{feature.imageUrls.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2' }}" class="grid gap-8 mx-4 md:mx-40">
                 <div *ngFor="let imageUrl of feature.imageUrls" class="text-black rounded-xl overflow-clip">
                     <div>
-                        <img src="{{imageUrl}}">
+                        <img src="{{imageUrl}}" alt="feature-image">
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ export const photographyCategoryListMock: PhotographyCategory[] = [
 ]
 
 export interface PhotographyCategory {
-    id: Number,
-    name: String;
+    id: number,
+    name: string;
     photos: Photo[];
 }

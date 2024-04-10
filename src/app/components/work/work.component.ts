@@ -14,14 +14,14 @@ export class WorkComponent implements OnInit {
   workList: Tables<'work'>[] | null | undefined;
   error: any | null | undefined;
   isLoading: boolean = true;
-  bgColorList: String[] = [
+  bgColorList: string[] = [
     '#D09CFA',
     '#B9F3FC',
     '#B9F3FC',
     '#FFD495'
   ];
 
-  styleClassList: String[] = [
+  styleClassList: string[] = [
     'project-item-l1',
     'project-item-r1',
     'project-item-l2',
@@ -107,19 +107,19 @@ export class WorkComponent implements OnInit {
    * Method to get background color from {@link bgColorList}
    * 
    * @param index Index of work list
-   * @returns background color {@link String} 
+   * @returns background color {@link string} 
    */
-  getBgColor(index: number): String {
+  getBgColor(index: number): string {
     return this.bgColorList[index % 4];
-  };
+  }
 
   /**
    * Method to get style class from {@link styleClassList}
    * 
    * @param index Index of work list
-   * @returns style class {@link String} 
+   * @returns style class {@link string} 
    */
-  getStyleClass(index: number): String {
+  getStyleClass(index: number): string {
     return this.styleClassList[index % 4];
-  };
+  }
 }

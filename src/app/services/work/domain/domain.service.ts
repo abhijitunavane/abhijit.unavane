@@ -37,7 +37,7 @@ export class DomainService {
    * 
    * @returns Public image url
    */
-  domainImage(imageName: String): any {
+  domainImage(imageName: string): any {
     return this.supbaseService.getImage(`${DOMAIN_PATH}/${imageName}`);
   }
 }
