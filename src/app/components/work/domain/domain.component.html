@@ -65,3 +65,4 @@
         <a class="next-link" routerLink="{{domain.next?.route}}">{{domain.next?.label}}</a>
     </div>
 </div>
+<app-toast *ngIf="isError" text="Something went wrong!"></app-toast>

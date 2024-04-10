@@ -13,7 +13,7 @@ import { UPDATE } from '../../../constants/superbase/superbase.tables.constant';
 export class DomainComponent implements OnInit {
 
   domain: Tables<'domain'> | null | undefined;
-  error: any | null | undefined;
+  isError: boolean = false;
   isLoading: boolean = true;
 
   constructor(
@@ -32,8 +32,8 @@ export class DomainComponent implements OnInit {
   async setupObservers(value: any): Promise<void> {
     const {data, error} = await this.service.domain(value);
     
-    if (error || data.length < 0) {
-      this.error = error;
+    if (error || (data !== null && data.length < 0)) {
+      this.isError = true;
     } else if (data && data.length > 0) {
       const formattedData = data[0] as Tables<'domain'>;
       if (formattedData.image !== null) {
@@ -67,8 +67,8 @@ export class DomainComponent implements OnInit {
         const newData = update.new;
         switch (update.eventType) {
           case UPDATE: {
-              if (this.domain.id === newData.id) {
-                const domain: Tables<'domain'> = newData as Tables<'domain'>;
+            const domain: Tables<'domain'> = newData as Tables<'domain'>;
+              if (this.domain.id === domain.id) {
                 if (domain.image !== null) {
                   const { data } = this.service.domainImage(domain.image);
                   if (data !== null && data.publicUrl !== null) {
