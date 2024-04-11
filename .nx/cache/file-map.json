@@ -48,12 +48,8 @@
         "hash": "6686520031028425313"
       },
       {
-        "file": ".eslintrc.json",
-        "hash": "14645878845883387518"
-      },
-      {
         "file": ".gitignore",
-        "hash": "13044518069027839699"
+        "hash": "4689145951703824387"
       },
       {
         "file": ".vscode/extensions.json",
@@ -73,7 +69,7 @@
       },
       {
         "file": "angular.json",
-        "hash": "6800788980786111642"
+        "hash": "4659637667227496250"
       },
       {
         "file": "environment.ts",
@@ -81,11 +77,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "3042958068309106913"
+        "hash": "5929691029491832899"
       },
       {
         "file": "package.json",
-        "hash": "3401201833534735268"
+        "hash": "3895680015702639050"
       },
       {
         "file": "src/app/app-routing.module.ts",
@@ -105,7 +101,7 @@
       },
       {
         "file": "src/app/app.component.ts",
-        "hash": "17983035053207005970"
+        "hash": "16486363974677605642"
       },
       {
         "file": "src/app/app.module.ts",
@@ -157,7 +153,7 @@
       },
       {
         "file": "src/app/components/common/toast/toast.component.ts",
-        "hash": "18179815908607114600"
+        "hash": "12414449787665953467"
       },
       {
         "file": "src/app/components/common/tooltip/tooltip.component.css",
@@ -173,7 +169,7 @@
       },
       {
         "file": "src/app/components/common/tooltip/tooltip.component.ts",
-        "hash": "7244808401462099296"
+        "hash": "4142510761229926559"
       },
       {
         "file": "src/app/components/components.ts",
@@ -201,7 +197,7 @@
       },
       {
         "file": "src/app/components/navbar/navbar.component.html",
-        "hash": "2472362805549084395"
+        "hash": "15017302357535911202"
       },
       {
         "file": "src/app/components/navbar/navbar.component.spec.ts",
@@ -209,7 +205,7 @@
       },
       {
         "file": "src/app/components/navbar/navbar.component.ts",
-        "hash": "12618860138262609056"
+        "hash": "8581569695332150972"
       },
       {
         "file": "src/app/components/photography/photography-category/photography-category.component.css",
@@ -217,7 +213,7 @@
       },
       {
         "file": "src/app/components/photography/photography-category/photography-category.component.html",
-        "hash": "9350155461661220066"
+        "hash": "1671952499095391767"
       },
       {
         "file": "src/app/components/photography/photography-category/photography-category.component.spec.ts",
@@ -225,11 +221,11 @@
       },
       {
         "file": "src/app/components/photography/photography-category/photography-category.component.ts",
-        "hash": "10456055394804418532"
+        "hash": "14991236444448157870"
       },
       {
         "file": "src/app/components/photography/photography-category/photography-category.mock.ts",
-        "hash": "15264124605258920653"
+        "hash": "5900339186904483388"
       },
       {
         "file": "src/app/components/photography/photography-details-dialog/photography-details-dialog.component.css",
@@ -237,7 +233,7 @@
       },
       {
         "file": "src/app/components/photography/photography-details-dialog/photography-details-dialog.component.html",
-        "hash": "8607782410980095760"
+        "hash": "5897695643321420137"
       },
       {
         "file": "src/app/components/photography/photography-details-dialog/photography-details-dialog.component.spec.ts",
@@ -261,11 +257,11 @@
       },
       {
         "file": "src/app/components/photography/photography.component.ts",
-        "hash": "6821704235474673684"
+        "hash": "1855739072850264133"
       },
       {
         "file": "src/app/components/photography/photography.mock.ts",
-        "hash": "1579919782485963970"
+        "hash": "11317140571025704749"
       },
       {
         "file": "src/app/components/work/domain/domain.component.css",
@@ -273,7 +269,7 @@
       },
       {
         "file": "src/app/components/work/domain/domain.component.html",
-        "hash": "7530240974448647728"
+        "hash": "17465890225625990333"
       },
       {
         "file": "src/app/components/work/domain/domain.component.spec.ts",
@@ -281,11 +277,11 @@
       },
       {
         "file": "src/app/components/work/domain/domain.component.ts",
-        "hash": "4429829504793178752"
+        "hash": "8162338866969676290"
       },
       {
         "file": "src/app/components/work/domain/domain.mock.ts",
-        "hash": "12009425202783200197"
+        "hash": "11188283117877920665"
       },
       {
         "file": "src/app/components/work/domain/project/project.component.css",
@@ -293,7 +289,7 @@
       },
       {
         "file": "src/app/components/work/domain/project/project.component.html",
-        "hash": "7790278526501294967"
+        "hash": "2495957652916051483"
       },
       {
         "file": "src/app/components/work/domain/project/project.component.spec.ts",
@@ -305,7 +301,7 @@
       },
       {
         "file": "src/app/components/work/domain/project/project.mock.ts",
-        "hash": "9573461281332953330"
+        "hash": "11077452784524108275"
       },
       {
         "file": "src/app/components/work/work.component.css",
@@ -313,7 +309,7 @@
       },
       {
         "file": "src/app/components/work/work.component.html",
-        "hash": "8229036341602278038"
+        "hash": "10047590115371532372"
       },
       {
         "file": "src/app/components/work/work.component.spec.ts",
@@ -321,11 +317,11 @@
       },
       {
         "file": "src/app/components/work/work.component.ts",
-        "hash": "3090663629000163439"
+        "hash": "4035440153789374488"
       },
       {
         "file": "src/app/components/work/work.mock.ts",
-        "hash": "6128104283977630453"
+        "hash": "13858315822981399518"
       },
       {
         "file": "src/app/constants/superbase/superbase.storage.constant.ts",
@@ -341,7 +337,7 @@
       },
       {
         "file": "src/app/services/supabase/supabase.service.ts",
-        "hash": "3252971295586616768"
+        "hash": "1959328173760010890"
       },
       {
         "file": "src/app/services/work/domain/domain.service.spec.ts",
@@ -349,7 +345,7 @@
       },
       {
         "file": "src/app/services/work/domain/domain.service.ts",
-        "hash": "2176745042711391317"
+        "hash": "10602493287476319288"
       },
       {
         "file": "src/app/services/work/work.service.spec.ts",
@@ -357,7 +353,7 @@
       },
       {
         "file": "src/app/services/work/work.service.ts",
-        "hash": "9260027225830253779"
+        "hash": "10144755516271115001"
       },
       {
         "file": "src/app/types/database.types.ts",
@@ -365,15 +361,15 @@
       },
       {
         "file": "src/app/utils/RouteUtil.ts",
-        "hash": "6819492032637982019"
+        "hash": "14675711692536486075"
       },
       {
         "file": "src/app/utils/experience.ts",
-        "hash": "15821446693694074700"
+        "hash": "9093806294704140814"
       },
       {
         "file": "src/app/utils/link.ts",
-        "hash": "13729186445149503831"
+        "hash": "10010529761284430055"
       },
       {
         "file": "src/assets/.gitkeep",
