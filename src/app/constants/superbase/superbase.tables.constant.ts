@@ -3,6 +3,7 @@
  */
 export const WORK_TABLE = 'work';
 export const DOMAIN_TABLE = 'domain';
+export const PROJECT_TABLE = 'project';
 
 /**
  * Queries

@@ -19,7 +19,7 @@ export class DomainService {
    * @param value value that needs to be found
    * @returns Result of data {@link QueryData} of {@link Tables}
    */
-  domain(value: any) {
+  get(value: any) {
     return this.supbaseService.find<QueryData<Tables<'domain'>>>(DOMAIN_TABLE, SELECT_ALL, ID, value);
   }
 
@@ -28,7 +28,7 @@ export class DomainService {
    * 
    * @returns Observable data {@link Observable}
    */
-  domainChanges(): Observable<any> {
+  getChanges(): Observable<any> {
     return this.supbaseService.getChanges(DOMAIN_TABLE, SELECT_ALL);
   }
 
@@ -37,7 +37,7 @@ export class DomainService {
    * 
    * @returns Public image url
    */
-  domainImage(imageName: string): any {
+  getImage(imageName: string): any {
     return this.supbaseService.getImage(`${DOMAIN_PATH}/${imageName}`);
   }
 }

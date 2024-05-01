@@ -43,29 +43,38 @@ export type Database = {
         Row: {
           description: string
           domainId: string | null
+          features: Database["public"]["CompositeTypes"]["feature"][] | null
+          featuresDescription: string | null
+          githubUrl: string | null
           id: string
           image: string
           isLiked: boolean | null
           name: string
-          projectPath: string
+          nextProjectLink: Database["public"]["CompositeTypes"]["link"] | null
         }
         Insert: {
           description: string
           domainId?: string | null
+          features?: Database["public"]["CompositeTypes"]["feature"][] | null
+          featuresDescription?: string | null
+          githubUrl?: string | null
           id: string
           image: string
           isLiked?: boolean | null
           name: string
-          projectPath: string
+          nextProjectLink?: Database["public"]["CompositeTypes"]["link"] | null
         }
         Update: {
           description?: string
           domainId?: string | null
+          features?: Database["public"]["CompositeTypes"]["feature"][] | null
+          featuresDescription?: string | null
+          githubUrl?: string | null
           id?: string
           image?: string
           isLiked?: boolean | null
           name?: string
-          projectPath?: string
+          nextProjectLink?: Database["public"]["CompositeTypes"]["link"] | null
         }
         Relationships: [
           {
@@ -116,6 +125,11 @@ export type Database = {
         | "South America"
     }
     CompositeTypes: {
+      feature: {
+        name: string | null
+        description: string | null
+        images: string[] | null
+      }
       link: {
         label: string | null
         route: string | null

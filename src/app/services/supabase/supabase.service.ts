@@ -50,8 +50,8 @@ export class SupabaseService {
    * @param event Event such as INSERT, UPDATE, DELETE 
    * @returns Payload {@link RealtimePostgresChangesPayload}
    */
-  getChanges(tableName: any, event: any): Observable<RealtimePostgresChangesPayload<T>> {
-    const changes = new Subject<{[key: string]: any}>();
+  getChanges(tableName: any, event: any): any {
+    const changes = new Subject();
     this.supabase
     .channel('schema-db-changes')
     .on(
