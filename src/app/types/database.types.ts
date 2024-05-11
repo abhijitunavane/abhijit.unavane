@@ -44,10 +44,10 @@ export type Database = {
           description: string
           domainId: string | null
           features: Database["public"]["CompositeTypes"]["feature"][] | null
-          featuresDescription: string | null
           githubUrl: string | null
+          hostUrl: string | null
           id: string
-          image: string
+          image: string | null
           isLiked: boolean | null
           name: string
           nextProjectLink: Database["public"]["CompositeTypes"]["link"] | null
@@ -56,10 +56,10 @@ export type Database = {
           description: string
           domainId?: string | null
           features?: Database["public"]["CompositeTypes"]["feature"][] | null
-          featuresDescription?: string | null
           githubUrl?: string | null
+          hostUrl?: string | null
           id: string
-          image: string
+          image?: string | null
           isLiked?: boolean | null
           name: string
           nextProjectLink?: Database["public"]["CompositeTypes"]["link"] | null
@@ -68,10 +68,10 @@ export type Database = {
           description?: string
           domainId?: string | null
           features?: Database["public"]["CompositeTypes"]["feature"][] | null
-          featuresDescription?: string | null
           githubUrl?: string | null
+          hostUrl?: string | null
           id?: string
-          image?: string
+          image?: string | null
           isLiked?: boolean | null
           name?: string
           nextProjectLink?: Database["public"]["CompositeTypes"]["link"] | null
@@ -128,7 +128,7 @@ export type Database = {
       feature: {
         name: string | null
         description: string | null
-        images: string[] | null
+        image: string | null
       }
       link: {
         label: string | null

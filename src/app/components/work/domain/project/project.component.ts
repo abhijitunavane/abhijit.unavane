@@ -39,6 +39,19 @@ export class ProjectComponent implements OnInit {
         }
       }
       
+
+      if (formattedData.features !== null && formattedData.features.length > 0) {
+        formattedData.features.map(feature => {
+          if (feature.image !== null) {
+            const { data } = this.service.getImage(feature.image);
+          
+            if (data && data.publicUrl) {
+              feature.image = data.publicUrl;
+            }
+          }
+        });
+      }
+      
       this.project = formattedData;
     }
 
@@ -60,6 +73,18 @@ export class ProjectComponent implements OnInit {
                   if (data !== null && data.publicUrl !== null) {
                     project.image = data.publicUrl;
                   }
+                }
+
+                if (project.features !== null && project.features.length > 0) {
+                  project.features.map(feature => {
+                    if (feature.image !== null) {
+                      const { data } = this.service.getImage(feature.image);
+                    
+                      if (data && data.publicUrl) {
+                        feature.image = data.publicUrl;
+                      }
+                    }
+                  });
                 }
 
                 this.project = project;
