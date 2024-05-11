@@ -13,7 +13,6 @@ export class WorkComponent implements OnInit {
 
   workList: Tables<'work'>[] | null | undefined;
   error: any | null | undefined;
-  isLoading: boolean = true;
   bgColorList: string[] = [
     '#D09CFA',
     '#B9F3FC',
@@ -53,8 +52,6 @@ export class WorkComponent implements OnInit {
         }
       });
     }
-  
-    this.isLoading = false;
     
     this.service.workChanges().subscribe(update => {
       if (update !== null) {

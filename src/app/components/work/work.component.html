@@ -6,7 +6,6 @@
         </div>
         <p class="summary">I'm passionate about creating softwares that are engaging and user centric.</p>
     </div>
-    <app-square-spinner [isLoading]="isLoading"></app-square-spinner>  
     <div class="projects-container">
         <a *ngFor="let work of workList; index as index"
             routerLink="{{work.link?.route}}" 

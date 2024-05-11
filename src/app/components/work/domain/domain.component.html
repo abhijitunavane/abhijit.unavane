@@ -1,4 +1,4 @@
-<app-square-spinner [isLoading]="isLoading"></app-square-spinner>
+<div *ngIf="isLoading" class="h-screen"></div>
 
 <div *ngIf="domain" class="space-y-16 mb-16">
     <h1 class="header text-center p-4 md:p-14 mt-16">{{domain.name}}</h1>
@@ -27,8 +27,19 @@
     <div *ngIf="domain.projectList && domain.projectList.length > 0" 
         [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" 
         class="grid gap-8 mx-4 md:mx-16 lg:mx-32">
-        <div *ngFor="let project of domain.projectList" class="text-black rounded-xl overflow-clip">
-            <img *ngIf="project.image" src="{{project.image}}" alt="project-image" class="w-full">
+        <div *ngFor="let project of domain.projectList" class="text-black h-full flex flex-col rounded-xl overflow-clip">
+            <ng-container *ngIf="project.image;  then image; else defaultImage"></ng-container>
+        
+            <ng-template #defaultImage>
+                <div class="flex flex-grow justify-center items-center" style="background-color: #D3D5D7;">
+                    <img src="../../../../assets/no-image.svg" class="w-40" alt="No image">
+                </div>
+            </ng-template>
+        
+            <ng-template #image>
+                <img *ngIf="project.image" src="{{project.image}}" alt="project-image" class="w-full">
+            </ng-template>
+            
             <div class="bg-white pt-6 px-6 text-2xl font-semibold uppercase">
                 {{project.name}}
             </div>
@@ -37,7 +48,7 @@
             </div>
             <div class="bg-white pt-3 px-6 pb-4 flex stroke-purple-800 justify-between">
                 <a class="button transition-all text-md p-2 bg-gray-800 active:bg-opacity-100 hover:bg-opacity-85 text-white"
-                    routerLink="{{project.projectPath}}">Know more <span>></span></a>
+                    routerLink="{{getProjectUrl(project.domainId, project.id)}}">Know more <span>></span></a>
                 <div class="space-x-6">
                     <button class="relative icon-button">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
@@ -65,4 +76,4 @@
         <a class="next-link" routerLink="{{domain.next?.route}}">{{domain.next?.label}}</a>
     </div>
 </div>
-<app-toast *ngIf="isError" text="Something went wrong!"></app-toast>
+<app-toast *ngIf="hasError" text="Something went wrong!"></app-toast>
