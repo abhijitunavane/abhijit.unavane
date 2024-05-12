@@ -37,7 +37,7 @@ body {
 
 /* Primary icon button with black background */
 .icon-button {
-    @apply hover:bg-black hover:bg-opacity-10 active:bg-opacity-5 p-2 rounded-full ring-tertiary active:ring;
+    @apply hover:bg-black hover:bg-opacity-5 active:bg-opacity-0 p-2 rounded-full ring-tertiary active:ring;
 }
 
 .icon-button:hover .tooltip {
@@ -46,7 +46,7 @@ body {
 
 /* Secondary icon button with white background */
 .icon-button-white {
-    @apply hover:bg-white hover:bg-opacity-15 active:bg-opacity-10 p-2 rounded-full ring-tertiary active:ring;
+    @apply hover:bg-white hover:bg-opacity-5 active:bg-opacity-0 p-2 rounded-full ring-tertiary active:ring;
 }
 
 .icon-button-white:hover .tooltip {
