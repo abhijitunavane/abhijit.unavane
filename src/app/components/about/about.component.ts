@@ -1,47 +1,86 @@
-import { Component } from '@angular/core';
-import { Experience } from '../../utils/experience';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AboutService } from '../../services/about/about.service';
+import { Tables } from '../../types/database.types';
+import { INSERT, UPDATE } from '../../constants/superbase/superbase.tables.constant';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
-export class AboutComponent {
-  experiences: Experience[] = [
-    {
-      role: 'Software Engineer',
-      companyName: 'Raja Software Labs Ltd.',
-      companyLink: 'https://www.linkedin.com/company/raja-software/',
-      type: 'Full-time',
-      period: 'Jun 2022 - Present',
-      location: 'Pune, Maharashtra, India',
-      summary: `Acquired expertise in Android development using Java, including the MVVM architecture.
- Contributed to a LinkedIn Android project and honed code review skills, effectively addressing feedback.
- Proficiently worked with Git, creating PRs and fostering a strong grasp of review comments.
- Developed a Flutter app for the company.`,
-      skills: [
-        'Jira',
-        'Flutter',
-        'GraphQL',
-        'Kotlin',
-        'Java',
-        'Android',
-      ].join(' • '),
-    },
-    {
-      role: 'Software Engineer Intern',
-      companyName: 'Raja Software Labs Ltd.',
-      companyLink: 'https://www.linkedin.com/company/raja-software/',
-      type: 'Internship',
-      period: 'Jan 2022 - Jun 2022',
-      location: 'Pune, Maharashtra, India',
-      summary: `Learned android framework and developed some demo apps. Explored fragment-based architecture for modular UI design and improved code reusability.`,
-      skills: ['Android'].join('•'),
-    },
-  ];
+export class AboutComponent implements OnInit {
 
-  constructor(private titleService: Title) {
+  aboutList: Tables<'about'>[] | null | undefined;
+  isLoading: boolean = true;
+  error: any | null | undefined;
+
+  constructor(private titleService: Title, private service: AboutService) {
     this.titleService.setTitle('Abhijit Unavane • About');
+  }
+  
+  ngOnInit() {
+    this.setupObservers();
+  }
+
+  async setupObservers(): Promise<void> {
+    const {data, error} = await this.service.get();
+    this.isLoading = false;
+
+    if (error != null) {
+      this.error = error;
+    } else if (data != null) {
+      this.aboutList = data;
+      this.aboutList?.map(async about => {
+        if (about.image !== null) {
+          const { data } = this.service.getImage(about.image);
+          
+          if (data !== null && data.publicUrl !== null) {
+            about.image = data.publicUrl;
+          }
+        }
+      });
+    }
+    
+    this.service.getChanges().subscribe(update => {
+      if (update !== null) {
+        if (this.aboutList === undefined || this.aboutList === null) {
+          return;
+        }
+        
+        const newData = update.new;
+        switch (update.eventType) {
+          case INSERT: {
+            const about: Tables<'about'> = newData as Tables<'about'>;
+            if (about.image !== null) {
+              const { data } = this.service.getImage(about.image);
+              if (data !== null && data.publicUrl !== null) {
+                about.image = data.publicUrl;
+              }
+            }
+            this.aboutList.push(about);
+            break;
+          }
+          case UPDATE: {
+            if (this.aboutList.length > 0) {
+              this.aboutList.map((about, index) => {
+                if (about.id === newData.id) {
+                  const about: Tables<'about'> = newData as Tables<'about'>;
+                  if (about.image !== null) {
+                    const { data } = this.service.getImage(about.image);
+                    if (data !== null && data.publicUrl !== null) {
+                      about.image = data.publicUrl;
+                    }
+                  }
+                  this.aboutList![index] = about;
+                  return;
+                }
+              });
+            }
+            break;
+          }
+        }
+      }
+    });
   }
 }

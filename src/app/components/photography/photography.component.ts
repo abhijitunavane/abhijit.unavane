@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Photo, photosMock } from './photography.mock';
 import { Title } from '@angular/platform-browser';
-import RouteUtils from '../../utils/RouteUtil';
+import RouteUtil from '../../utils/route.util';
 
 @Component({
   selector: 'app-photography',
@@ -26,6 +26,6 @@ export class PhotographyComponent implements OnInit {
       return "";
     }
 
-    return RouteUtils.createCategoryUrl(categoryId);
+    return RouteUtil.createCategoryUrl(categoryId);
   }
 }

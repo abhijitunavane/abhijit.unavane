@@ -9,6 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      about: {
+        Row: {
+          experiences: Database["public"]["CompositeTypes"]["experience"][]
+          headers: string[]
+          id: number
+          image: string | null
+          infoHeader: string
+          infoSummary: string
+          links: Database["public"]["CompositeTypes"]["about_link"][]
+        }
+        Insert: {
+          experiences: Database["public"]["CompositeTypes"]["experience"][]
+          headers?: string[]
+          id?: number
+          image?: string | null
+          infoHeader: string
+          infoSummary: string
+          links: Database["public"]["CompositeTypes"]["about_link"][]
+        }
+        Update: {
+          experiences?: Database["public"]["CompositeTypes"]["experience"][]
+          headers?: string[]
+          id?: number
+          image?: string | null
+          infoHeader?: string
+          infoSummary?: string
+          links?: Database["public"]["CompositeTypes"]["about_link"][]
+        }
+        Relationships: []
+      }
       domain: {
         Row: {
           id: string
@@ -123,8 +153,24 @@ export type Database = {
         | "Oceania"
         | "North America"
         | "South America"
+      link_type: "INSTAGRAM" | "LINKEDIN"
     }
     CompositeTypes: {
+      about_link: {
+        type: Database["public"]["Enums"]["link_type"] | null
+        link: string | null
+        image: string | null
+      }
+      experience: {
+        role: string | null
+        companyName: string | null
+        companyLink: string | null
+        type: string | null
+        period: string | null
+        location: string | null
+        summary: string | null
+        skills: string[] | null
+      }
       feature: {
         name: string | null
         description: string | null
