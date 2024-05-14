@@ -5,7 +5,7 @@ import { Tables } from '../../types/database.types';
 import { ABOUT_TABLE, SELECT_ALL } from '../../constants/superbase/superbase.tables.constant';
 import { NetworkService } from '../common/network.service';
 import { Observable } from 'rxjs';
-import { ABOUT_PATH, WORK_PATH } from '../../constants/superbase/superbase.storage.constant';
+import { ABOUT_PATH } from '../../constants/superbase/superbase.storage.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class AboutService extends NetworkService {
   }
 
   /**
-   * Method to get work table data changes from supabase tables
+   * Method to get about table data changes from supabase tables
    * 
    * @returns Observable data {@link Observable}
    */
@@ -34,7 +34,7 @@ export class AboutService extends NetworkService {
   }
 
   /**
-   * Method to get work image from supabase storage
+   * Method to get about image from supabase storage
    * 
    * @returns Public image url
    */

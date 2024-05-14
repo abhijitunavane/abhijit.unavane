@@ -22,7 +22,7 @@ export abstract class NetworkService {
    * @param value value that needs to be found
    * @returns Observable data {@link Observable}
    */
-  abstract find(value: any): Observable<any>;
+  abstract find(value: any): any;
 
   /**
    * Method to get image from supabase storage

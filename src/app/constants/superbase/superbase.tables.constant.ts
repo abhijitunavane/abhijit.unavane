@@ -2,9 +2,10 @@
  * Tables
  */
 export const ABOUT_TABLE = 'about';
-export const WORK_TABLE = 'work';
 export const DOMAIN_TABLE = 'domain';
+export const PHOTOS_TABLE = 'photos';
 export const PROJECT_TABLE = 'project';
+export const WORK_TABLE = 'work';
 
 /**
  * Queries

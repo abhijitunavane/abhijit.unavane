@@ -11,16 +11,16 @@ import { Observable } from 'rxjs';
 })
 export class DomainService {
 
-  constructor(private supbaseService: SupabaseService) { }
+  constructor(private supabaseService: SupabaseService) { }
 
   /**
-   * Method to get domain table data from supabase
+   * Method to find domain table data from supabase based on id
    * 
-   * @param value value that needs to be found
+   * @param value id of the table that needs to be found
    * @returns Result of data {@link QueryData} of {@link Tables}
    */
-  get(value: any) {
-    return this.supbaseService.find<QueryData<Tables<'domain'>>>(DOMAIN_TABLE, SELECT_ALL, ID, value);
+  find(value: any) {
+    return this.supabaseService.find<QueryData<Tables<'domain'>>>(DOMAIN_TABLE, SELECT_ALL, ID, value);
   }
 
   /**
@@ -29,7 +29,7 @@ export class DomainService {
    * @returns Observable data {@link Observable}
    */
   getChanges(): Observable<any> {
-    return this.supbaseService.getChanges(DOMAIN_TABLE, SELECT_ALL);
+    return this.supabaseService.getChanges(DOMAIN_TABLE, SELECT_ALL);
   }
 
   /**
@@ -38,6 +38,6 @@ export class DomainService {
    * @returns Public image url
    */
   getImage(imageName: string): any {
-    return this.supbaseService.getImage(`${DOMAIN_PATH}/${imageName}`);
+    return this.supabaseService.getImage(`${DOMAIN_PATH}/${imageName}`);
   }
 }

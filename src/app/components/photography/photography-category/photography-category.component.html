@@ -1,14 +1,17 @@
-<div *ngIf="category">
+<div *ngIf="isLoading" class="h-screen"></div>
+<app-toast *ngIf="hasError" text="Something went wrong!"></app-toast>
+
+<div *ngIf="photosByCategory && photosByCategory.length > 0">
     <app-photography-details-dialog 
         [selectedPhoto]="selectedPhoto"
         (togglePhotoDialog)="togglePhotoDialog(null)"></app-photography-details-dialog>
 
     <div class="flex justify-center mt-16 md:mt-10">
-        <h1 class="header p-4 md:p-14">{{category.name}}</h1>
+        <h1 class="header p-4 md:p-14">{{photosByCategory[0].category}}</h1>
     </div>
 
     <div class="my-16 grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
-        <div *ngFor="let photo of category.photos" 
+        <div *ngFor="let photo of photosByCategory" 
             class="cursor-pointer" 
             (click)="togglePhotoDialog(photo)"
             (keyup)="togglePhotoDialog(photo)"

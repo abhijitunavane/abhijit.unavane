@@ -69,6 +69,36 @@ export type Database = {
         }
         Relationships: []
       }
+      photos: {
+        Row: {
+          category: string
+          categoryId: string | null
+          description: string | null
+          id: number
+          imageUrl: string
+          instagramUrl: string
+          title: string | null
+        }
+        Insert: {
+          category: string
+          categoryId?: string | null
+          description?: string | null
+          id?: number
+          imageUrl: string
+          instagramUrl: string
+          title?: string | null
+        }
+        Update: {
+          category?: string
+          categoryId?: string | null
+          description?: string | null
+          id?: number
+          imageUrl?: string
+          instagramUrl?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
       project: {
         Row: {
           description: string

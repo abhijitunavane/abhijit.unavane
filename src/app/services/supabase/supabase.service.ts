@@ -5,7 +5,7 @@ import {
   SupabaseClient } from '@supabase/supabase-js'
 import { environment } from '../../../../environment';
 import { Database } from '../../types/database.types';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { IMAGES_PATH } from '../../constants/superbase/superbase.storage.constant';
 
 @Injectable({

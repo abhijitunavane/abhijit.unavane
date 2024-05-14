@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { Photo } from '../photography.mock';
+import { Tables } from '../../../types/database.types';
 
 @Component({
   selector: 'app-photography-details-dialog',
@@ -8,8 +8,8 @@ import { Photo } from '../photography.mock';
 })
 export class PhotographyDetailsDialogComponent {
 
-  @Input() selectedPhoto: Photo | undefined | null;
-  @Output() togglePhotoDialog: EventEmitter<Photo | undefined | null> = new EventEmitter();
+  @Input() selectedPhoto: Tables<'photos'> | undefined | null;
+  @Output() togglePhotoDialog: EventEmitter<Tables<'photos'> | undefined | null> = new EventEmitter();
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -18,7 +18,7 @@ export class PhotographyDetailsDialogComponent {
     }    
   }
 
-  onTogglePhotoDialog(photo: Photo | null) {
+  onTogglePhotoDialog(photo: Tables<'photos'> | null) {
     this.togglePhotoDialog.emit(photo);
   }
 }
