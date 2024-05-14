@@ -5,7 +5,7 @@ import { Tables } from '../../types/database.types';
 import { ABOUT_TABLE, SELECT_ALL } from '../../constants/superbase/superbase.tables.constant';
 import { NetworkService } from '../common/network.service';
 import { Observable } from 'rxjs';
-import { ABOUT_PATH, WORK_PATH } from '../../constants/superbase/superbase.storage.constant';
+import { ABOUT_PATH } from '../../constants/superbase/superbase.storage.constant';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Photo, photosMock } from './photography.mock';
 import { Title } from '@angular/platform-browser';
 import RouteUtil from '../../utils/route.util';
 import { PhotosService } from '../../services/photos/photos.service';

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { SupabaseService } from '../supabase/supabase.service';
 import { QueryData } from '@supabase/supabase-js';
 import { Tables } from '../../types/database.types';
-import { ID, PHOTOS_TABLE, SELECT_ALL } from '../../constants/superbase/superbase.tables.constant';
+import { PHOTOS_TABLE, SELECT_ALL } from '../../constants/superbase/superbase.tables.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,6 @@ export class PhotosService extends NetworkService {
   constructor(private supabaseService: SupabaseService) {
     super();
    }
-
   
   /**
    * Method to get photos table data from supabase tables
@@ -44,7 +43,7 @@ export class PhotosService extends NetworkService {
     return this.supabaseService.find<QueryData<Tables<'photos'>>>(PHOTOS_TABLE, SELECT_ALL, "categoryId", value);
   }
 
-  override getImage(imageName: string) {
+  override getImage() {
     throw new Error('Method not implemented.');
   }
 }
