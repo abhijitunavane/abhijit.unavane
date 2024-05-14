@@ -1,4 +1,7 @@
-<div *ngIf="photos" class="mt-16 mb-16 md:mt-10 space-y-10">
+<div *ngIf="isLoading" class="h-screen"></div>
+<app-toast *ngIf="hasError" text="Something went wrong!"></app-toast>
+
+<div class="mt-16 mb-16 md:mt-10 space-y-10">
     <div class="text-center p-4 md:p-14 space-y-10">
         <div class="header flex flex-col">
             <span>Hi. I'm Abhijit.</span>
@@ -6,7 +9,7 @@
         </div>
         <p class="summary">I'm passionate about capturing photographs of birds, nature and people.</p>
     </div>
-    <div class="grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
+    <div *ngIf="photos && photos.length > 0" class="grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
         <a *ngFor="let photo of photos" class="cursor-pointer" [routerLink]="getCategoryRoute(photo.categoryId)">
             <div class="photo-container rounded-xl overflow-clip">
                 <div>

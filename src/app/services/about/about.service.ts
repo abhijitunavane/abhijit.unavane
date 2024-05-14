@@ -25,7 +25,7 @@ export class AboutService extends NetworkService {
   }
 
   /**
-   * Method to get work table data changes from supabase tables
+   * Method to get about table data changes from supabase tables
    * 
    * @returns Observable data {@link Observable}
    */
@@ -34,7 +34,7 @@ export class AboutService extends NetworkService {
   }
 
   /**
-   * Method to get work image from supabase storage
+   * Method to get about image from supabase storage
    * 
    * @returns Public image url
    */

@@ -40,7 +40,7 @@ export class DomainComponent implements OnInit {
   }
 
   async setupObservers(value: any): Promise<void> {
-    const {data, error} = await this.service.get(value);
+    const {data, error} = await this.service.find(value);
     
     if (error || (data !== null && data.length < 0)) {
       this.hasError = true;
