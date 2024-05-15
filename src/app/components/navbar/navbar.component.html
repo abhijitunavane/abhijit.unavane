@@ -9,9 +9,9 @@
         <span></span>
     </div>
     <ul [ngClass]="shouldHighlightNavbar ? 'highlight' : ''" class="navs">
-        <li *ngFor="let nav of navs">
-            <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center" routerLink={{nav.route}}
-                routerLinkActive="active">
+        <li *ngFor="let nav of navs" routerLinkActive="active">
+            <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center" 
+               routerLink={{nav.route}}>
                 <span>{{nav.label}}</span>
                 <span
                     class="flex justify-center items-center rounded ms-2 w-5 h-5 text-xxs border-2 border-opacity-60 border-tertiary"
@@ -19,6 +19,7 @@
                 </span>
             </a>
         </li>
+        <li class="slide"></li>
     </ul>
     <div [@openClose]="shouldShowMenu ? 'open' : 'closed'" class="nav-menu-container">
         <ul class="nav-menu">
