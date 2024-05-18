@@ -55,8 +55,8 @@ export class PhotographyComponent implements OnInit {
         switch (update.eventType) {
           case UPDATE: {
             const updatedPhoto: Tables<'photos'> = newData as Tables<'photos'>;
-            var newPhotos = this.photos;
-            var index = this.photos.findIndex(photo => updatedPhoto.id === photo.id);
+            const newPhotos = this.photos;
+            const index = this.photos.findIndex(photo => updatedPhoto.id === photo.id);
             if (index !== -1) {
               newPhotos[index] = updatedPhoto;
               this.photos = newPhotos;

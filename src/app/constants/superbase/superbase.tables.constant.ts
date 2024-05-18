@@ -6,6 +6,7 @@ export const DOMAIN_TABLE = 'domain';
 export const PHOTOS_TABLE = 'photos';
 export const PROJECT_TABLE = 'project';
 export const WORK_TABLE = 'work';
+export const VISITORS_TABLE = 'visitors';
 
 /**
  * Queries

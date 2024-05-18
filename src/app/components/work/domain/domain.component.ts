@@ -3,8 +3,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { DomainService } from '../../../services/work/domain/domain.service';
 import { Tables } from '../../../types/database.types';
-import { UPDATE } from '../../../constants/superbase/superbase.tables.constant';
+import { ID, UPDATE } from '../../../constants/superbase/superbase.tables.constant';
 import { ProjectService } from '../../../services/work/domain/project/project.service';
+import { VisitorsService } from '../../../services/visitors/visitors.service';
 
 @Component({
   selector: 'app-domain',
@@ -16,12 +17,14 @@ export class DomainComponent implements OnInit {
   domain: Tables<'domain'> | null | undefined;
   hasError: boolean = false;
   isLoading: boolean = true;
+  visitor: Tables<'visitors'> | null | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private titleService: Title,
     private service: DomainService,
     private projectService: ProjectService,
+    private visitorsService: VisitorsService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +32,23 @@ export class DomainComponent implements OnInit {
       this.titleService.setTitle(`Abhijit Unavane • ${params.get('domain-id')}`);
       await this.setupObservers(params.get('domain-id'));
     });
+
+    this.getVisitor();
+  }
+
+  async getVisitor(): Promise<void> {
+    const visitorId = localStorage.getItem('visitorId');
+    const {data, error} = await this.visitorsService.find(visitorId);
+    if (error !== null && data === null) {
+      return;
+    }
+
+    const visitors = data as Tables<'visitors'>[];
+    if (visitors.length == 0) {
+      return;
+    }
+
+    this.visitor = visitors[0];
   }
 
   getProjectUrl(domainId: string | null, projectId: string): string {
@@ -104,5 +124,43 @@ export class DomainComponent implements OnInit {
         }
       }
     });
+  }
+
+  async onLike(project: Tables<'project'>): Promise<void> {
+    if (this.visitor) {
+      if (!this.visitor.likes.includes(project.id)) {
+        project.likes += 1;
+        this.visitor.likes.push(project.id);
+      } else if (project.likes !== 0) {
+        project.likes -= 1;
+        this.visitor.likes.splice(this.visitor.likes.indexOf(project.id), 1);
+      }
+
+      await this.service.update({"likes": project.likes}, ID, project.id);
+      await this.visitorsService.update({"likes": this.visitor.likes}, ID, this.visitor.id);
+    }
+  }
+
+  async onShare(project: Tables<'project'>): Promise<void> {
+    if (this.visitor) {
+      if (!this.visitor.shares.includes(project.id)) {
+        project.shares += 1;
+        this.visitor.shares.push(project.id);
+      } else if (project.shares !== 0) {
+        project.shares -= 1;
+        this.visitor.shares.splice(this.visitor.shares.indexOf(project.id), 1);
+      }
+
+      await this.service.update({"shares": project.shares}, ID, project.id);
+      await this.visitorsService.update({"shares": this.visitor.shares}, ID, this.visitor.id);
+    }
+  }
+
+  isProjectLiked(project: Tables<'project'>): boolean {
+    return this.visitor !== undefined && this.visitor !== null && this.visitor.likes.includes(project.id);
+  }
+
+  isProjectShared(project: Tables<'project'>): boolean {
+    return this.visitor !== undefined && this.visitor !== null && this.visitor.shares.includes(project.id);
   }
 }

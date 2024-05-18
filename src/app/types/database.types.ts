@@ -47,7 +47,7 @@ export type Database = {
           next: Database["public"]["CompositeTypes"]["link"] | null
           overview: string
           projectDescription: string
-          projectList: Database["public"]["Tables"]["project"]["Row"][] | null
+          projectList: Database["public"]["Tables"]["project"]["Row"][]
         }
         Insert: {
           id: string
@@ -56,7 +56,7 @@ export type Database = {
           next?: Database["public"]["CompositeTypes"]["link"] | null
           overview: string
           projectDescription: string
-          projectList?: Database["public"]["Tables"]["project"]["Row"][] | null
+          projectList?: Database["public"]["Tables"]["project"]["Row"][]
         }
         Update: {
           id?: string
@@ -65,7 +65,7 @@ export type Database = {
           next?: Database["public"]["CompositeTypes"]["link"] | null
           overview?: string
           projectDescription?: string
-          projectList?: Database["public"]["Tables"]["project"]["Row"][] | null
+          projectList?: Database["public"]["Tables"]["project"]["Row"][]
         }
         Relationships: []
       }
@@ -108,9 +108,10 @@ export type Database = {
           hostUrl: string | null
           id: string
           image: string | null
-          isLiked: boolean | null
+          likes: number
           name: string
           nextProjectLink: Database["public"]["CompositeTypes"]["link"] | null
+          shares: number
         }
         Insert: {
           description: string
@@ -120,9 +121,10 @@ export type Database = {
           hostUrl?: string | null
           id: string
           image?: string | null
-          isLiked?: boolean | null
+          likes?: number
           name: string
           nextProjectLink?: Database["public"]["CompositeTypes"]["link"] | null
+          shares?: number
         }
         Update: {
           description?: string
@@ -132,9 +134,10 @@ export type Database = {
           hostUrl?: string | null
           id?: string
           image?: string | null
-          isLiked?: boolean | null
+          likes?: number
           name?: string
           nextProjectLink?: Database["public"]["CompositeTypes"]["link"] | null
+          shares?: number
         }
         Relationships: [
           {
@@ -145,6 +148,27 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      visitors: {
+        Row: {
+          id: string
+          likes: string[]
+          name: string | null
+          shares: string[]
+        }
+        Insert: {
+          id?: string
+          likes?: string[]
+          name?: string | null
+          shares?: string[]
+        }
+        Update: {
+          id?: string
+          likes?: string[]
+          name?: string | null
+          shares?: string[]
+        }
+        Relationships: []
       }
       work: {
         Row: {

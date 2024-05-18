@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  createClient,
-  RealtimePostgresChangesPayload,
-  SupabaseClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { environment } from '../../../../environment';
 import { Database } from '../../types/database.types';
 import { Subject } from 'rxjs';
@@ -48,7 +45,7 @@ export class SupabaseService {
    * 
    * @param tableName Table to subscribe for any changes
    * @param event Event such as INSERT, UPDATE, DELETE 
-   * @returns Payload {@link RealtimePostgresChangesPayload}
+   * @returns Payload
    */
   getChanges(tableName: any, event: any): any {
     const changes = new Subject();
@@ -70,5 +67,29 @@ export class SupabaseService {
 
   getImage(path: any): any {
     return this.supabase.storage.from(IMAGES_PATH).getPublicUrl(path);
+  }
+
+  /**
+   * Method to update the table
+   * 
+   * @param tableName Table to update
+   * @param newData New data to add
+   * @param column Column name to find the row to update
+   * @param value Value of the column
+   * @returns Data {@link T} Should be of type {@link QueryResult} or {@link QueryData}
+   */
+  update<T>(tableName: any, newData: any, column: any, value: any): any {
+    return this.supabase.from(tableName).update(newData).eq(column, value).select().returns<T>();
+  }
+
+  /**
+   * Method to insert into the table
+   * 
+   * @param tableName Table to update
+   * @param newData New data to add
+   * @returns Data {@link T} Should be of type {@link QueryResult} or {@link QueryData}
+   */
+  insert<T>(tableName: any, newData: any): any {
+    return this.supabase.from(tableName).insert(newData).select().returns<T>();
   }
 }

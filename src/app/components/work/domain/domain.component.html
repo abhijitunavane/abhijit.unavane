@@ -54,25 +54,35 @@
             <div class=" bg-white pt-2 px-6 text-xl line-clamp-2">
                 {{project.description}}
             </div>
-            <div class="bg-white pt-3 px-6 pb-4 flex stroke-purple-800 justify-between">
-                <div class="space-x-6">
-                    <button class="relative icon-button">
+            <div class="bg-white pt-3 px-6 pb-4 flex justify-between">
+                <div class="flex space-x-2">
+                    <button class="relative icon-button flex" (click)="onLike(project)" clickable>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-                            <path [ngClass]="project.isLiked ? 'fill-red-500': 'fill-none'"
-                                class="stroke-red-500 stroke-2"
+                            <path [ngClass]="this.project.likes >= 0 && isProjectLiked(project)
+                                ? 'fill-red-500 stroke-red-500'
+                                : 'fill-none stroke-black'"
+                                class="stroke-2"
                                 d="M12,8,10.7,6.8a4.7,4.7,0,0,0-6.4,0,4.7,4.7,0,0,0,0,6.4L12,21l7.7-7.8a4.7,4.7,0,0,0,0-6.4,4.7,4.7,0,0,0-6.4,0Z" />
                         </svg>
-                        <app-tooltip toolTipContent="Like"></app-tooltip>
+                        <div *ngIf="this.project.likes > 0"
+                            [ngClass]="isProjectLiked(project) ? 'text-red-500' : 'text-black'"
+                            class="text-base ms-2 font-semibold">
+                            {{project.likes}}
+                        </div>
+                        <app-tooltip [toolTipContent]="!isProjectLiked(project) ? 'Like' : 'Unlike'"></app-tooltip>
                     </button>
-                    <button class="relative icon-button">
+                    <button class="relative icon-button flex" (click)="onShare(project)" clickable>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
-                            <circle cx="18.5" cy="5" r="3.5" fill="none" stroke="#000" />
-                            <circle cx="18.5" cy="19" r="3.5" fill="none" stroke="#000" />
-                            <circle cx="5.5" cy="12" r="3.5" fill="none" stroke="#000" />
-                            <line x1="8.58" y1="13.66" x2="15.42" y2="17.34" fill="none" stroke="#000" />
-                            <line x1="15.42" y1="6.66" x2="8.58" y2="10.34" fill="none" stroke="#000" />
+                            <circle class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" cx="18.5" cy="5" r="3.5" />
+                            <circle class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" cx="18.5" cy="19" r="3.5" />
+                            <circle class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" cx="5.5" cy="12" r="3.5" />
+                            <line class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" x1="8.58" y1="13.66" x2="15.42" y2="17.34" />
+                            <line class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" x1="15.42" y1="6.66" x2="8.58" y2="10.34" />
                         </svg>
-                        <app-tooltip toolTipContent="Share"></app-tooltip>
+                        <div *ngIf="project.shares > 0"
+                            [ngClass]="isProjectShared(project) ? 'text-green-600' : 'text-black'" 
+                            class="text-base ms-2 font-semibold">{{project.shares}}</div>
+                        <app-tooltip [toolTipContent]="!isProjectShared(project) ? 'Share' : 'Unshare'"></app-tooltip>
                     </button>
                 </div>
             </div>
