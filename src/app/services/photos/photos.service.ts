@@ -43,7 +43,15 @@ export class PhotosService extends NetworkService {
     return this.supabaseService.find<QueryData<Tables<'photos'>>>(PHOTOS_TABLE, SELECT_ALL, "categoryId", value);
   }
 
+  override insert() {
+    throw new Error('Method not implemented.');
+  }
+
   override getImage() {
+    throw new Error('Method not implemented.');
+  }
+
+  override update() {
     throw new Error('Method not implemented.');
   }
 }

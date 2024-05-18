@@ -11,6 +11,7 @@ import { ABOUT_PATH } from '../../constants/superbase/superbase.storage.constant
   providedIn: 'root'
 })
 export class AboutService extends NetworkService {
+
   constructor(private supabaseService: SupabaseService) {
     super();
   }
@@ -42,6 +43,9 @@ export class AboutService extends NetworkService {
     return this.supabaseService.getImage(`${ABOUT_PATH}/${imageName}`);
   }
 
+  override insert() {
+    throw new Error('Method not implemented.');
+  }
 
   /**
    * Method to find table data changes from supabase tables
@@ -52,4 +56,7 @@ export class AboutService extends NetworkService {
     throw new Error('Method not implemented.');
   }
 
+  override update() {
+    throw new Error('Method not implemented.');
+  }
 }

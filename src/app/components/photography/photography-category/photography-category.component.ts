@@ -60,8 +60,8 @@ export class PhotographyCategoryComponent implements OnInit {
         switch (update.eventType) {
           case UPDATE: {
             const updatedPhoto: Tables<'photos'> = newData as Tables<'photos'>;
-            var newPhotos = this.photosByCategory;
-            var index = this.photosByCategory.findIndex(photo => updatedPhoto.id === photo.id);
+            const newPhotos = this.photosByCategory;
+            const index = this.photosByCategory.findIndex(photo => updatedPhoto.id === photo.id);
             if (index !== -1) {
               newPhotos[index] = updatedPhoto;
               this.photosByCategory = newPhotos;
