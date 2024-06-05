@@ -1,6 +1,13 @@
 <div *ngIf="isLoading" class="h-screen"></div>
 
 <div *ngIf="domain" class="space-y-16 mb-16">
+    <app-share-modal
+        [selectedProject]="selectedProject"
+        [sharingText]="getSharingText()"
+        [sharingUrl]="getProjectUrl(domain.id, selectedProject?.id)"
+        (toggleModal)="toggleShareModal(null)">
+    </app-share-modal>
+
     <h1 class="header text-center p-4 md:p-14 mt-16">{{domain.name}}</h1>
     <div *ngIf="domain.image" class="mx-4 md:mx-16 lg:mx-32">
         <img class="w-full rounded-xl" [src]="domain.image" alt="">
@@ -71,7 +78,12 @@
                         </div>
                         <app-tooltip [toolTipContent]="!isProjectLiked(project) ? 'Like' : 'Unlike'"></app-tooltip>
                     </button>
-                    <button class="relative icon-button flex" (click)="onShare(project)" clickable>
+                    <button class="relative icon-button flex" 
+                        (click)="onShare(project)"
+                        (keyup)="onShare(project)"
+                        role="alertdialog"
+                        tabindex="0"
+                        clickable>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
                             <circle class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" cx="18.5" cy="5" r="3.5" />
                             <circle class="stroke-2 fill-none" [ngClass]="isProjectShared(project) ? 'stroke-green-600': 'stroke-black'" cx="18.5" cy="19" r="3.5" />

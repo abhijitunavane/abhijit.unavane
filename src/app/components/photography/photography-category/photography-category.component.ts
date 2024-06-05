@@ -31,11 +31,7 @@ export class PhotographyCategoryComponent implements OnInit {
   }
 
   togglePhotoDialog(photo: Tables<'photos'> | null) {
-    if (photo === null) {
-      this.selectedPhoto = null;
-    } else {
-      this.selectedPhoto = photo;
-    }
+    this.selectedPhoto = photo;
   }
 
   async setupObservers(categoryId: string): Promise<void> {

@@ -1,0 +1,15 @@
+.brand-list {
+    @apply flex items-center space-x-4 overflow-x-scroll transition-all duration-500;
+}
+
+.brand-list::-webkit-scrollbar {
+    @apply hidden;
+}
+
+.brand {
+    @apply p-2 rounded-md flex flex-col items-center space-y-3 hover:bg-white hover:bg-opacity-20 active:bg-white active:bg-opacity-10;
+}
+
+.menu-slider-icon {
+    @apply opacity-20 hover:opacity-100 active:scale-90 transition-all duration-500 hover:bg-black border-[1.5px] hover:border-black flex items-start rounded-full;
+}

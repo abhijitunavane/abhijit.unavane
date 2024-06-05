@@ -1,0 +1,59 @@
+<!-- Photo Dialog -->
+<div *ngIf="selectedProject"
+    class="fixed z-50 p-2 md:p-12 w-full h-full top-0 bottom-0 bg-black bg-opacity-40 flex justify-center items-center"
+    (click)="onToggleModal(null)"
+    (keyup)="onToggleModal(null)"
+    role="region"
+    tabindex="0">
+    <div class="h-[400px] rounded-xl overflow-clip relative"
+        (click)="$event.stopPropagation()"
+        (keyup)="$event.stopPropagation()"
+        (wheel)="$event.preventDefault(); $event.stopPropagation()"
+        role="none" tabindex="0">
+        <button (click)="onToggleModal(null)" 
+            role="navigation" 
+            tabindex="0" 
+            class="transition-all icon-button-white absolute top-2 right-2"
+            (keyup)="onToggleModal(null)">
+            <fa-icon class="px-1" [icon]="this.faXmark" size="2x" title="Close"></fa-icon>
+        </button>
+        <div class="px-6 flex flex-col h-full justify-center bg-black space-y-6">
+            <div class="h-[0.5px] bg-gray-300 bg-opacity-50"></div>
+            <span class="font-semibold">Share</span>
+            <div class="relative">
+                <button class="absolute top-1/2 -translate-y-1/2 left-0" [ngClass]="this.showLeftArrow ? '' : 'invisible'" (click)="scrollToStart($event)">
+                    <fa-icon class="menu-slider-icon" [icon]="this.faCircleChevronLeft" size="2x" title="Scroll to start"></fa-icon>
+                </button>
+                <button class="absolute top-1/2 -translate-y-1/2 right-0" [ngClass]="this.showRightArrow ? '' : 'invisible'"(click)="scrollToEnd($event)">
+                    <fa-icon [icon]="this.faCircleChevronRight" size="2x" title="Scroll to end" class="menu-slider-icon"></fa-icon>
+                </button>
+                <div class="brand-list" #brandList (wheel)="scrollBrandList($event)" (scroll)="scrollListener($event)">
+                    <button class="brand" (click)="shareUrl(sharingOption.LINKEDIN)">
+                        <fa-icon [icon]="this.faLinkedin" size="3x" title="Facebook"></fa-icon>
+                        <span class="text-xs">LinkedIn</span>
+                    </button>
+                    <button class="brand" (click)="shareUrl(sharingOption.XTWITTER)">
+                        <fa-icon [icon]="this.faXTwitter" size="3x" title="Facebook"></fa-icon>
+                        <span class="text-xs">X</span>
+                    </button>
+                    <button class="brand" (click)="shareUrl(sharingOption.WHATSAPPP)">
+                        <fa-icon [icon]="this.faWhatsapp" size="3x" title="Facebook"></fa-icon>
+                        <span class="text-xs">Whatsapp</span>
+                    </button>
+                    <button class="brand" (click)="shareUrl(sharingOption.FACEBOOK)">
+                        <fa-icon [icon]="this.faFacebookSquare" size="3x" title="Facebook"></fa-icon>
+                        <span class="text-xs">Facebook</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex p-2 justify-center items-center rounded-xl bg-white bg-opacity-20 border-[0.5px] border-gray-300 border-opacity-50">
+                <input #link class="w-full flex-1 px-1 bg-transparent" [value]="this.sharingUrl" readonly />
+                <button class="bg-blue-600 hover:bg-blue-500 active:bg-blue-700 ms-1 py-1 px-3 rounded-full text-white"
+                    (click)="copyLinkToClipboard(this.sharingUrl)">
+                    Copy
+                </button>
+            </div>
+            <div class="h-[0.5px] float-end bg-gray-300 bg-opacity-50"></div>
+        </div>
+    </div>    
+</div>
