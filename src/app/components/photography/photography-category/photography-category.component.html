@@ -4,7 +4,8 @@
 <div *ngIf="photosByCategory && photosByCategory.length > 0">
     <app-photography-details-dialog 
         [selectedPhoto]="selectedPhoto"
-        (togglePhotoDialog)="togglePhotoDialog(null)"></app-photography-details-dialog>
+        (togglePhotoDialog)="togglePhotoDialog(null)">
+    </app-photography-details-dialog>
 
     <div class="flex justify-center mt-16 md:mt-10">
         <h1 class="header p-4 md:p-14">{{photosByCategory[0].category}}</h1>

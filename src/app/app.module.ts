@@ -17,7 +17,9 @@ import {
   PhotographyDetailsDialogComponent,
   PhotographyCategoryComponent,
   ToastComponent,
-  SquareSpinnerComponent } from './components/components';
+  SquareSpinnerComponent,
+  ShareModalComponent } from './components/components';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -35,11 +37,13 @@ import {
     PhotographyCategoryComponent,
     ToastComponent,
     SquareSpinnerComponent,
+    ShareModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

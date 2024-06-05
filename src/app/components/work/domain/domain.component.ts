@@ -18,6 +18,7 @@ export class DomainComponent implements OnInit {
   hasError: boolean = false;
   isLoading: boolean = true;
   visitor: Tables<'visitors'> | null | undefined;
+  selectedProject: Tables<'project'> | null | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,8 +52,8 @@ export class DomainComponent implements OnInit {
     this.visitor = visitors[0];
   }
 
-  getProjectUrl(domainId: string | null, projectId: string): string {
-    if (domainId === null) {
+  getProjectUrl(domainId: string | null, projectId: string | null | undefined): string {
+    if (domainId === null || projectId == null) {
       return "";
     }
 
@@ -143,6 +144,8 @@ export class DomainComponent implements OnInit {
 
   async onShare(project: Tables<'project'>): Promise<void> {
     if (this.visitor) {
+      this.toggleShareModal(project);
+
       if (!this.visitor.shares.includes(project.id)) {
         project.shares += 1;
         this.visitor.shares.push(project.id);
@@ -162,5 +165,21 @@ export class DomainComponent implements OnInit {
 
   isProjectShared(project: Tables<'project'>): boolean {
     return this.visitor !== undefined && this.visitor !== null && this.visitor.shares.includes(project.id);
+  }
+
+  toggleShareModal(project: Tables<'project'> | null) {
+    this.selectedProject = project;
+  }
+
+  getSharingText(): string {
+    if (this.domain && this.selectedProject) {
+      return `✨ Dive into Innovation: Explore ${this.selectedProject.name} ✨
+${this.selectedProject.description}
+🌐 Discover More: ${this.getProjectUrl(this.selectedProject.id, this.domain.id)}
+💬 Join me: Share your thoughts and spread the word!
+~ \#Abhijit_Unavane`;
+    }
+
+    return "";
   }
 }
