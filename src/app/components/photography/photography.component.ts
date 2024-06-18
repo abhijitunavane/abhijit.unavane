@@ -4,6 +4,8 @@ import RouteUtil from '../../utils/route.util';
 import { PhotosService } from '../../services/photos/photos.service';
 import { Tables } from '../../types/database.types';
 import { UPDATE } from '../../constants/superbase/superbase.tables.constant';
+import { ToastService } from '../../services/toast/toast.service';
+import { Severity } from '../../types/common/toast/toast';
 
 @Component({
   selector: 'app-photography',
@@ -13,11 +15,10 @@ import { UPDATE } from '../../constants/superbase/superbase.tables.constant';
 export class PhotographyComponent implements OnInit {
   
   photos: Tables<'photos'>[] | undefined;
-  hasError: boolean = false;
   isLoading: boolean = true;
   categoryRoute: string | undefined;
 
-  constructor(private titleService: Title, private service: PhotosService) {
+  constructor(private titleService: Title, private service: PhotosService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • Photography');
   }
 
@@ -38,7 +39,10 @@ export class PhotographyComponent implements OnInit {
     this.isLoading = true;
     
     if (error || (data !== null && data.length < 0)) {
-      this.hasError = true;
+      this.toastService.add({
+        "text": "Something went wrong!",
+        severity: Severity.ERROR
+      });
     } else if (data && data.length > 0) {
       this.photos = data;
     }

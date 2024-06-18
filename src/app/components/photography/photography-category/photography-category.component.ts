@@ -4,6 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Tables } from '../../../types/database.types';
 import { PhotosService } from '../../../services/photos/photos.service';
 import { UPDATE } from '../../../constants/superbase/superbase.tables.constant';
+import { ToastService } from '../../../services/toast/toast.service';
+import { Severity } from '../../../types/common/toast/toast';
 
 @Component({
   selector: 'app-photography-category',
@@ -17,7 +19,11 @@ export class PhotographyCategoryComponent implements OnInit {
   isLoading: boolean = true;
   hasError: boolean = false;
 
-  constructor(private route: ActivatedRoute, private titleService: Title, private service: PhotosService) {
+  constructor(
+    private route: ActivatedRoute, 
+    private titleService: Title, 
+    private service: PhotosService,
+    private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • Photography');
   }
 
@@ -39,7 +45,10 @@ export class PhotographyCategoryComponent implements OnInit {
     this.isLoading = true;
     
     if (error || (data !== null && data.length < 0)) {
-      this.hasError = true;
+      this.toastService.add({
+        text: "Something went wrong!",
+        severity: Severity.ERROR
+      });
     } else if (data && data.length > 0) {
       this.photosByCategory = data;
     }

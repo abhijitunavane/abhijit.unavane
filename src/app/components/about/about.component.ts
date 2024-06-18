@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { AboutService } from '../../services/about/about.service';
 import { Tables } from '../../types/database.types';
 import { INSERT, UPDATE } from '../../constants/superbase/superbase.tables.constant';
+import { ToastService } from '../../services/toast/toast.service';
+import { Severity } from '../../types/common/toast/toast';
 
 @Component({
   selector: 'app-about',
@@ -13,9 +15,8 @@ export class AboutComponent implements OnInit {
 
   aboutList: Tables<'about'>[] | null | undefined;
   isLoading: boolean = true;
-  error: any | null | undefined;
 
-  constructor(private titleService: Title, private service: AboutService) {
+  constructor(private titleService: Title, private service: AboutService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • About');
   }
   
@@ -27,8 +28,11 @@ export class AboutComponent implements OnInit {
     const {data, error} = await this.service.get();
     this.isLoading = false;
 
-    if (error != null) {
-      this.error = error;
+    if (error !== null) {
+      this.toastService.add({
+        "text": "Something went wrong!",
+        severity: Severity.ERROR
+      });
     } else if (data != null) {
       this.aboutList = data;
       this.aboutList?.map(async about => {
