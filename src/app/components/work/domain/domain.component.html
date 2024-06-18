@@ -5,7 +5,8 @@
         [selectedProject]="selectedProject"
         [sharingText]="getSharingText()"
         [sharingUrl]="getProjectUrl(domain.id, selectedProject?.id)"
-        (toggleModal)="toggleShareModal(null)">
+        (toggleModal)="toggleShareModal(null)"
+        (updateSharesCount)="updateSharesCount(selectedProject)">
     </app-share-modal>
 
     <h1 class="header text-center p-4 md:p-14 mt-16">{{domain.name}}</h1>
@@ -104,4 +105,3 @@
         <a class="next-link" routerLink="{{domain.next?.route}}">{{domain.next?.label}}</a>
     </div>
 </div>
-<app-toast *ngIf="hasError" text="Something went wrong!"></app-toast>

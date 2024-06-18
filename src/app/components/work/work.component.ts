@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { Tables } from '../../types/database.types';
 import { WorkService } from '../../services/work/work.service';
 import { DELETE, INSERT, UPDATE } from '../../constants/superbase/superbase.tables.constant';
+import { ToastService } from '../../services/toast/toast.service';
+import { Severity } from '../../types/common/toast/toast';
 
 @Component({
   selector: 'app-work',
@@ -27,7 +29,7 @@ export class WorkComponent implements OnInit {
     'project-item-r2'
   ];
 
-  constructor(private titleService: Title, private service : WorkService) {
+  constructor(private titleService: Title, private service : WorkService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • SDE');
   }
   
@@ -38,8 +40,11 @@ export class WorkComponent implements OnInit {
   async setupObservers(): Promise<void> {
     const {data, error} = await this.service.work();
 
-    if (error != null) {
-      this.error = error;
+    if (error !== null) {
+      this.toastService.add({
+        text: "Something went wrong!",
+        severity: Severity.ERROR
+      });
     } else if (data != null) {
       this.workList = data;
       this.workList?.map(async work => {

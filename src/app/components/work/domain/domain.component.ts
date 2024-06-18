@@ -6,6 +6,8 @@ import { Tables } from '../../../types/database.types';
 import { ID, UPDATE } from '../../../constants/superbase/superbase.tables.constant';
 import { ProjectService } from '../../../services/work/domain/project/project.service';
 import { VisitorsService } from '../../../services/visitors/visitors.service';
+import { ToastService } from '../../../services/toast/toast.service';
+import { Severity } from '../../../types/common/toast/toast';
 
 @Component({
   selector: 'app-domain',
@@ -15,7 +17,6 @@ import { VisitorsService } from '../../../services/visitors/visitors.service';
 export class DomainComponent implements OnInit {
 
   domain: Tables<'domain'> | null | undefined;
-  hasError: boolean = false;
   isLoading: boolean = true;
   visitor: Tables<'visitors'> | null | undefined;
   selectedProject: Tables<'project'> | null | undefined;
@@ -25,7 +26,8 @@ export class DomainComponent implements OnInit {
     private titleService: Title,
     private service: DomainService,
     private projectService: ProjectService,
-    private visitorsService: VisitorsService
+    private visitorsService: VisitorsService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +66,10 @@ export class DomainComponent implements OnInit {
     const {data, error} = await this.service.find(value);
     
     if (error || (data !== null && data.length < 0)) {
-      this.hasError = true;
+      this.toastService.add({
+        text: "Something went wrong!",
+        severity: Severity.ERROR
+      });
     } else if (data && data.length > 0) {
       const formattedData = data[0] as Tables<'domain'>;
       if (formattedData.image !== null) {
@@ -142,10 +147,22 @@ export class DomainComponent implements OnInit {
     }
   }
 
-  async onShare(project: Tables<'project'>): Promise<void> {
+  async onShare(project: Tables<'project'> | undefined | null): Promise<void> {
+    if (!project) {
+      return;
+    }
+
     if (this.visitor) {
       this.toggleShareModal(project);
+    }
+  }
 
+  async updateSharesCount(project: Tables<'project'> | undefined | null): Promise<void> {
+    if (!project) {
+      return;
+    }
+
+    if (this.visitor) {
       if (!this.visitor.shares.includes(project.id)) {
         project.shares += 1;
         this.visitor.shares.push(project.id);

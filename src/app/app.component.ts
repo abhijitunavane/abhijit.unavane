@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   VISITOR_ID_KEY: string = 'visitorId';
 
-  constructor(private visitorsService: VisitorsService) {}
+  constructor(private visitorsService: VisitorsService) { }
 
   ngOnInit(): void {
     this.verifyIfOldVisitor();

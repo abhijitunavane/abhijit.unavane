@@ -2,13 +2,15 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input
 import { Tables } from '../../../../../types/database.types';
 import { faFacebook, faFacebookSquare, faLinkedin, faWhatsapp, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faCircleChevronLeft, faCircleChevronRight, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { ToastService } from '../../../../../services/toast/toast.service';
+import { Severity } from '../../../../../types/common/toast/toast';
 
 @Component({
   selector: 'app-share-modal',
   templateUrl: './share-modal.component.html',
   styleUrl: './share-modal.component.css'
 })
-export class ShareModalComponent implements AfterViewInit {
+export class ShareModalComponent {
 
   @ViewChild("brandList") brandList: ElementRef | undefined;
   @ViewChild("lastBrand") lastBrand: ElementRef | undefined;
@@ -16,8 +18,10 @@ export class ShareModalComponent implements AfterViewInit {
   @Input() sharingText: string | undefined | null;
   @Input() sharingUrl: string | undefined | null;
   @Output() toggleModal: EventEmitter<Tables<'project'> | undefined | null> = new EventEmitter();
+  @Output() updateSharesCount: EventEmitter<Promise<void>> = new EventEmitter();
   showLeftArrow: boolean = false;
   showRightArrow: boolean = false;
+  isShareUrlCopied: boolean = false;
   faFacebookSquare = faFacebookSquare;
   faLinkedin = faLinkedin;
   faXTwitter = faXTwitter;
@@ -27,9 +31,7 @@ export class ShareModalComponent implements AfterViewInit {
   faXmark = faXmark;
   sharingOption = SharingOption
 
-  constructor() { }
-
-  ngAfterViewInit(): void { }
+  constructor(private toastService: ToastService) { }
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -53,8 +55,12 @@ export class ShareModalComponent implements AfterViewInit {
   copyLinkToClipboard(value: string | undefined | null): void {
     if (value) {
       navigator.clipboard.writeText(value).then((clipText) => {
-        console.log(`Copied Text: ${clipText}`)
+        this.toastService.add({
+          text: "Link copied to clipboard",
+          severity: Severity.SUCCESS
+        });
       });
+      this.updateSharesCount.emit();
     }
   }
 
@@ -124,6 +130,8 @@ export class ShareModalComponent implements AfterViewInit {
         break;
       }
     }
+
+    this.updateSharesCount.emit();
   }
 }
 
