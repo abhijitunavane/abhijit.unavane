@@ -4,11 +4,20 @@ import { Title } from '@angular/platform-browser';
 import { ProjectService } from '../../../../services/work/domain/project/project.service';
 import { Tables } from '../../../../types/database.types';
 import { UPDATE } from '../../../../constants/superbase/superbase.tables.constant';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
-  styleUrl: './project.component.css'
+  styleUrl: './project.component.css',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({  transform: 'translateY(1.2em)' }),
+        animate('0.28s', style({ transform: 'translateY(0)' })),
+      ])
+    ])
+  ]
 })
 export class ProjectComponent implements OnInit {
   project: Tables<'project'> | undefined

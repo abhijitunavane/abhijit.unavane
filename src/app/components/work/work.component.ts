@@ -5,11 +5,20 @@ import { WorkService } from '../../services/work/work.service';
 import { DELETE, INSERT, UPDATE } from '../../constants/superbase/superbase.tables.constant';
 import { ToastService } from '../../services/toast/toast.service';
 import { Severity } from '../../types/common/toast/toast';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-work',
   templateUrl: './work.component.html',
-  styleUrl: './work.component.css'
+  styleUrl: './work.component.css',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({  transform: 'translateY(1.2em)' }),
+        animate('0.28s', style({ transform: 'translateY(0)' })),
+      ])
+    ])
+  ]
 })
 export class WorkComponent implements OnInit {
 

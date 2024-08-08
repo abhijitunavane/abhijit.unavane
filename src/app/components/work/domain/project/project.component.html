@@ -1,6 +1,6 @@
 <div *ngIf="isLoading" class="h-screen"></div>
 
-<div *ngIf="project" class="space-y-8 md:space-y-16 mb-16">
+<div @enterAnimation *ngIf="project" class="space-y-8 md:space-y-10 mb-16">
     <h1 class="header text-center p-4 md:p-14 mt-16">{{project.name}}</h1>    
     <div class="flex justify-center items-center space-x-4">
         <a class="relative icon-button-white" target="_blank" href="{{project.githubUrl}}">

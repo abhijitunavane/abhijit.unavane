@@ -1,6 +1,6 @@
 <div *ngIf="isLoading" class="h-screen"></div>
 
-<div *ngIf="aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-11">
+<div @enterAnimation *ngIf="aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
     <div class="p-4 md:p-14 flex justify-center w-full">
         <h1 class="header">I'm Abhijit.</h1>
     </div>

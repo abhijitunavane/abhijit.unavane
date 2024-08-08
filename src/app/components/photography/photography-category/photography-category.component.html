@@ -1,6 +1,6 @@
 <div *ngIf="isLoading" class="h-screen"></div>
 
-<div *ngIf="photosByCategory && photosByCategory.length > 0">
+<div @enterAnimation *ngIf="photosByCategory && photosByCategory.length > 0">
     <app-photography-details-dialog 
         [selectedPhoto]="selectedPhoto"
         (togglePhotoDialog)="togglePhotoDialog(null)">

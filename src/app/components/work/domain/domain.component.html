@@ -1,6 +1,6 @@
-<div *ngIf="isLoading" class="h-screen"></div>
+<div *ngIf="isLoading" class=" h-screen"></div>
 
-<div *ngIf="domain" class="space-y-16 mb-16">
+<div @enterAnimation *ngIf="domain" class="space-y-10 mb-16">
     <app-share-modal
         [selectedProject]="selectedProject"
         [sharingText]="getSharingText()"
@@ -9,7 +9,7 @@
         (updateSharesCount)="updateSharesCount(selectedProject)">
     </app-share-modal>
 
-    <h1 class="header text-center p-4 md:p-14 mt-16">{{domain.name}}</h1>
+    <h1 class="header text-center p-4 md:p-14">{{domain.name}}</h1>
     <div *ngIf="domain.image" class="mx-4 md:mx-16 lg:mx-32">
         <img class="w-full rounded-xl" [src]="domain.image" alt="">
     </div>

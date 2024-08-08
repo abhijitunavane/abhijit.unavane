@@ -6,11 +6,20 @@ import { PhotosService } from '../../../services/photos/photos.service';
 import { UPDATE } from '../../../constants/superbase/superbase.tables.constant';
 import { ToastService } from '../../../services/toast/toast.service';
 import { Severity } from '../../../types/common/toast/toast';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-photography-category',
   templateUrl: './photography-category.component.html',
-  styleUrls: ['./photography-category.component.css', '../photography.component.css']
+  styleUrls: ['./photography-category.component.css', '../photography.component.css'],
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({  transform: 'translateY(1.2em)' }),
+        animate('0.28s', style({ transform: 'translateY(0)' })),
+      ])
+    ])
+  ]
 })
 export class PhotographyCategoryComponent implements OnInit {
 
