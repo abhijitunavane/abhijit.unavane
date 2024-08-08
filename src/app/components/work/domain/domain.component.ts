@@ -8,11 +8,20 @@ import { ProjectService } from '../../../services/work/domain/project/project.se
 import { VisitorsService } from '../../../services/visitors/visitors.service';
 import { ToastService } from '../../../services/toast/toast.service';
 import { Severity } from '../../../types/common/toast/toast';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-domain',
   templateUrl: './domain.component.html',
   styleUrl: './domain.component.css',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({  transform: 'translateY(1.2em)' }),
+        animate('0.28s', style({ transform: 'translateY(0)' })),
+      ])
+    ])
+  ]
 })
 export class DomainComponent implements OnInit {
 
@@ -64,6 +73,8 @@ export class DomainComponent implements OnInit {
 
   async setupObservers(value: any): Promise<void> {
     const {data, error} = await this.service.find(value);
+
+    this.isLoading = false;
     
     if (error || (data !== null && data.length < 0)) {
       this.toastService.add({
@@ -92,8 +103,6 @@ export class DomainComponent implements OnInit {
       
       this.domain = formattedData;
     }
-
-    this.isLoading = false;
 
     this.service.getChanges().subscribe(update => {
       if (update !== null) {

@@ -6,9 +6,13 @@
     grid grid-cols-12 md:grid-cols-24;
 }
 
-.projects-container > a {
+.projects-container > a, .projects-container > div {
     transition: transform 500ms ease-in-out;
     @apply h-80 md:h-102 lg:h-108 overflow-hidden cursor-pointer rounded-4xl pl-10 md:pl-16 pt-8 space-y-4 md:space-y-8;
+}
+
+.projects-container > div {
+    @apply cursor-default;
 }
 
 .projects-container > a:hover {

@@ -12,3 +12,4 @@ export { PhotographyDetailsDialogComponent } from './photography/photography-det
 export { PhotographyCategoryComponent } from './photography/photography-category/photography-category.component';
 export { ToastComponent } from './common/toast/toast.component';
 export { SquareSpinnerComponent } from './common/spinners/square.spinner/square.spinner.component';
+export { RoundedSpinnerComponent } from './common/spinners/rounded-spinner/rounded-spinner.component';

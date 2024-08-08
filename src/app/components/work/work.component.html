@@ -1,4 +1,4 @@
-<div class="mt-16 md:mt-10 mb-16 space-y-10 flex flex-col items-center">
+<div @enterAnimation class="mt-16 md:mt-10 mb-16 space-y-10 flex flex-col items-center">
     <div class="text-center p-4 md:p-14 space-y-10">
         <div class="header flex flex-col">
             <span>Hi. I'm Abhijit.</span>
@@ -7,8 +7,18 @@
         <p class="summary">I'm passionate about creating softwares that are engaging and user centric.</p>
     </div>
     <div class="projects-container">
+        <!-- Shimmers -->
+        <div *ngFor="let work of (!workList ? [1,2,3,4]: []); index as index"
+            class="bg-gray-400 animate-pulse"
+            [ngClass]="getStyleClass(index)">
+            <div class="flex h-4 justify-end pr-16">
+                <div class="w-28 bg-gray-500"></div>
+            </div>
+            <div class="project-thumbnail bg-gray-500 h-full"></div>
+        </div>
+
         <a *ngFor="let work of workList; index as index"
-            routerLink="{{work.link?.route}}" 
+            routerLink="{{work.link?.route}}"
             [ngStyle]="{'background-color': getBgColor(index)}" 
             [ngClass]="getStyleClass(index)">
             <h2 class="project-header">{{work.name}}</h2>

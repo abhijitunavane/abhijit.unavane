@@ -6,11 +6,20 @@ import { Tables } from '../../types/database.types';
 import { UPDATE } from '../../constants/superbase/superbase.tables.constant';
 import { ToastService } from '../../services/toast/toast.service';
 import { Severity } from '../../types/common/toast/toast';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-photography',
   templateUrl: './photography.component.html',
-  styleUrl: './photography.component.css'
+  styleUrl: './photography.component.css',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({  transform: 'translateY(1.2em)' }),
+        animate('0.28s', style({ transform: 'translateY(0)' })),
+      ])
+    ])
+  ]
 })
 export class PhotographyComponent implements OnInit {
   

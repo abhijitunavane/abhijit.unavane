@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 import { ToastService } from '../../../services/toast/toast.service';
 import { Severity, Toast } from '../../../types/common/toast/toast';
@@ -43,8 +43,6 @@ import { Severity, Toast } from '../../../types/common/toast/toast';
 })
 export class ToastComponent implements OnInit {
 
-  @Input() text: string | undefined;
-  @Input() isVisible: boolean = false;
   faXmarkCircle = faXmarkCircle;
   toast: Toast | null | undefined;
 
