@@ -7,6 +7,7 @@ import { UPDATE } from '../../constants/superbase/superbase.tables.constant';
 import { ToastService } from '../../services/toast/toast.service';
 import { Severity } from '../../types/common/toast/toast';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Status } from '../../services/common/status';
 
 @Component({
   selector: 'app-photography',
@@ -23,8 +24,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class PhotographyComponent implements OnInit {
   
-  photos: Tables<'photos'>[] | undefined;
-  isLoading: boolean = true;
+  photos: Tables<'photos'>[] | null | undefined;
+  status: Status = Status.LOADING;
+  Status = Status;
   categoryRoute: string | undefined;
 
   constructor(private titleService: Title, private service: PhotosService, private toastService: ToastService) {
@@ -45,18 +47,16 @@ export class PhotographyComponent implements OnInit {
 
   async setupObservers(): Promise<void> {
     const {data, error} = await this.service.get();
-    this.isLoading = true;
-    
     if (error || (data !== null && data.length < 0)) {
+      this.status = Status.ERROR;
       this.toastService.add({
         "text": "Something went wrong!",
         severity: Severity.ERROR
       });
     } else if (data && data.length > 0) {
       this.photos = data;
+      this.status = Status.SUCCESS;
     }
-
-    this.isLoading = false;
 
     this.service.getChanges().subscribe(update => {
       if (update !== null) {

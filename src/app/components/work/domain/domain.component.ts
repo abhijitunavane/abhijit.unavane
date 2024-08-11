@@ -9,6 +9,7 @@ import { VisitorsService } from '../../../services/visitors/visitors.service';
 import { ToastService } from '../../../services/toast/toast.service';
 import { Severity } from '../../../types/common/toast/toast';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Status } from '../../../services/common/status';
 
 @Component({
   selector: 'app-domain',
@@ -26,7 +27,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class DomainComponent implements OnInit {
 
   domain: Tables<'domain'> | null | undefined;
-  isLoading: boolean = true;
+  status: Status = Status.LOADING;
+  Status = Status;
   visitor: Tables<'visitors'> | null | undefined;
   selectedProject: Tables<'project'> | null | undefined;
 
@@ -73,15 +75,15 @@ export class DomainComponent implements OnInit {
 
   async setupObservers(value: any): Promise<void> {
     const {data, error} = await this.service.find(value);
-
-    this.isLoading = false;
     
     if (error || (data !== null && data.length < 0)) {
+      this.status = Status.ERROR;
       this.toastService.add({
         text: "Something went wrong!",
         severity: Severity.ERROR
       });
     } else if (data && data.length > 0) {
+      this.status = Status.SUCCESS;
       const formattedData = data[0] as Tables<'domain'>;
       if (formattedData.image !== null) {
         const { data } = this.service.getImage(formattedData.image);

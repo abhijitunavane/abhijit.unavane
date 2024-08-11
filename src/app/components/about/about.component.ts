@@ -6,6 +6,7 @@ import { INSERT, UPDATE } from '../../constants/superbase/superbase.tables.const
 import { ToastService } from '../../services/toast/toast.service';
 import { Severity } from '../../types/common/toast/toast';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Status } from '../../services/common/status';
 
 @Component({
   selector: 'app-about',
@@ -23,7 +24,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 export class AboutComponent implements OnInit {
 
   aboutList: Tables<'about'>[] | null | undefined;
-  isLoading: boolean = true;
+  status: Status = Status.LOADING;
+  Status = Status;
 
   constructor(private titleService: Title, private service: AboutService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • About');
@@ -35,14 +37,14 @@ export class AboutComponent implements OnInit {
 
   async setupObservers(): Promise<void> {
     const {data, error} = await this.service.get();
-    this.isLoading = false;
-
     if (error !== null) {
+      this.status = Status.ERROR;
       this.toastService.add({
         "text": "Something went wrong!",
         severity: Severity.ERROR
       });
     } else if (data != null) {
+      this.status = Status.SUCCESS;
       this.aboutList = data;
       this.aboutList?.map(async about => {
         if (about.image !== null) {

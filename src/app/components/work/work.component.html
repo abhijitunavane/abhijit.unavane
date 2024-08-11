@@ -6,17 +6,19 @@
         </div>
         <p class="summary">I'm passionate about creating softwares that are engaging and user centric.</p>
     </div>
-    <div class="projects-container">
-        <!-- Shimmers -->
-        <div *ngFor="let work of (!workList ? [1,2,3,4]: []); index as index"
+
+    <div class="projects-container" *ngIf="status == Status.LOADING">
+        <div *ngFor="let work of [1,2,3,4]; index as index"
             class="bg-gray-400 animate-pulse"
             [ngClass]="getStyleClass(index)">
-            <div class="flex h-4 justify-end pr-16">
-                <div class="w-28 bg-gray-500"></div>
-            </div>
-            <div class="project-thumbnail bg-gray-500 h-full"></div>
+                <div class="flex h-4 justify-end pr-16">
+                    <div class="w-28 bg-gray-500"></div>
+                </div>
+                <div class="project-thumbnail bg-gray-500 h-full"></div>
         </div>
+    </div>
 
+    <div class="projects-container" *ngIf="status === Status.SUCCESS">
         <a *ngFor="let work of workList; index as index"
             routerLink="{{work.link?.route}}"
             [ngStyle]="{'background-color': getBgColor(index)}" 
