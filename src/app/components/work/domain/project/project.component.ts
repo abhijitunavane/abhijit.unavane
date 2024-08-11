@@ -5,6 +5,7 @@ import { ProjectService } from '../../../../services/work/domain/project/project
 import { Tables } from '../../../../types/database.types';
 import { UPDATE } from '../../../../constants/superbase/superbase.tables.constant';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Status } from '../../../../services/common/status';
 
 @Component({
   selector: 'app-project',
@@ -21,8 +22,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class ProjectComponent implements OnInit {
   project: Tables<'project'> | undefined
-  hasError: boolean = false;
-  isLoading: boolean = true;
+  status: Status = Status.LOADING;
+  Status = Status;
 
   constructor(private route: ActivatedRoute, private titleService: Title, private service: ProjectService) {}
 
@@ -37,7 +38,7 @@ export class ProjectComponent implements OnInit {
     const {data, error} = await this.service.find(value);
     
     if (error || (data !== null && data.length < 0)) {
-      this.hasError = true;
+      this.status = Status.ERROR;
     } else if (data && data.length > 0) {
       const formattedData = data[0] as Tables<'project'>;
       if (formattedData.image !== null) {
@@ -46,6 +47,7 @@ export class ProjectComponent implements OnInit {
         if (data && data.publicUrl) {
           formattedData.image = data.publicUrl;
         }
+        this.status = Status.SUCCESS;
       }
       
 
@@ -63,8 +65,6 @@ export class ProjectComponent implements OnInit {
       
       this.project = formattedData;
     }
-
-    this.isLoading = false;
 
     this.service.getChanges().subscribe(update => {
       if (update !== null) {

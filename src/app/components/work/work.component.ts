@@ -6,6 +6,7 @@ import { DELETE, INSERT, UPDATE } from '../../constants/superbase/superbase.tabl
 import { ToastService } from '../../services/toast/toast.service';
 import { Severity } from '../../types/common/toast/toast';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Status } from '../../services/common/status';
 
 @Component({
   selector: 'app-work',
@@ -23,7 +24,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class WorkComponent implements OnInit {
 
   workList: Tables<'work'>[] | null | undefined;
-  error: any | null | undefined;
+  status: Status = Status.LOADING;
+  Status = Status;
   bgColorList: string[] = [
     '#D09CFA',
     '#B9F3FC',
@@ -50,11 +52,13 @@ export class WorkComponent implements OnInit {
     const {data, error} = await this.service.work();
 
     if (error !== null) {
+      this.status = Status.ERROR;
       this.toastService.add({
         text: "Something went wrong!",
         severity: Severity.ERROR
       });
     } else if (data != null) {
+      this.status = Status.SUCCESS;
       this.workList = data;
       this.workList?.map(async work => {
         if (work.image !== null) {

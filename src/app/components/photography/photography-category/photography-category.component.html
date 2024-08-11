@@ -1,4 +1,6 @@
-<div *ngIf="isLoading" class="h-screen"></div>
+<div *ngIf="status == Status.LOADING" class="h-screen">
+    <app-rounded-spinner [center]="true"></app-rounded-spinner>
+</div>
 
 <div @enterAnimation *ngIf="photosByCategory && photosByCategory.length > 0">
     <app-photography-details-dialog 

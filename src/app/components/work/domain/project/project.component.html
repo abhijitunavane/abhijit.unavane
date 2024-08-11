@@ -1,6 +1,8 @@
-<div *ngIf="isLoading" class="h-screen"></div>
+<div *ngIf="status == Status.LOADING" class="h-screen">
+    <app-rounded-spinner [center]="true"></app-rounded-spinner>
+</div>
 
-<div @enterAnimation *ngIf="project" class="space-y-8 md:space-y-10 mb-16">
+<div @enterAnimation *ngIf="status == Status.SUCCESS && project" class="space-y-8 md:space-y-10 mb-16">
     <h1 class="header text-center p-4 md:p-14 mt-16">{{project.name}}</h1>    
     <div class="flex justify-center items-center space-x-4">
         <a class="relative icon-button-white" target="_blank" href="{{project.githubUrl}}">
@@ -35,8 +37,8 @@
             <h2 class="sub-header">Features</h2>
         </div>
         <div *ngFor="let feature of project.features" class="mx-4 flex justify-center flex-wrap">
-            <div class="bg-white text-black rounded-xl text-center flex flex-col items-center w-64 space-y-2 my-4 mx-2 py-6 px-2">
-                <img *ngIf="feature.image" class="w-36" src="{{feature.image}}" alt="Feature image">
+            <div class="bg-white text-black rounded-xl text-center flex flex-col items-center w-96 space-y-2 my-4 mx-2 py-6 px-2">
+                <img *ngIf="feature.image" class="w-full" src="{{feature.image}}" alt="Feature image">
                 <h2 class="font-extrabold text-xl text-primary">{{feature.name}}</h2>
                 <h2 class="text-base line-clamp-3">{{feature.description}}</h2>
             </div>

@@ -1,5 +1,3 @@
-<div *ngIf="isLoading" class="h-screen"></div>
-
 <div @enterAnimation class="mt-16 mb-16 md:mt-10 space-y-10">
     <div class="text-center p-4 md:p-14 space-y-10">
         <div class="header flex flex-col">
@@ -8,20 +6,37 @@
         </div>
         <p class="summary">I'm passionate about capturing photographs of birds, nature and people.</p>
     </div>
-    <div *ngIf="photos && photos.length > 0" class="grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
-        <a *ngFor="let photo of photos" class="cursor-pointer" [routerLink]="getCategoryRoute(photo.categoryId)">
-            <div class="photo-container rounded-xl overflow-clip">
-                <div>
-                    <div class="overlay"></div>
-                    <div class="photo-info">
-                        <div class="absolute z-20 bottom-2 px-5 py-2">
-                            <h2 class="line-clamp-1 text-base md:text-lg lg:text-2xl font-bold">{{photo.title}}</h2>
-                            <h3 class="line-clamp-1 text-sm md:text-base lg:text-lg font-medium">{{photo.description}}</h3>
-                        </div>
+    <div *ngIf="status == Status.LOADING">
+        <div class="grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
+            <div *ngFor="let _ of [1,2,3]"
+                class="photo-container rounded-xl overflow-clip bg-gray-400 animate-pulse"
+                ngClass="photo-container rounded-xl overflow-clip">
+                <div class="photo">
+                    <div class="absolute z-20 bottom-2 px-5 py-2">
+                        <div class="bg-gray-500 w-24 h-4"></div>
+                        <div class="bg-gray-500 w-40 h-4 mt-2"></div>
                     </div>
                 </div>
-                <img class=" photo" [src]="photo.imageUrl" alt="Photo">
             </div>
-        </a>
+        </div>
+    </div>
+
+    <div *ngIf="status == Status.SUCCESS && photos">
+        <div class="grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
+            <a *ngFor="let photo of photos" class="cursor-pointer" [routerLink]="getCategoryRoute(photo.categoryId)">
+                <div class="photo-container rounded-xl overflow-clip">
+                    <div>
+                        <div class="overlay"></div>
+                        <div class="photo-info">
+                            <div class="absolute z-20 bottom-2 px-5 py-2">
+                                <h2 class="line-clamp-1 text-base md:text-lg lg:text-2xl font-bold">{{photo.title}}</h2>
+                                <h3 class="line-clamp-1 text-sm md:text-base lg:text-lg font-medium">{{photo.description}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="photo" [src]="photo.imageUrl" alt="Photo">
+                </div>
+            </a>
+        </div>
     </div>
 </div>

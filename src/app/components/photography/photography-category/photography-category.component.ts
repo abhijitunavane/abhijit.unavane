@@ -7,6 +7,7 @@ import { UPDATE } from '../../../constants/superbase/superbase.tables.constant';
 import { ToastService } from '../../../services/toast/toast.service';
 import { Severity } from '../../../types/common/toast/toast';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Status } from '../../../services/common/status';
 
 @Component({
   selector: 'app-photography-category',
@@ -25,8 +26,8 @@ export class PhotographyCategoryComponent implements OnInit {
 
   photosByCategory: Tables<'photos'>[] | undefined;
   selectedPhoto?: Tables<'photos'> | null;
-  isLoading: boolean = true;
-  hasError: boolean = false;
+  status: Status = Status.LOADING;
+  Status = Status;
 
   constructor(
     private route: ActivatedRoute, 
@@ -51,18 +52,16 @@ export class PhotographyCategoryComponent implements OnInit {
 
   async setupObservers(categoryId: string): Promise<void> {
     const {data, error} = await this.service.find(categoryId);
-    this.isLoading = true;
-    
     if (error || (data !== null && data.length < 0)) {
+      this.status = Status.ERROR;
       this.toastService.add({
         text: "Something went wrong!",
         severity: Severity.ERROR
       });
     } else if (data && data.length > 0) {
       this.photosByCategory = data;
+      this.status = Status.SUCCESS;
     }
-
-    this.isLoading = false;
 
     this.service.getChanges().subscribe(update => {
       if (update !== null) {

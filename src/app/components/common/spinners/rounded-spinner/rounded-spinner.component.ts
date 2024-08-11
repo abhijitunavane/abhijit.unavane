@@ -17,4 +17,5 @@ import { Component, Input } from '@angular/core';
 export class RoundedSpinnerComponent {
 
   @Input() isVisible: boolean = true;
+  @Input() center: boolean = false;
 }
