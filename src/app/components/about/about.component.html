@@ -1,8 +1,10 @@
-<div *ngIf="status == Status.LOADING" class="h-screen">
+<div *ngIf="status == Status.LOADING">
     <app-rounded-spinner [center]="true"></app-rounded-spinner>
 </div>
 
-<div @enterAnimation *ngIf="aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
+<app-error-card [isVisible]="status == Status.ERROR" />
+
+<div @enterAnimation *ngIf="status == Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
     <div class="p-4 md:p-14 flex justify-center w-full">
         <h1 class="header">I'm Abhijit.</h1>
     </div>

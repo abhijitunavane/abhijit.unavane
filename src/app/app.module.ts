@@ -19,7 +19,8 @@ import {
   ToastComponent,
   SquareSpinnerComponent,
   ShareModalComponent,
-  RoundedSpinnerComponent } from './components/components';
+  RoundedSpinnerComponent,
+  ErrorCardComponent } from './components/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SquareSpinnerComponent,
     ShareModalComponent,
     RoundedSpinnerComponent,
+    ErrorCardComponent,
   ],
   imports: [
     BrowserModule,
