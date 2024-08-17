@@ -1,9 +1,11 @@
 <app-github-corner />
 
-<app-navbar />
-
-<router-outlet />
+<div class="min-h-screen flex flex-col">
+    <app-navbar />
+    <div class="top-6 flex-1 relative">
+        <router-outlet />
+    </div>
+    <app-footer />
+</div>
 
 <app-toast />
-
-<app-footer />

@@ -1,6 +1,8 @@
-<div *ngIf="status == Status.LOADING" class="h-screen">
+<div *ngIf="status == Status.LOADING">
     <app-rounded-spinner [center]="true"></app-rounded-spinner>
 </div>
+
+<app-error-card [isVisible]="status == Status.ERROR" />
 
 <div @enterAnimation *ngIf="status == Status.SUCCESS && project" class="space-y-8 md:space-y-10 mb-16">
     <h1 class="header text-center p-4 md:p-14 mt-16">{{project.name}}</h1>    

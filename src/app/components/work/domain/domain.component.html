@@ -1,6 +1,8 @@
-<div *ngIf="status == Status.LOADING" class="h-screen">
+<div *ngIf="status == Status.LOADING">
     <app-rounded-spinner [center]="true"></app-rounded-spinner>
 </div>
+
+<app-error-card [isVisible]="status == Status.ERROR" />
 
 <div @enterAnimation *ngIf="status == Status.SUCCESS && domain" class="space-y-10 mb-16">
     <app-share-modal
@@ -21,11 +23,10 @@
             {{domain.overview}}
         </p>
     </div>
-    <div *ngIf="domain.projectList !== null && domain.projectList.length > 0"
-        class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
+    <div class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
         <div class="flex space-x-4">
             <h2 class="sub-header">Projects</h2>
-            <div class="relative badge">
+            <div class="relative badge" *ngIf="domain.projectList.length">
                 <span>{{domain.projectList.length}}</span>
                 <app-tooltip toolTipContent="Total projects"></app-tooltip>
             </div>
@@ -33,6 +34,10 @@
         <p class="summary">
             {{domain.projectDescription}}
         </p>
+        <img *ngIf="domain.projectList.length === 0"
+            src="../../../../assets/coming_soon.png"
+            alt="Coming soon"
+            class="w-1/2 self-center">
     </div>
     <div *ngIf="domain.projectList && domain.projectList.length > 0" 
         [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" 
