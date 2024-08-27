@@ -23,9 +23,9 @@ import { Status } from '../../services/common/status';
 })
 export class AboutComponent implements OnInit {
 
-  aboutList: Tables<'about'>[] | null | undefined;
-  status: Status = Status.LOADING;
-  Status = Status;
+  protected aboutList: Tables<'about'>[] | null | undefined;
+  protected status: Status = Status.LOADING;
+  protected Status = Status;
 
   constructor(private titleService: Title, private service: AboutService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • About');
@@ -35,7 +35,7 @@ export class AboutComponent implements OnInit {
     this.setupObservers();
   }
 
-  async setupObservers(): Promise<void> {
+  private async setupObservers(): Promise<void> {
     const {data, error} = await this.service.get();
     if (error !== null) {
       this.status = Status.ERROR;
@@ -43,7 +43,7 @@ export class AboutComponent implements OnInit {
         "text": "Something went wrong!",
         severity: Severity.ERROR
       });
-    } else if (data != null) {
+    } else if (data !== null) {
       this.status = Status.SUCCESS;
       this.aboutList = data;
       this.aboutList?.map(async about => {
@@ -52,7 +52,7 @@ export class AboutComponent implements OnInit {
           
           if (data !== null && data.publicUrl !== null) {
             about.image = data.publicUrl;
-          }
+          }         
         }
       });
     }

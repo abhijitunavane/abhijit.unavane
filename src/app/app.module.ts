@@ -20,7 +20,8 @@ import {
   SquareSpinnerComponent,
   ShareModalComponent,
   RoundedSpinnerComponent,
-  ErrorCardComponent } from './components/components';
+  ErrorCardComponent,
+  TypewriterComponent } from './components/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ShareModalComponent,
     RoundedSpinnerComponent,
     ErrorCardComponent,
+    TypewriterComponent,
   ],
   imports: [
     BrowserModule,
