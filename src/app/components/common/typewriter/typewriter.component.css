@@ -1,0 +1,9 @@
+.blink {
+    @apply border-orange-300 border-r-8 h-12 md:h-24 absolute animate-[blink_1s_infinite];
+}
+
+@keyframes blink {
+    to {
+      opacity: 0;
+    }
+}

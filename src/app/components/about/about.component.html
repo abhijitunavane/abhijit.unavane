@@ -5,8 +5,11 @@
 <app-error-card [isVisible]="status == Status.ERROR" />
 
 <div @enterAnimation *ngIf="status == Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
-    <div class="p-4 md:p-14 flex justify-center w-full">
-        <h1 class="header">I'm Abhijit.</h1>
+    <div class="p-4 md:p-14 flex justify-center">
+        <h1 class="header">
+            I'm
+            <app-typewriter [texts]="aboutList[0].headers" />
+        </h1>
     </div>
     <div class="intro">
         <div class="flex flex-col col-start-3 col-span-2 md:col-span-3 lg:col-span-2 md:col-start-2 lg:col-start-3 rounded-t-full">
