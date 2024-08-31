@@ -4,6 +4,8 @@ import {
   trigger,
   state,
   style,
+  transition,
+  animate,
 } from '@angular/animations';
 
 @Component({
@@ -19,6 +21,7 @@ import {
         visibility: 'hidden',
         opacity: 0,
       })),
+      transition('open => closed', [animate('.5s')]),
   ])
 ]
 })
