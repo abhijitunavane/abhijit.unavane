@@ -21,23 +21,25 @@
             <div class="h-[0.5px] bg-gray-300 bg-opacity-50"></div>
             <span class="font-semibold">Share</span>
             <div class="relative">
-                <button class="absolute top-1/2 -translate-y-1/2 left-0" [ngClass]="this.showLeftArrow ? '' : 'invisible'" (click)="scrollToStart($event)">
+                <button class="absolute top-1/2 -translate-y-1/2 left-0" [ngClass]="this.showLeftArrow ? '' : 'invisible'" (click)="scrollToStart()">
                     <fa-icon class="menu-slider-icon" [icon]="this.faCircleChevronLeft" size="2x" title="Scroll to start"></fa-icon>
                 </button>
-                <button class="absolute top-1/2 -translate-y-1/2 right-0" [ngClass]="this.showRightArrow ? '' : 'invisible'"(click)="scrollToEnd($event)">
+                <button class="absolute top-1/2 -translate-y-1/2 right-0" [ngClass]="this.showRightArrow ? '' : 'invisible'"(click)="scrollToEnd()">
                     <fa-icon [icon]="this.faCircleChevronRight" size="2x" title="Scroll to end" class="menu-slider-icon"></fa-icon>
                 </button>
-                <div class="brand-list" #brandList (wheel)="scrollBrandList($event)" (scroll)="scrollListener($event)">
+                <div class="brand-list flex items-center space-x-4 overflow-x-scroll transition-all duration-500" 
+                     #brandList (wheel)="scrollBrandList($event)"
+                     (scroll)="scrollListener()">
                     <button class="brand" (click)="shareUrl(sharingOption.LINKEDIN)">
-                        <fa-icon [icon]="this.faLinkedin" size="3x" title="Facebook"></fa-icon>
+                        <fa-icon [icon]="this.faLinkedin" size="3x" title="LINKEDIN"></fa-icon>
                         <span class="text-xs">LinkedIn</span>
                     </button>
                     <button class="brand" (click)="shareUrl(sharingOption.XTWITTER)">
-                        <fa-icon [icon]="this.faXTwitter" size="3x" title="Facebook"></fa-icon>
+                        <fa-icon [icon]="this.faXTwitter" size="3x" title="XTWITTER"></fa-icon>
                         <span class="text-xs">X</span>
                     </button>
                     <button class="brand" (click)="shareUrl(sharingOption.WHATSAPPP)">
-                        <fa-icon [icon]="this.faWhatsapp" size="3x" title="Facebook"></fa-icon>
+                        <fa-icon [icon]="this.faWhatsapp" size="3x" title="WHATSAPPP"></fa-icon>
                         <span class="text-xs">Whatsapp</span>
                     </button>
                     <button class="brand" (click)="shareUrl(sharingOption.FACEBOOK)">

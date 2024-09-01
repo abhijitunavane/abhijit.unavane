@@ -1,10 +1,10 @@
-<div *ngIf="status == Status.LOADING">
+<div *ngIf="status === Status.LOADING">
     <app-rounded-spinner [center]="true"></app-rounded-spinner>
 </div>
 
-<app-error-card [isVisible]="status == Status.ERROR" />
+<app-error-card [isVisible]="status === Status.ERROR" />
 
-<div @enterAnimation *ngIf="status == Status.SUCCESS && domain" class="space-y-10 mb-16">
+<div @enterAnimation *ngIf="status === Status.SUCCESS && domain" class="space-y-10 mb-16">
     <app-share-modal
         [selectedProject]="selectedProject"
         [sharingText]="getSharingText()"

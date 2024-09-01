@@ -1,106 +1,47 @@
-.hamburger {
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    @apply cursor-pointer flex flex-col space-y-1 p-2 
-    active:bg-white active:bg-opacity-10 hover:bg-white hover:bg-opacity-10
-    rounded-xl
-    md:hidden;
-}
-
-.hamburger>span {
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
-    @apply w-10 bg-white p-1;
-}
-
-.animate.hamburger>span:first-child {
+.animate.hamburger > span:first-child {
     @apply relative top-3 rotate-45;
 }
 
-.animate.hamburger>span:nth-child(2) {
+.animate.hamburger > span:nth-child(2) {
     @apply opacity-0;
 }
 
-.animate.hamburger>span:last-child {
+.animate.hamburger > span:last-child {
     @apply relative bottom-3 -rotate-45;
 }
 
-ul {
-    @apply relative;
-}
-
-.slide {
-    @apply m-0 h-[44px] py-2 px-4 
-    rounded-3xl 
-    absolute top-1/2 -translate-y-1/2 left-0 
-    bg-black opacity-0 
-    -z-10 
-    transition-all ease-in-out duration-200;
+.navs li.active ~ .slide {
+    @apply opacity-100;
 }
 
 .navs li:nth-child(1).active ~ .slide {
-    @apply w-[105px] left-[12px] opacity-100;
+    @apply w-[105px] left-[12px];
 }
 
 .navs li:nth-child(2).active ~ .slide {
-    @apply w-[85px] left-[120px] opacity-100;
+    @apply w-[85px] left-[120px];
 }
 
 .navs li:nth-child(3).active ~ .slide {
-    @apply w-[148px] left-[205px] opacity-100;
-}
-
-.navs {
-    border-color: rgba(255, 255, 255, 0.3);
-    @apply hidden md:flex rounded-full p-3;
-}
-
-.navs.highlight {
-    @apply bg-primary bg-opacity-65 backdrop-blur-lg border;
-}
-
-.nav-menu-container {
-    -webkit-transition: .2s ease-in-out;
-    -moz-transition: .2s ease-in-out;
-    -o-transition: .2s ease-in-out;
-    transition: .2s ease-in-out;
-    @apply absolute top-20 aspect-auto rounded-2xl bg-black bg-opacity-50 backdrop-blur-lg flex justify-center;
-}
-
-.slide-menu {
-    @apply h-[44px] w-[148px] py-2 px-4 
-    rounded-3xl
-    absolute top-0 left-1/2 -translate-x-1/2
-    bg-white opacity-0 
-    -z-10 
-    transition-all ease-in-out duration-200;
-}
-
-.nav-menu {
-    border-color: rgba(255, 255, 255, 0.3);
-    @apply w-fit h-fit flex flex-col space-y-4 p-4;
-}
-
-.nav-menu > li:hover {
-    @apply bg-white text-black bg-opacity-50 rounded-full transition-all duration-200;
+    @apply w-[148px] left-[205px];
 }
 
 .nav-menu li.active {
     @apply text-black;
 }
 
+.nav-menu li.active ~ .slide-menu {
+    @apply opacity-100;
+}
+
 .nav-menu li:nth-child(1).active ~ .slide-menu {
-    @apply top-0 opacity-100;
+    @apply top-0;
 }
 
 .nav-menu li:nth-child(2).active ~ .slide-menu {
-    @apply top-[3.8em] opacity-100;
+    @apply top-[3.8em];
 }
 
 .nav-menu li:nth-child(3).active ~ .slide-menu {
-    @apply top-[7.5em] opacity-100;
+    @apply top-[7.5em];
 }

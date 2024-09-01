@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
 
 @Component({
   selector: 'app-error-card',

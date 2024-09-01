@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
+import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons/faXmarkCircle';
 import { ToastService } from '../../../services/toast/toast.service';
 import { Severity, Toast } from '../../../types/common/toast/toast';
 

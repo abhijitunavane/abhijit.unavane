@@ -205,7 +205,7 @@ export class DomainComponent implements OnInit {
 ${this.selectedProject.description}
 🌐 Discover More: ${this.getProjectUrl(this.selectedProject.id, this.domain.id)}
 💬 Join me: Share your thoughts and spread the word!
-~ \#Abhijit_Unavane`;
+~ #Abhijit_Unavane`;
     }
 
     return "";
