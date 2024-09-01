@@ -33,13 +33,6 @@ export class WorkComponent implements OnInit {
     '#FFD495'
   ];
 
-  styleClassList: string[] = [
-    'project-item-l1',
-    'project-item-r1',
-    'project-item-l2',
-    'project-item-r2'
-  ];
-
   constructor(private titleService: Title, private service : WorkService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • SDE');
   }
@@ -126,15 +119,5 @@ export class WorkComponent implements OnInit {
    */
   getBgColor(index: number): string {
     return this.bgColorList[index % 4];
-  }
-
-  /**
-   * Method to get style class from {@link styleClassList}
-   * 
-   * @param index Index of work list
-   * @returns style class {@link string} 
-   */
-  getStyleClass(index: number): string {
-    return this.styleClassList[index % 4];
   }
 }

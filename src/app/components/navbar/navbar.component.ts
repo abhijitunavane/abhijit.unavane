@@ -21,7 +21,7 @@ import {
         visibility: 'hidden',
         opacity: 0,
       })),
-      transition('open => closed', [animate('.5s')]),
+      transition('open => closed', [animate('.2s')]),
   ])
 ]
 })

@@ -1,7 +1,12 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { Tables } from '../../../../../types/database.types';
-import { faFacebook, faFacebookSquare, faLinkedin, faWhatsapp, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faCircleChevronLeft, faCircleChevronRight, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons/faWhatsapp';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons/faXTwitter';
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
+import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
+import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
 import { ToastService } from '../../../../../services/toast/toast.service';
 import { Severity } from '../../../../../types/common/toast/toast';
 
@@ -54,7 +59,7 @@ export class ShareModalComponent {
 
   copyLinkToClipboard(value: string | undefined | null): void {
     if (value) {
-      navigator.clipboard.writeText(value).then((clipText) => {
+      navigator.clipboard.writeText(value).then(() => {
         this.toastService.add({
           text: "Link copied to clipboard",
           severity: Severity.SUCCESS
@@ -70,7 +75,7 @@ export class ShareModalComponent {
     }
   }
 
-  scrollToStart(event: Event) {
+  scrollToStart() {
     if (!this.brandList) {
       return;
     }
@@ -80,7 +85,7 @@ export class ShareModalComponent {
     }
   }
 
-  scrollToEnd(event: Event) {
+  scrollToEnd() {
     if (!this.brandList) {
       return;
     }
@@ -90,7 +95,7 @@ export class ShareModalComponent {
     }
   }
 
-  scrollListener(event: Event) {
+  scrollListener() {
     if (!this.brandList) {
       return;
     }
@@ -110,8 +115,8 @@ export class ShareModalComponent {
   }
 
   shareUrl(option: SharingOption) {
-    var encodedSharingText = encodeURIComponent(this.sharingText ?? "");
-    var encodedSharingUrl = encodeURIComponent(this.sharingUrl ?? "");
+    const encodedSharingText = encodeURIComponent(this.sharingText ?? "");
+    const encodedSharingUrl = encodeURIComponent(this.sharingUrl ?? "");
     switch (option) {
       case SharingOption.FACEBOOK: {
         window.open(`https://www.facebook.com/share_channel?link=${encodedSharingUrl}&source_surface=external_reshare&display=popup`);

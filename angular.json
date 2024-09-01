@@ -37,7 +37,20 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "ws",
+              "@fortawesome/free-solid-svg-icons/faCircleChevronLeft",
+              "@fortawesome/free-brands-svg-icons/faLinkedin",
+              "@fortawesome/free-brands-svg-icons/faWhatsapp",
+              "@fortawesome/free-brands-svg-icons/faFacebookSquare",
+              "@fortawesome/free-brands-svg-icons/faXTwitter",
+              "@fortawesome/free-solid-svg-icons/faCircleChevronLeft",
+              "@fortawesome/free-solid-svg-icons/faCircleChevronRight",
+              "@fortawesome/free-solid-svg-icons/faTriangleExclamation",
+              "@fortawesome/free-solid-svg-icons/faXmark",
+              "@fortawesome/free-solid-svg-icons/faXmarkCircle"
+            ]
           },
           "configurations": {
             "production": {

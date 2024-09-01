@@ -7,10 +7,9 @@
         <p class="summary">I'm passionate about creating softwares that are engaging and user centric.</p>
     </div>
 
-    <div class="projects-container" *ngIf="status == Status.LOADING">
+    <div class="projects-container" *ngIf="status === Status.LOADING">
         <div *ngFor="let work of [1,2,3,4]; index as index"
-            class="bg-gray-400 animate-pulse"
-            [ngClass]="getStyleClass(index)">
+            class="bg-gray-400 animate-pulse">
                 <div class="flex h-4 justify-end pr-16">
                     <div class="w-28 bg-gray-500"></div>
                 </div>
@@ -21,9 +20,8 @@
     <div class="projects-container" *ngIf="status === Status.SUCCESS">
         <a *ngFor="let work of workList; index as index"
             routerLink="{{work.link?.route}}"
-            [ngStyle]="{'background-color': getBgColor(index)}" 
-            [ngClass]="getStyleClass(index)">
-            <h2 class="project-header">{{work.name}}</h2>
+            [ngStyle]="{'background-color': getBgColor(index)}">
+            <h2 class="text-2xl md:text-4xl font-semibold text-opacity-80 text-black text-right pr-16">{{work.name}}</h2>
             <img *ngIf="work.image" class="project-thumbnail" [src]="work.image" alt="work-image">
         </a>
     </div>
