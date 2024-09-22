@@ -19,9 +19,12 @@
             <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center transition-all duration-300 hover:scale-110" 
                routerLink={{nav.route}}>
                 <span>{{nav.label}}</span>
-                <span
-                    class="flex justify-center items-center rounded ms-2 w-5 h-5 text-xxs border-2 border-opacity-60 border-tertiary"
-                    *ngIf="nav.label === 'Work'"> /
+                <span class="flex justify-center items-center 
+                             rounded
+                             ms-2 w-5 h-5
+                             text-xxs
+                             border-2 border-opacity-60 border-tertiary"
+                      *ngIf="nav.label === 'Work'"> /
                 </span>
             </a>
         </li>
@@ -57,3 +60,4 @@
         </ul>
     </div>
 </nav>
+<app-search-work />

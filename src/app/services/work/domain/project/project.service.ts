@@ -12,18 +12,18 @@ import { NetworkService } from '../../../common/network.service';
 })
 export class ProjectService extends NetworkService {
 
-  constructor(private supbaseService: SupabaseService) { 
+  constructor(private supabaseService: SupabaseService) { 
     super();
   }
 
   /**
-   * Method to get project table data from supabase
+   * Method to find project data from supabase
    * 
    * @param value value that needs to be found
    * @returns Result of data {@link QueryData} of {@link Tables}
    */
   override find(value: any) {
-    return this.supbaseService.find<QueryData<Tables<'domain'>>>(PROJECT_TABLE, SELECT_ALL, ID, value);
+    return this.supabaseService.find<QueryData<Tables<'domain'>>>(PROJECT_TABLE, SELECT_ALL, ID, value);
   }
 
   /**
@@ -32,7 +32,7 @@ export class ProjectService extends NetworkService {
    * @returns Observable data {@link Observable}
    */
   override getChanges(): Observable<any> {
-    return this.supbaseService.getChanges(PROJECT_TABLE, SELECT_ALL);
+    return this.supabaseService.getChanges(PROJECT_TABLE, SELECT_ALL);
   }
 
   /**
@@ -41,7 +41,7 @@ export class ProjectService extends NetworkService {
    * @returns Public image url
    */
   override getImage(imageName: string): any {
-    return this.supbaseService.getImage(`${PROJECT_PATH}/${imageName}`);
+    return this.supabaseService.getImage(`${PROJECT_PATH}/${imageName}`);
   }
 
   /**
@@ -50,11 +50,17 @@ export class ProjectService extends NetworkService {
    * @returns Public image url
    */
   override update(newData: any, column: any, value: any): any {
-    return this.supbaseService.update(PROJECT_TABLE, newData, column, value);
+    return this.supabaseService.update(PROJECT_TABLE, newData, column, value);
   }
 
-  override get() {
-    throw new Error('Method not implemented.');
+  /**
+   * Method to get project table data from supabase
+   * 
+   * @param value value that needs to be found
+   * @returns Result of data {@link QueryData} of {@link Tables}
+   */
+  override get(): any {
+    return this.supabaseService.get(PROJECT_TABLE, SELECT_ALL);
   }
 
   override insert() {
