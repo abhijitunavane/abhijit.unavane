@@ -26,6 +26,7 @@ import {
 ]
 })
 export class NavbarComponent {
+
   navs: Link[] = [
     {
       label: 'Work',
@@ -56,11 +57,11 @@ export class NavbarComponent {
    * when scroll position is greater than 50
    */
   @HostListener('window:scroll', ['$event']) 
-    highlightNavbar() {
-      if (window.scrollY > 50) {
-        this.shouldHighlightNavbar = true;
-      } else {
-        this.shouldHighlightNavbar = false;
-      }
+  public highlightNavbar() {
+    if (window.scrollY > 50) {
+      this.shouldHighlightNavbar = true;
+    } else {
+      this.shouldHighlightNavbar = false;
     }
+  }
 }

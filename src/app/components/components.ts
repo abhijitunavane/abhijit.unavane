@@ -15,3 +15,4 @@ export { SquareSpinnerComponent } from './common/spinners/square.spinner/square.
 export { RoundedSpinnerComponent } from './common/spinners/rounded-spinner/rounded-spinner.component';
 export { ErrorCardComponent } from './common/cards/error-card/error-card.component';
 export { TypewriterComponent } from './common/typewriter/typewriter.component';
+export { SearchWorkComponent } from './navbar/search-work/search-work.component';
