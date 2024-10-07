@@ -1,11 +1,11 @@
-<div @close tabindex="-1" class="fixed bg-black bg-opacity-10 backdrop-blur-md w-full h-full z-[60] flex justify-center items-start"
+<div @close tabindex="-1" class="fixed bg-black bg-opacity-10 backdrop-blur-md w-full h-full z-[60] flex justify-center items-start p-2"
     *ngIf="isVisible" (click)="this.close()" role="dialog">
-    <div class="relative inset-0 w-full m-2 sm:w-1/2 ring-1 ring-quaternary ring-opacity-30 bg-primary bg-opacity-80 rounded-2xl top-20 transition-all"
+    <div class="flex flex-col relative w-full max-h-full sm:w-1/2 ring-1 ring-quaternary ring-opacity-30 bg-primary bg-opacity-80 rounded-2xl xl:top-20 transition-all"
         (click)="$event.stopPropagation()"
         (keyup)="$event.stopPropagation()"
         *ngIf="isVisible"
         @enter>
-        <div class="rounded-2xl">
+        <div>
             <div class="flex items-end py-4">
                 <input #inputField
                        class="w-full ps-8 
