@@ -1,6 +1,6 @@
 <div @close tabindex="-1" class="fixed bg-black bg-opacity-10 backdrop-blur-md w-full h-full z-[60] flex justify-center items-start"
     *ngIf="isVisible" (click)="this.close()" role="dialog">
-    <div class="relative inset-0 w-1/2 ring-1 ring-quaternary ring-opacity-30 bg-primary bg-opacity-80 rounded-2xl top-20"
+    <div class="relative inset-0 w-full m-2 sm:w-1/2 ring-1 ring-quaternary ring-opacity-30 bg-primary bg-opacity-80 rounded-2xl top-20 transition-all"
         (click)="$event.stopPropagation()"
         (keyup)="$event.stopPropagation()"
         *ngIf="isVisible"
@@ -37,8 +37,9 @@
                    class="ring-2 ring-transparent
                         hover:bg-secondary hover:bg-opacity-80 
                         focus:bg-secondary focus:bg-opacity-80 focus:ring-quaternary
+                        
                         active:ring-quaternary
-                          m-2 py-4 px-6 rounded-lg flex justify-between transition-all duration-300"
+                          m-2 py-4 px-6 rounded-lg flex justify-between sm:transition-all sm:duration-300"
                     [ngClass]="i === 0 && focusedSearchResultIndex === i ? 'bg-secondary bg-opacity-80' : ''"
                     href="work/react/react-"
                     (focus)="focusedSearchResultIndex = i">
