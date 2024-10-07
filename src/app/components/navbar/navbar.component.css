@@ -1,5 +1,5 @@
 .animate.hamburger > span:first-child {
-    @apply relative top-3 rotate-45;
+    @apply relative top-2 rotate-45;
 }
 
 .animate.hamburger > span:nth-child(2) {
@@ -7,7 +7,7 @@
 }
 
 .animate.hamburger > span:last-child {
-    @apply relative bottom-3 -rotate-45;
+    @apply relative bottom-2 -rotate-45;
 }
 
 .navs li.active ~ .slide {

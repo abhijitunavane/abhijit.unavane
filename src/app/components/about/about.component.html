@@ -6,10 +6,7 @@
 
 <div @enterAnimation *ngIf="status === Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
     <div class="p-4 md:p-14 flex justify-center">
-        <h1 class="header">
-            I'm
-            <app-typewriter [texts]="aboutList[0].headers" />
-        </h1>
+        <h1 class="header text-center">I'm Abhijit.</h1>
     </div>
     <div class="w-full grid grid-cols-6 md:grid-cols-12">
         <div class="flex flex-col col-start-3 col-span-2 md:col-span-3 lg:col-span-2 md:col-start-2 lg:col-start-3 rounded-t-full">

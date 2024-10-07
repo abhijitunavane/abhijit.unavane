@@ -1,47 +1,54 @@
-<nav class="flex justify-center fixed top-2 w-full left-0.5 z-40">
-    <div (click)="menuClickListener()" 
-        role="menu"
-        (keyup)="menuClickListener()"
-        tabindex="0"
-        class="hamburger
-               cursor-pointer flex flex-col space-y-1 p-2
-             bg-black bg-opacity-30 backdrop-blur-lg
-               hover:ring hover:ring-white
-               rounded-xl
-               md:hidden
-               transition-all duration-300 example-btn"
-        [ngClass]="!shouldShowMenu ? '' : 'animate'">
-        <span class="w-10 bg-white p-1 transition-all duration-200" *ngFor="let _ of [1, 2, 3]"></span>
+<nav class="fixed w-full z-40">
+    <div class="flex justify-around items-center" [ngClass]="shouldHighlightNavbar ? 'bg-primary bg-opacity-65 backdrop-blur-lg shadow-sm shadow-gray-300' : ''">
+        <a routerLink="/" class="hidden md:block text-start text-3xl font-[Pacifico] text-ellipsis">abhijit.unavane</a>
+        <ul class="navs border-[rgba(255,_255,_255,_0.3)] hidden md:flex rounded-full p-2.5 relative">
+            <li *ngFor="let nav of navs" routerLinkActive="active">
+                <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center transition-all duration-300 hover:scale-110" 
+                routerLink={{nav.route}}>
+                    <span>{{nav.label}}</span>
+                    <span class="flex justify-center items-center 
+                                rounded
+                                ms-2 w-5 h-5
+                                text-xxs
+                                border-2 border-opacity-60 border-tertiary"
+                        *ngIf="nav.label === 'Work'"> /
+                    </span>
+                </a>
+            </li>
+            <li class="slide 
+                    m-0 h-[44px] py-2 px-4 
+                    rounded-3xl
+                    absolute top-1/2 -translate-y-1/2 left-0
+                    bg-black opacity-0
+                    -z-10
+                    transition-all duration-200"></li>
+        </ul>
     </div>
-    <ul [ngClass]="shouldHighlightNavbar ? 'bg-primary bg-opacity-65 backdrop-blur-lg border' : ''"
-        class="navs border-[rgba(255,_255,_255,_0.3)] hidden md:flex rounded-full p-3 relative">
-        <li *ngFor="let nav of navs" routerLinkActive="active">
-            <a class="py-2 px-4 rounded-3xl font-medium text-lg flex items-center transition-all duration-300 hover:scale-110" 
-               routerLink={{nav.route}}>
-                <span>{{nav.label}}</span>
-                <span class="flex justify-center items-center 
-                             rounded
-                             ms-2 w-5 h-5
-                             text-xxs
-                             border-2 border-opacity-60 border-tertiary"
-                      *ngIf="nav.label === 'Work'"> /
-                </span>
-            </a>
-        </li>
-        <li class="slide 
-                   m-0 h-[44px] py-2 px-4 
-                   rounded-3xl
-                   absolute top-1/2 -translate-y-1/2 left-0
-                   bg-black opacity-0
-                   -z-10
-                   transition-all duration-200"></li>
-    </ul>
-    <div [@openClose]="shouldShowMenu ? 'open' : 'closed'" 
-    class="absolute top-20 
-           rounded-2xl
-         bg-black bg-opacity-50 backdrop-blur-lg
-           flex justify-center
-           transition-all duration-200">
+
+    <div class="flex items-center space-x-6 w-full bg-black bg-opacity-30 backdrop-blur-lg md:hidden p-3.5">
+        <div (click)="menuClickListener()" 
+            role="menu"
+            (keyup)="menuClickListener()"
+            tabindex="0"
+            class="hamburger
+                cursor-pointer flex flex-col space-y-1 p-2
+                bg-black bg-opacity-30 backdrop-blur-lg
+                hover:ring hover:ring-white
+                rounded-xl
+                transition-all duration-300 example-btn"
+            [ngClass]="!shouldShowMenu ? '' : 'animate'">
+            <span class="w-6 h-1 bg-white transition-all duration-200" *ngFor="let _ of [1, 2, 3]"></span>
+        </div>
+        <fa-icon class="w-4" [icon]="this.faSearch" size="xl" title="Search work" (click)="searchWorkComponent.open()"></fa-icon>
+        <a routerLink="/" class="flex-1 text-end pr-16 text-3xl font-[Pacifico] text-ellipsis">abhijit.unavane</a>
+    </div>
+    <div *ngIf="shouldShowMenu" @slideInLeft
+        class="absolute top-16 
+            w-full h-svh
+            bg-black bg-opacity-50 backdrop-blur-lg
+            flex justify-center
+            transition-all duration-200
+            md:hidden">
         <ul class="nav-menu flex flex-col space-y-4 p-4 relative">
             <li *ngFor="let nav of navs"
                 routerLinkActive="active"

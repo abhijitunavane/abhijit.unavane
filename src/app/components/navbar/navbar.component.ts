@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { Link } from '../../utils/link';
 import {
   trigger,
@@ -7,22 +7,39 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import { SearchWorkComponent } from '../components';
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
+import { width } from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
   animations: [
-    trigger('openClose', [
-      state('open', style({
-        visibility: 'visible'
-      })),
-      state('closed', style({
-        visibility: 'hidden',
-        opacity: 0,
-      })),
-      transition('open => closed', [animate('.2s')]),
-  ])
+    trigger("slideInLeft", [
+      transition(":enter", [
+        style({
+          transform: "translateX(-100%)"
+        }),
+        animate(
+          "400ms ease",
+          style({
+            transform: "translateX(0)",
+          })
+        )
+      ]),
+      transition(":leave", [
+        style({
+          transform: "translateX(0)",
+        }),
+        animate(
+          "300ms ease",
+          style({
+            transform: "translateX(-100%)"
+          })
+        )
+      ])
+    ])
 ]
 })
 export class NavbarComponent {
@@ -43,13 +60,23 @@ export class NavbarComponent {
   ];
   shouldShowMenu: boolean = false;
   shouldHighlightNavbar: boolean = false;
+  faSearch = faSearch;
+  @ViewChild(SearchWorkComponent) searchWorkComponent!: SearchWorkComponent;
 
   menuClickListener() {
     this.shouldShowMenu = !this.shouldShowMenu;
+    if (this.shouldShowMenu) {
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    } else {
+        document.body.style.overflow = 'auto'; // Restore background scroll
+    }
   }
 
   closeMenu() {
-    this.shouldShowMenu = false;
+    setTimeout(() => {
+      this.shouldShowMenu = false;
+      document.body.style.overflow = 'auto'; // Restore background scroll
+    }, 250);
   }
 
   /**
