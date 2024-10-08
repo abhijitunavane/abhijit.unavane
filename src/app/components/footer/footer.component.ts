@@ -10,21 +10,21 @@ export class FooterComponent {
   elseWhere : Link[] = [
     {
       label: "CV",
-      route: "#"
+      route: "https://read.cv/"
     },
     {
       label: "Github",
-      route: "#"
+      route: "https://github.com/abhijitunavane"
     },
     {
       label: "LinkedIn",
-      route: "#"
+      route: "https://www.linkedin.com/in/abhijitunavane/"
     },
   ];
   contact : Link[] = [
     {
       label: "Message",
-      route: "#"
+      route: "mailto:abhijit.unavane@gmail.com"
     }
   ]
 }

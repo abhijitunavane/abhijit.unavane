@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {  
+    .header {
+        @apply text-5xl md:text-8xl font-semibold text-quaternary;
+    }
+
+    .sub-header {
+        @apply text-4xl md:text-5xl font-semibold text-quaternary text-center md:text-start;
+    }
+
+    .summary {
+        @apply text-lg md:text-xl text-justify;
+    }
+}
+
 html {
     @apply scroll-smooth;
 }
@@ -14,18 +28,6 @@ body {
 
 ::selection {
     @apply bg-quaternary text-primary
-}
-
-.header {
-    @apply text-5xl md:text-8xl font-semibold text-quaternary;
-}
-
-.sub-header {
-    @apply text-4xl md:text-5xl font-semibold text-quaternary text-center md:text-start;
-}
-
-.summary {
-    @apply text-lg md:text-xl space-y-8;
 }
 
 .badge {
