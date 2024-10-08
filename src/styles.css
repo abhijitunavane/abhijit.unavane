@@ -14,7 +14,7 @@
     }
 
     .summary {
-        @apply text-lg md:text-xl text-justify;
+        @apply text-lg md:text-xl;
     }
 }
 
