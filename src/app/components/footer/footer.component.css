@@ -19,5 +19,5 @@ ul {
 
 ul > li:hover {
     color: #B1D0E0;
-    animation: color-on-hover 500ms;
+    animation: color-on-hover 250ms;
 }
