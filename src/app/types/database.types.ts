@@ -72,29 +72,32 @@ export type Database = {
       photos: {
         Row: {
           category: string
-          categoryId: string | null
+          categoryId: string
           description: string | null
           id: number
-          imageUrl: string
+          image: string
           instagramUrl: string
+          nextCategoryId: string
           title: string | null
         }
         Insert: {
           category: string
-          categoryId?: string | null
+          categoryId: string
           description?: string | null
           id?: number
-          imageUrl: string
+          image: string
           instagramUrl: string
+          nextCategoryId: string
           title?: string | null
         }
         Update: {
           category?: string
-          categoryId?: string | null
+          categoryId?: string
           description?: string | null
           id?: number
-          imageUrl?: string
+          image?: string
           instagramUrl?: string
+          nextCategoryId?: string
           title?: string | null
         }
         Relationships: []
@@ -318,4 +321,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never

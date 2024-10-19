@@ -8,6 +8,7 @@ import { ToastService } from '../../../services/toast/toast.service';
 import { Severity } from '../../../types/common/toast/toast';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Status } from '../../../services/common/status';
+import RouteUtil from '../../../utils/route.util';
 
 @Component({
   selector: 'app-photography-category',
@@ -26,6 +27,7 @@ export class PhotographyCategoryComponent implements OnInit {
 
   photosByCategory: Tables<'photos'>[] | undefined;
   selectedPhoto?: Tables<'photos'> | null;
+  nextCategory: string | undefined;
   status: Status = Status.LOADING;
   Status = Status;
 
@@ -46,7 +48,21 @@ export class PhotographyCategoryComponent implements OnInit {
     });
   }
 
+  getCategoryRoute(categoryId: string | null | undefined) {
+    if (categoryId === undefined || categoryId === null) {
+      return undefined;
+    }
+
+    return RouteUtil.createCategoryUrl(categoryId);
+  }
+
   togglePhotoDialog(photo: Tables<'photos'> | null) {
+    if (photo) {
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    } else {
+      document.body.style.overflow = 'auto'; // Restore background scroll
+    }
+
     this.selectedPhoto = photo;
   }
 
@@ -59,7 +75,18 @@ export class PhotographyCategoryComponent implements OnInit {
         severity: Severity.ERROR
       });
     } else if (data && data.length > 0) {
-      this.photosByCategory = data;
+      const formattedData = data as Tables<'photos'>[];
+      formattedData.map(photo => {
+        if (photo.image !== null) {
+          const { data } = this.service.getImageByCategoryId(photo.image, photo.categoryId);
+          this.nextCategory = photo.nextCategoryId;
+            
+          if (data && data.publicUrl) {
+            photo.image = data.publicUrl;
+          }
+        }
+      });
+      this.photosByCategory = formattedData;
       this.status = Status.SUCCESS;
     }
 
@@ -73,11 +100,16 @@ export class PhotographyCategoryComponent implements OnInit {
         switch (update.eventType) {
           case UPDATE: {
             const updatedPhoto: Tables<'photos'> = newData as Tables<'photos'>;
-            const newPhotos = this.photosByCategory;
             const index = this.photosByCategory.findIndex(photo => updatedPhoto.id === photo.id);
             if (index !== -1) {
-              newPhotos[index] = updatedPhoto;
-              this.photosByCategory = newPhotos;
+              if (updatedPhoto.image !== null) {
+                const { data } = this.service.getImageByCategoryId(updatedPhoto.image, updatedPhoto.categoryId);
+                  
+                if (data && data.publicUrl) {
+                  updatedPhoto.image = data.publicUrl;
+                }
+              };
+              this.photosByCategory[index] = updatedPhoto;
             }
             break;
           }

@@ -18,6 +18,12 @@
     }
 }
 
+@layer components {
+    .btn-primary {
+        @apply p-1 cursor-pointer hover:bg-white hover:bg-opacity-10 rounded-md active:bg-opacity-15;
+    }
+}
+
 html {
     @apply scroll-smooth;
 }
@@ -61,5 +67,5 @@ body {
 }
 
 .next-link {
-    @apply block transition-all w-max p-10 md:p-20 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold rounded-full border-tertiary border-2 border-opacity-0 hover:border-opacity-100 hover:-translate-y-2;
+    @apply block capitalize transition-all w-max p-10 md:p-20 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold rounded-full border-tertiary border-2 border-opacity-0 hover:border-opacity-100 hover:-translate-y-2;
 }

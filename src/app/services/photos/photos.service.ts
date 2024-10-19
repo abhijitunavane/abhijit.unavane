@@ -5,6 +5,7 @@ import { SupabaseService } from '../supabase/supabase.service';
 import { QueryData } from '@supabase/supabase-js';
 import { Tables } from '../../types/database.types';
 import { PHOTOS_TABLE, SELECT_ALL } from '../../constants/superbase/superbase.tables.constant';
+import { PHOTOGRAPHY_PATH } from '../../constants/superbase/superbase.storage.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -43,11 +44,25 @@ export class PhotosService extends NetworkService {
     return this.supabaseService.find<QueryData<Tables<'photos'>>>(PHOTOS_TABLE, SELECT_ALL, "categoryId", value);
   }
 
-  override insert() {
+  /**
+   * Method to get photography image from supabase storage
+   * 
+   * @returns Public image url
+   */
+  getImageByCategoryId(imageName: string, categoryId: string): any {
+    return this.supabaseService.getImage(`${PHOTOGRAPHY_PATH}/${categoryId}/${imageName}`);
+  }
+
+  /**
+   * Method to get photography image from supabase storage
+   * 
+   * @returns Public image url
+   */
+  override getImage(imageName: string): any {
     throw new Error('Method not implemented.');
   }
 
-  override getImage() {
+  override insert() {
     throw new Error('Method not implemented.');
   }
 

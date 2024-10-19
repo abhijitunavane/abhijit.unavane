@@ -8,6 +8,7 @@ import { ToastService } from '../../services/toast/toast.service';
 import { Severity } from '../../types/common/toast/toast';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Status } from '../../services/common/status';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-photography',
@@ -29,7 +30,7 @@ export class PhotographyComponent implements OnInit {
   Status = Status;
   categoryRoute: string | undefined;
 
-  constructor(private titleService: Title, private service: PhotosService, private toastService: ToastService) {
+  constructor(private titleService: Title, private service: PhotosService, private toastService: ToastService, private router: Router) {
     this.titleService.setTitle('Abhijit Unavane • Photography');
   }
 
@@ -54,7 +55,18 @@ export class PhotographyComponent implements OnInit {
         severity: Severity.ERROR
       });
     } else if (data && data.length > 0) {
-      this.photos = data;
+      const formattedData = data as Tables<'photos'>[];
+      formattedData.map(photo => {
+        if (photo.image !== null) {
+          const { data } = this.service.getImageByCategoryId(photo.image, photo.categoryId);
+            
+          if (data && data.publicUrl) {
+            photo.image = data.publicUrl;
+          }
+        }
+      });
+
+      this.photos = formattedData;
       this.status = Status.SUCCESS;
     }
 
@@ -68,11 +80,16 @@ export class PhotographyComponent implements OnInit {
         switch (update.eventType) {
           case UPDATE: {
             const updatedPhoto: Tables<'photos'> = newData as Tables<'photos'>;
-            const newPhotos = this.photos;
             const index = this.photos.findIndex(photo => updatedPhoto.id === photo.id);
             if (index !== -1) {
-              newPhotos[index] = updatedPhoto;
-              this.photos = newPhotos;
+              if (updatedPhoto.image !== null) {
+                const { data } = this.service.getImageByCategoryId(updatedPhoto.image, updatedPhoto.categoryId);
+                  
+                if (data && data.publicUrl) {
+                  updatedPhoto.image = data.publicUrl;
+                }
+              };
+              this.photos[index] = updatedPhoto;
             }
             break;
           }
