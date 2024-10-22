@@ -15,15 +15,15 @@
 }
 
 .navs li:nth-child(1).active ~ .slide {
-    @apply w-[105px] left-[12px];
+    @apply w-[100px] left-[12px];
 }
 
 .navs li:nth-child(2).active ~ .slide {
-    @apply w-[85px] left-[120px];
+    @apply w-[78px] left-[120px];
 }
 
 .navs li:nth-child(3).active ~ .slide {
-    @apply w-[148px] left-[205px];
+    @apply w-[140px] left-[205px];
 }
 
 .nav-menu li.active {

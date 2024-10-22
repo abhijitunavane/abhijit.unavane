@@ -4,7 +4,8 @@
 
 <app-error-card [isVisible]="status === Status.ERROR" />
 
-<div @enterAnimation *ngIf="status === Status.SUCCESS && photosByCategory && photosByCategory.length > 0">
+<div @enterAnimation *ngIf="status === Status.SUCCESS && photosByCategory && photosByCategory.length > 0"
+     class="mb-16">
     <app-photography-details-dialog 
         [selectedPhoto]="selectedPhoto"
         (togglePhotoDialog)="togglePhotoDialog(null)">
@@ -14,29 +15,20 @@
         <h1 class="header p-4 md:p-14">{{photosByCategory[0].category}}</h1>
     </div>
 
-    <div class="my-16 grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
+    <div class="mt-16 grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
         <div *ngFor="let photo of photosByCategory" 
             class="cursor-pointer" 
             (click)="togglePhotoDialog(photo)"
-            (keyup)="togglePhotoDialog(photo)"
             role="alertdialog"
             tabindex="0">
             <div class="photo-container">
-                <div class="overlay">
-                    <div class="absolute top-2 right-2 p-1 bg-white bg-opacity-60 icon-button-white hover:bg-opacity-80">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 fill-black">
-                            <polyline points="21 10 21 3 14 3" fill="none" stroke="#000" stroke-miterlimit="10" />
-                            <line x1="21" y1="3" x2="14" y2="10" fill="none" stroke="#000" stroke-miterlimit="10" />
-                            <polyline points="3 14 3 21 10 21" fill="none" stroke="#000" stroke-miterlimit="10" />
-                            <line x1="3" y1="21" x2="9.5" y2="14.5" fill="none" stroke="#000" stroke-miterlimit="10" />
-                        </svg>
-
-                        <app-tooltip toolTipContent="View details"></app-tooltip>
-                    </div>
-                </div>
-
-                <img class="photo" [src]="photo.imageUrl" alt="Photo">
+                <div class="overlay invisible z-10 absolute w-full h-full bg-cover bg-black bg-opacity-10"></div>
+                <div class="absolute bottom-0 w-full h-2/3 md:h-1/2 bg-cover from-transparent via-95% via-black to-black"></div>
+                <img class="photo" [src]="photo.image" alt="Photo">
             </div>
         </div>
+    </div>
+    <div *ngIf="nextCategory" class="flex justify-center mt-12">
+        <a class="next-link" [routerLink]="getCategoryRoute(nextCategory)">{{nextCategory}}</a>
     </div>
 </div>

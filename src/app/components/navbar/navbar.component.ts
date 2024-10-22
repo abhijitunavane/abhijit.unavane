@@ -2,14 +2,12 @@ import { Component, HostListener, ViewChild } from '@angular/core';
 import { Link } from '../../utils/link';
 import {
   trigger,
-  state,
   style,
   transition,
   animate,
 } from '@angular/animations';
 import { SearchWorkComponent } from '../components';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
-import { width } from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
 
 @Component({
   selector: 'app-navbar',

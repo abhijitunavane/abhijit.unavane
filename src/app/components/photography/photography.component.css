@@ -9,3 +9,7 @@
 .photo-container:hover .overlay {
     @apply visible;
 }
+
+.photo-container:active .overlay {
+    @apply bg-opacity-5 visible;
+}
