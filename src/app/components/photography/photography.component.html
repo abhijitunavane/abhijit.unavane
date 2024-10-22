@@ -25,7 +25,7 @@
             <a *ngFor="let photo of photos" class="cursor-pointer" [routerLink]="getCategoryRoute(photo.categoryId)">
                 <div class="photo-container rounded-xl overflow-clip">
                     <div>
-                        <div class="overlay invisible z-10 absolute w-full h-full bg-cover bg-black bg-opacity-20"></div>
+                        <div class="overlay invisible z-10 absolute w-full h-full bg-cover bg-black bg-opacity-10"></div>
                         <div class="absolute bottom-0 w-full h-2/3 md:h-1/2 bg-cover bg-gradient-to-b from-transparent via-95% via-black to-black">
                             <div class="absolute z-20 bottom-2 px-5 py-2">
                                 <h2 class="line-clamp-1 text-base md:text-lg lg:text-2xl font-bold">{{photo.category}}</h2>
