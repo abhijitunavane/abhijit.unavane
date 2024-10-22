@@ -24,7 +24,7 @@
             </div>
             <div class="h-full flex flex-col md:flex-row overflow-scroll">
                 <div class="flex-1 flex justify-center h-full items-center overflow-hidden">
-                    <img class="h-fit max-h-full md:p-14 transition-all" [src]="selectedPhoto.image" alt="">
+                    <img class="md:p-14 transition-all" [src]="selectedPhoto.image" alt="">
                 </div>
                 <div @slideInLeft 
                      *ngIf="shouldDisplayInfo"
