@@ -4,7 +4,7 @@
 
 <app-error-card [isVisible]="status === Status.ERROR" />
 
-<div @enterAnimation *ngIf="status === Status.SUCCESS && domain" class="space-y-10 mb-16">
+<div @enterAnimation *ngIf="status === Status.SUCCESS && domain" class="space-y-10 mb-16 mt-16 md:mt-10">
     <app-share-modal
         [selectedProject]="selectedProject"
         [sharingText]="getSharingText()"
@@ -15,20 +15,18 @@
 
     <h1 class="header text-center p-4 md:p-14">{{domain.name}}</h1>
     <div *ngIf="domain.image" class="mx-4 md:mx-16 lg:mx-32">
-        <img class="w-full rounded-xl" [src]="domain.image" alt="">
+        <img class="w-full rounded-xl border border-black" [src]="domain.image" alt="">
     </div>
-    <div *ngIf="domain.overview" class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
+    <div *ngIf="domain.overview" class="flex flex-col mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-2 md:space-y-4 lg:space-y-6">
         <h2 class="sub-header">Overview</h2>
-        <p class="summary">
-            {{domain.overview}}
-        </p>
+        <p class="summary">{{domain.overview}}</p>
     </div>
-    <div class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
-        <div class="flex space-x-4">
+    <div class="flex flex-col mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-2 md:space-y-4 lg:space-y-6">
+        <div class="flex items-center space-x-2">
             <h2 class="sub-header">Projects</h2>
             <div class="relative badge" *ngIf="domain.projectList.length">
                 <span>{{domain.projectList.length}}</span>
-                <app-tooltip toolTipContent="Total projects"></app-tooltip>
+                <app-tooltip class="tooltip-light" toolTipContent="Total projects"></app-tooltip>
             </div>
         </div>
         <p class="summary">
@@ -43,15 +41,13 @@
         [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" 
         class="grid gap-8 mx-4 md:mx-16 lg:mx-32">
         <div *ngFor="let project of domain.projectList" 
-            class="text-black h-full flex flex-col rounded-xl overflow-clip">
+            class="text-black h-full flex flex-col rounded-xl overflow-clip border border-black">
             <ng-container *ngIf="project.image;  then image; else defaultImage"></ng-container>
         
             <ng-template #defaultImage>
-                <div class="flex flex-grow justify-center items-center" style="background-color: #D3D5D7;">
-                    <a [routerLink]="getProjectUrl(project.domainId, project.id)">
-                        <img src="../../../../assets/no-image.svg" class="w-40" alt="No image">
-                    </a>
-                </div>
+                <a [routerLink]="getProjectUrl(project.domainId, project.id)" class="flex flex-grow justify-center items-center bg-black">
+                    <img src="../../../../assets/no-image.svg" class="w-40" alt="No image">
+                </a>
             </ng-template>
         
             <ng-template #image>

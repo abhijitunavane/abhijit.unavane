@@ -9,8 +9,7 @@
     <div *ngIf="status === Status.LOADING">
         <div class="grid gap-1 md:gap-2 lg:gap-4 grid-cols-2 md:grid-cols-3 px-4 md:px-24 lg:px-40">
             <div *ngFor="let _ of [1,2,3]"
-                class="photo-container rounded-xl overflow-clip bg-gray-400 animate-pulse"
-                ngClass="photo-container rounded-xl overflow-clip">
+                class="photo-container rounded-xl overflow-clip bg-gray-400 animate-pulse">
                 <div class="photo">
                     <div class="absolute z-20 bottom-2 px-5 py-2">
                         <div class="bg-gray-500 w-24 h-4"></div>
@@ -28,7 +27,7 @@
                         <div class="overlay invisible z-10 absolute w-full h-full bg-cover bg-black bg-opacity-10"></div>
                         <div class="absolute bottom-0 w-full h-2/3 md:h-1/2 bg-cover bg-gradient-to-b from-transparent via-95% via-black to-black">
                             <div class="absolute z-20 bottom-2 px-5 py-2">
-                                <h2 class="line-clamp-1 text-base md:text-lg lg:text-2xl font-bold">{{photo.category}}</h2>
+                                <h2 class="text-white line-clamp-1 text-base md:text-lg lg:text-2xl font-bold">{{photo.category}}</h2>
                             </div>
                         </div>
                     </div>

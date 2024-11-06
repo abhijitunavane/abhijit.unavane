@@ -1,5 +1,5 @@
 <div @enterAnimation class="mt-16 md:mt-10 mb-16 space-y-10 flex flex-col items-center">
-    <div class="text-center p-4 md:p-14 space-y-10">
+    <div class="text-center p-4 md:p-14 space-y-4 md:space-y-8 lg:space-y-10">
         <div class="header flex flex-col">
             <span>Hi. I'm Abhijit.</span>
             <span>A software developer.</span>
@@ -13,16 +13,21 @@
                 <div class="flex h-4 justify-end pr-16">
                     <div class="w-28 bg-gray-500"></div>
                 </div>
-                <div class="project-thumbnail bg-gray-500 h-full"></div>
+                <div class=" bg-gray-500 h-full"></div>
         </div>
     </div>
 
     <div class="projects-container" *ngIf="status === Status.SUCCESS">
         <a *ngFor="let work of workList; index as index"
-            routerLink="{{work.link?.route}}"
-            [ngStyle]="{'background-color': getBgColor(index)}">
-            <h2 class="text-2xl md:text-4xl font-semibold text-opacity-80 text-black text-right pr-16">{{work.name}}</h2>
-            <img *ngIf="work.image" class="project-thumbnail" [src]="work.image" alt="work-image">
+            class="bg-black place-self-center rounded-xl overflow-clip relative"
+            routerLink="{{work.link?.route}}">
+            <div class="overlay z-10 absolute w-full h-full bg-cover bg-black bg-opacity-50 hover:bg-opacity-20 transition-all">
+                <div class="px-12 py-8 space-y-4 absolute bottom-0">
+                    <h2 class="w-full text-xl sm:text-2xl font-semibold text-white text-left">{{work.name}}</h2>
+                    <h2 class="w-fit p-2 rounded-xl text-sm md:text-md font-semibold text-black text-left bg-white">Learn more</h2>
+                </div>
+            </div>
+            <img *ngIf="work.image" class="aspect-square object-cover box-content -translate-y-10" [src]="work.image" alt="work-image">
         </a>
     </div>
 </div>

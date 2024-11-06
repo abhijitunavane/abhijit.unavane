@@ -1,21 +1,14 @@
-<footer class="px-6 md:px-32 lg:px-48 flex flex-col md:flex-row gap-4 md:justify-between mb-20">
+<footer class="p-6 md:px-32 lg:px-48 flex flex-col md:flex-row gap-4 md:justify-between border-t border-black">
     <div class="text-lg text-center">
         <span>©️ 2024 Abhijit Unavane
-        <span style="color: #406882;">•</span>
+        <span>•</span>
         India</span>
     </div>
-    <div class="flex justify-between gap-10 text-lg">
-        <div>
-            <div class="footer-menu-header">Elsewhere</div>
-            <ul>
-                <li *ngFor="let link of elseWhere"><a href="{{link.route}}" target="_blank">{{link.label}}</a></li>
-            </ul>
-        </div>
-        <div>
-            <div class="footer-menu-header">Contact</div>
-            <ul>
-                <li *ngFor="let link of contact"><a href="{{link.route}}" target="_blank">{{link.label}}</a></li>
-            </ul>
-        </div>
-    </div>
+    <ul class="flex flex-row flex-wrap justify-center items-center text-lg gap-5 font-extrabold">
+        <li *ngFor="let link of links">
+            <a href="{{link.route}}" target="_blank">
+                <fa-icon [title]="link.type" [icon]="getLinkIcon(link.type)" size="xl"></fa-icon>
+            </a>
+        </li>
+    </ul>
 </footer>

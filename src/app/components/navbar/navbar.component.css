@@ -10,6 +10,10 @@
     @apply relative bottom-2 -rotate-45;
 }
 
+.navs li.active > a > #work-shortcut {
+    @apply border-white;
+}
+
 .navs li.active ~ .slide {
     @apply opacity-100;
 }
@@ -27,7 +31,7 @@
 }
 
 .nav-menu li.active {
-    @apply text-black;
+    @apply text-white;
 }
 
 .nav-menu li.active ~ .slide-menu {

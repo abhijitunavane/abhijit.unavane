@@ -4,46 +4,43 @@
 
 <app-error-card [isVisible]="status === Status.ERROR" />
 
-<div @enterAnimation *ngIf="status === Status.SUCCESS && project" class="space-y-8 md:space-y-10 mb-16">
-    <h1 class="header text-center p-4 md:p-14 mt-16">{{project.name}}</h1>    
-    <div class="flex justify-center items-center space-x-4">
-        <a class="relative icon-button-white" target="_blank" href="{{project.githubUrl}}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="54" width="54">
-                <path class="fill-white"
-                    d="M12,2.247A10,10,0,0,0,8.837,21.735c.5.094.684-.215.684-.481,0-.237-.009-.867-.013-1.7-2.781.6-3.368-1.342-3.368-1.342A2.648,2.648,0,0,0,5.027,16.75c-.905-.62.071-.608.071-.608a2.1,2.1,0,0,1,1.531,1.03A2.131,2.131,0,0,0,9.542,18a2.129,2.129,0,0,1,.633-1.337c-2.221-.25-4.555-1.11-4.555-4.942A3.859,3.859,0,0,1,6.649,9.042,3.558,3.558,0,0,1,6.737,6.4s.837-.268,2.75,1.025a9.415,9.415,0,0,1,5,0c1.9-1.293,2.737-1.025,2.737-1.025a3.652,3.652,0,0,1,.1,2.647,3.87,3.87,0,0,1,1.025,2.683c0,3.842-2.337,4.687-4.562,4.933a2.4,2.4,0,0,1,.675,1.85c0,1.339-.013,2.414-.013,2.739,0,.262.175.575.688.475A9.988,9.988,0,0,0,12,2.247" />
-            </svg>
-            <app-tooltip toolTipContent="Github"></app-tooltip>
-        </a>
-        <a *ngIf="project.hostUrl" class="relative icon-button-white" target="_blank" href="{{project.hostUrl}}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="54" width="54">
-                <circle cx="12" cy="12" r="10" fill="none" class="stroke-white" />
-                <ellipse cx="12" cy="12" rx="4" ry="10" fill="none" class="stroke-white"  />
-                <line x1="2" y1="12" x2="22" y2="12" fill="none" class="stroke-white"  />
-                <path d="M20,18a19.3,19.3,0,0,0-8-1.5A19.3,19.3,0,0,0,4,18" fill="none" class="stroke-white"  />
-                <path d="M4,6a19.3,19.3,0,0,0,8,1.5A19.3,19.3,0,0,0,20,6" fill="none" class="stroke-white"  />
-            </svg>
-            <app-tooltip toolTipContent="Hosting"></app-tooltip>
-        </a>
+<div @enterAnimation *ngIf="status === Status.SUCCESS && project" class="space-y-8 md:space-y-10 mb-16 mt-16 md:mt-10">
+    <h1 class="header text-center p-4 md:pt-14">{{project.name}}</h1>
+    <div class="mx-4 md:mx-16 lg:mx-32 flex justify-center" *ngIf="project.image">
+        <img class="w-full rounded-xl aspect-video border border-black" src="{{project.image}}" alt="">
     </div>
-    <div class="mx-4 md:mx-16 lg:mx-32">
-        <img class="rounded-xl" src="{{project.image}}" alt="">
-    </div>
-    <div class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
+    <div class="flex flex-col justify-center mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-2 md:space-y-4 lg:space-y-6">
         <h2 class="sub-header">Overview</h2>
         <p class="summary">
             {{project.description}}
         </p>
     </div>
-    <div *ngIf="project.features !== null && project.features.length > 0" class="flex flex-col justify-center space-y-16">
+    <div *ngIf="project.features !== null && project.features.length > 0" class="flex flex-col justify-center space-y-2 md:space-y-4 lg:space-y-6">
         <div class="mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
             <h2 class="sub-header">Features</h2>
         </div>
         <div *ngFor="let feature of project.features" class="mx-4 flex justify-center flex-wrap">
-            <div class="bg-white text-black rounded-xl text-center flex flex-col items-center w-96 space-y-2 my-4 mx-2 py-6 px-2">
+            <div class="bg-white text-black rounded-xl text-center flex flex-col items-center w-96 space-y-2 my-4 mx-2 py-6 px-2 border border-black">
                 <img *ngIf="feature.image" class="w-full" src="{{feature.image}}" alt="Feature image">
-                <h2 class="font-extrabold text-xl text-primary">{{feature.name}}</h2>
-                <h2 class="text-base line-clamp-3">{{feature.description}}</h2>
+                <h2 class="font-extrabold text-base sm:text-lg">{{feature.name}}</h2>
+                <h2 class="line-clamp-3 text-sm sm:text-base">{{feature.description}}</h2>
             </div>
+        </div>
+    </div>
+    <div *ngIf="project.githubUrl && project.hostUrl" class="flex flex-col justify-center space-y-2 md:space-y-4 lg:space-y-6">
+        <div class="mx-4 md:mx-32 lg:mx-64 xl:mx-96 space-y-8">
+            <h2 class="sub-header">Reference</h2>
+            <p class="summary">
+                Please, have a look at the following links.
+            </p>
+        </div>
+        <div class="flex justify-center items-center space-x-4">
+            <a *ngIf="project.githubUrl" class="relative icon-button" target="_blank" href="{{project.githubUrl}}">
+                <fa-icon class="text-4xl md:text-5xl lg:text-6xl" [icon]="this.faGithub" title="Github"></fa-icon>
+            </a>
+            <a *ngIf="project.hostUrl" class="relative icon-button" target="_blank" href="{{project.hostUrl}}">
+                <fa-icon class="text-4xl md:text-5xl lg:text-6xl" [icon]="this.faGlobe" title="Hosting"></fa-icon>
+            </a>
         </div>
     </div>
     <div *ngIf="project.nextProjectLink" class="flex justify-center pt-12">

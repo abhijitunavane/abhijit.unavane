@@ -6,6 +6,8 @@ import { Tables } from '../../../../types/database.types';
 import { UPDATE } from '../../../../constants/superbase/superbase.tables.constant';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Status } from '../../../../services/common/status';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-project',
@@ -24,6 +26,8 @@ export class ProjectComponent implements OnInit {
   project: Tables<'project'> | undefined
   status: Status = Status.LOADING;
   Status = Status;
+  faGlobe = faGlobe
+  faGithub = faGithub
 
   constructor(private route: ActivatedRoute, private titleService: Title, private service: ProjectService) {}
 
@@ -47,9 +51,8 @@ export class ProjectComponent implements OnInit {
         if (data && data.publicUrl) {
           formattedData.image = data.publicUrl;
         }
-        this.status = Status.SUCCESS;
       }
-      
+      this.status = Status.SUCCESS;
 
       if (formattedData.features !== null && formattedData.features.length > 0) {
         formattedData.features.map(feature => {

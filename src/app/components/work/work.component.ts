@@ -26,12 +26,6 @@ export class WorkComponent implements OnInit {
   workList: Tables<'work'>[] | null | undefined;
   status: Status = Status.LOADING;
   Status = Status;
-  bgColorList: string[] = [
-    '#D09CFA',
-    '#B9F3FC',
-    '#B9F3FC',
-    '#FFD495'
-  ];
 
   constructor(private titleService: Title, private service : WorkService, private toastService: ToastService) {
     this.titleService.setTitle('Abhijit Unavane • SDE');
@@ -109,15 +103,5 @@ export class WorkComponent implements OnInit {
         }
       }
     });
-  }
-
-  /**
-   * Method to get background color from {@link bgColorList}
-   * 
-   * @param index Index of work list
-   * @returns background color {@link string} 
-   */
-  getBgColor(index: number): string {
-    return this.bgColorList[index % 4];
   }
 }
