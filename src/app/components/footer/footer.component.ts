@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { Link } from '../../utils/link';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
+import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons/faInstagramSquare';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons/faXTwitter';
+import { faEnvelope, faFileLines } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -7,24 +12,42 @@ import { Link } from '../../utils/link';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  elseWhere : Link[] = [
+
+  links = [
     {
-      label: "CV",
-      route: "https://read.cv/"
+      route: "https://read.cv/",
+      type: "CV"
     },
     {
-      label: "Github",
-      route: "https://github.com/abhijitunavane"
+      route: "https://www.linkedin.com/in/abhijitunavane/",
+      type: "LinkedIn"
     },
     {
-      label: "LinkedIn",
-      route: "https://www.linkedin.com/in/abhijitunavane/"
+      route: "https://github.com/abhijitunavane",
+      type: "Github"
+    },
+    {
+      route: "https://www.instagram.com/abhijitunavane/",
+      type: "Instagram"
+    },
+    {
+      route: "https://x.com/abhiunavane",
+      type: "X"
+    },
+    {
+      route: "mailto:abhijit.unavane@gmail.com",
+      type: "Email"
     },
   ];
-  contact : Link[] = [
-    {
-      label: "Message",
-      route: "mailto:abhijit.unavane@gmail.com"
+
+  getLinkIcon(type: string) {
+    switch(type) {
+      case 'CV': return faFileLines;
+      case 'Github': return faGithubSquare;
+      case 'Instagram': return faInstagramSquare;
+      case 'LinkedIn': return faLinkedin;
+      case 'Email': return faEnvelope;
+      default: return faXTwitter;
     }
-  ]
+  }
 }

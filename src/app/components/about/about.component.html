@@ -4,7 +4,7 @@
 
 <app-error-card [isVisible]="status === Status.ERROR" />
 
-<div @enterAnimation *ngIf="status === Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
+<div @enterAnimation *ngIf="status === Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-6 md:space-y-10">
     <div class="p-4 md:p-14 flex justify-center">
         <h1 class="header text-center">I'm Abhijit.</h1>
     </div>
@@ -12,13 +12,13 @@
         <div class="flex flex-col col-start-3 col-span-2 md:col-span-3 lg:col-span-2 md:col-start-2 lg:col-start-3 rounded-t-full">
             <img class="w-full h-full object-cover rounded-t-full"
                 src="{{aboutList[0].image}}" alt="profile picture">
-            <div class="bg-quaternary w-full h-24 flex justify-center items-center gap-1">
-                <a *ngFor="let link of aboutList[0].links" [href]="link.link" target="_blank">
-                    <img class="w-14 icon-button" [src]="link.image" alt="My link">
+            <div class="w-full h-24 flex justify-center items-center gap-1">
+                <a *ngFor="let link of aboutList[0].links" [href]="link.link" target="_blank" class="w-14 icon-button">
+                    <img [src]="link.image" alt="My link">
                 </a>
             </div>
         </div>
-        <div class="mt-16 w-full col-span-full px-6 md:mt-4 md:col-start-6 lg:col-start-6 md:col-end-12 flex flex-col gap-11">
+        <div class="mt-4 w-full col-span-full px-6 md:col-start-6 lg:col-start-6 md:col-end-12 flex flex-col gap-4 md:gap-7 lg:gap-9">
             <h2 class="sub-header">
                 {{aboutList[0].infoHeader}}
             </h2>
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="space-y-11 px-6 md:px-48">
+    <div class="space-y-4 md:space-y-6 lg:space-y-8 px-6 md:px-48">
         <h2 class="sub-header">Let's collaborate and help each other by sharing knowledge.</h2>
         <p class="summary">Embrace collaborative learning to dive into the latest technologies. Together, we'll navigate
             challenges, share insights, and empower each other to become tech trailblazers. Let's embark on this
@@ -35,20 +35,20 @@
             collaboration!
         </p>
     </div>
-    <div class="mx-0 md:mx-20 p-6 md:p-10 lg:p-20 xl:p-32 space-y-7 md:space-y-11 bg-white bg-opacity-5 md:rounded-3xl">
+    <div class="mx-0 md:mx-20 p-6 md:p-10 lg:p-20 xl:p-32 space-y-7 md:space-y-11 bg-black bg-opacity-10 md:rounded-3xl">
         <h2 class="sub-header">My experiences</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div class="text-xl" *ngFor="let experience of aboutList[0].experiences; index as i">
-                <h3 class="text-2xl md:text-4xl mb-4 text-tertiary font-bold">{{(i + 1).toLocaleString('en-US', {
+                <h3 class="text-2xl md:text-4xl mb-4 font-bold bg-black p-2 bg-opacity-5 w-fit rounded-md">{{(i + 1).toLocaleString('en-US', {
                     minimumIntegerDigits: 2,
                     useGrouping: false })}}</h3>
-                <p class="text-xl md:text-3xl font-semibold mb-2 text-quaternary">{{experience.role}}</p>
-                <a class="block text-lg md:text-xl mb-2 underline underline-offset-4 decoration-quaternary" 
+                <p class="text-xl md:text-3xl font-semibold mb-2">{{experience.role}}</p>
+                <a class="block text-lg md:text-xl mb-2 underline underline-offset-4" 
                    target="_blank" 
                    href="{{experience.companyLink}}">
                    {{experience.companyName}}
                 </a>
-                <div class="mb-2 flex flex-wrap gap-2" *ng="let x = ''">
+                <div class="mb-2 flex flex-wrap gap-x-2 text-base md:text-lg text-neutral-700">
                     <p>{{experience.type}}</p>
                     <p>{{experience.period}}</p>
                     <p>{{experience.location}}</p>
@@ -56,7 +56,7 @@
                 <p class="mb-2 summary">{{experience.summary}}</p>
                 <div class="flex flex-wrap gap-2">
                     <p *ngFor="let skill of experience.skills" 
-                       class="text-base mb-1 bg-white bg-opacity-10 px-2 rounded-full">
+                       class="text-base mb-1 bg-black text-white px-2 rounded-full">
                        {{skill}}
                     </p>
                 </div>

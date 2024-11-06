@@ -12,12 +12,6 @@ export const theme = {
     fontFamily: {
       sans: ['Poppins', ...defaultTheme.fontFamily.sans]
     },
-    colors: {
-      'primary': '#1A374D',
-      'secondary': '#406882',
-      'tertiary': '#6998AB',
-      'quaternary': '#B1D0E0'
-    },
     borderRadius: {
       '4xl': '4rem'
     },

@@ -1,13 +1,6 @@
 <!-- Light style tooltip -->
 
-<div *ngIf="true" role="tooltip" class="tooltip tooltip-light">
-    {{toolTipContent}}
-    <div class="tooltip-arrow"></div>
-</div>
-
-<!-- Dark style tooltip -->
-
-<div *ngIf="false" role="tooltip" class="tooltip tooltip-dark">
+<div role="tooltip" class="tooltip bg-black text-white delay-300">
     {{toolTipContent}}
     <div class="tooltip-arrow"></div>
 </div>
