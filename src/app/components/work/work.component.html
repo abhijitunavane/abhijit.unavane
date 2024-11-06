@@ -8,12 +8,11 @@
     </div>
 
     <div class="projects-container" *ngIf="status === Status.LOADING">
-        <div *ngFor="let work of [1,2,3,4]; index as index"
-            class="bg-gray-400 animate-pulse">
-                <div class="flex h-4 justify-end pr-16">
-                    <div class="w-28 bg-gray-500"></div>
-                </div>
-                <div class=" bg-gray-500 h-full"></div>
+        <div *ngFor="let work of [1,2,3, 4, 5, 6]; index as index"
+            class="bg-gray-400 aspect-square rounded-xl animate-pulse relative">
+                <div class="w-96"></div>
+                <div class="absolute bg-gray-600 w-24 h-4 bottom-20 start-12"></div>
+                <div class="absolute bg-gray-500 w-14 h-4 bottom-12 start-12"></div>
         </div>
     </div>
 
