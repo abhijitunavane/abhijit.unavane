@@ -4,7 +4,7 @@
 
 <app-error-card [isVisible]="status === Status.ERROR" />
 
-<div @enterAnimation *ngIf="status === Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-10">
+<div @enterAnimation *ngIf="status === Status.SUCCESS && aboutList && aboutList.length > 0" class="mt-16 md:mt-10 mb-16 space-y-6 md:space-y-10">
     <div class="p-4 md:p-14 flex justify-center">
         <h1 class="header text-center">I'm Abhijit.</h1>
     </div>
@@ -18,7 +18,7 @@
                 </a>
             </div>
         </div>
-        <div class="mt-16 w-full col-span-full px-6 md:mt-4 md:col-start-6 lg:col-start-6 md:col-end-12 flex flex-col gap-4 md:gap-7 lg:gap-9">
+        <div class="mt-4 w-full col-span-full px-6 md:col-start-6 lg:col-start-6 md:col-end-12 flex flex-col gap-4 md:gap-7 lg:gap-9">
             <h2 class="sub-header">
                 {{aboutList[0].infoHeader}}
             </h2>
