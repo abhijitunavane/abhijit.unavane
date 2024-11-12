@@ -12,7 +12,6 @@ export type Database = {
       about: {
         Row: {
           experiences: Database["public"]["CompositeTypes"]["experience"][]
-          headers: string[]
           id: number
           image: string | null
           infoHeader: string
@@ -21,7 +20,6 @@ export type Database = {
         }
         Insert: {
           experiences: Database["public"]["CompositeTypes"]["experience"][]
-          headers?: string[]
           id?: number
           image?: string | null
           infoHeader: string
@@ -30,7 +28,6 @@ export type Database = {
         }
         Update: {
           experiences?: Database["public"]["CompositeTypes"]["experience"][]
-          headers?: string[]
           id?: number
           image?: string | null
           infoHeader?: string
