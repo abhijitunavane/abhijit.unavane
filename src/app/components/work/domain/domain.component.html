@@ -38,10 +38,10 @@
             class="w-1/2 self-center">
     </div>
     <div *ngIf="domain.projectList && domain.projectList.length > 0" 
-        [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'" 
+        [ngClass]="domain.projectList.length === 1 ? 'grid-cols-1 justify-items-center' : 'lg:grid-cols-2'" 
         class="grid gap-8 mx-4 md:mx-16 lg:mx-32">
         <div *ngFor="let project of domain.projectList" 
-            class="text-black h-full flex flex-col rounded-xl overflow-clip border border-black">
+            class="md:w-1/2 text-black h-full flex flex-col rounded-xl overflow-clip border border-black">
             <ng-container *ngIf="project.image;  then image; else defaultImage"></ng-container>
         
             <ng-template #defaultImage>

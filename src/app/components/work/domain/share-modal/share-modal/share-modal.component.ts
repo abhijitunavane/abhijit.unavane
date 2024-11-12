@@ -130,7 +130,7 @@ export class ShareModalComponent {
         window.open(`https://www.x.com/intent/post?text=${encodedSharingText}`);
         break;
       }
-      case SharingOption.WHATSAPPP: {
+      case SharingOption.WHATSAPP: {
         window.open(`https://wa.me/?text=${encodedSharingText}`);
         break;
       }
@@ -143,7 +143,7 @@ export class ShareModalComponent {
 export enum SharingOption {
   FACEBOOK,
   LINKEDIN,
-  WHATSAPPP,
+  WHATSAPP,
   XTWITTER
 }
 

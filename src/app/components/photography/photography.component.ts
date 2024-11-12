@@ -56,6 +56,8 @@ export class PhotographyComponent implements OnInit {
       });
     } else if (data && data.length > 0) {
       const formattedData = data as Tables<'photos'>[];
+      var listByCategory: Tables<'photos'>[] = []; 
+      var categories: string[] = [];
       formattedData.map(photo => {
         if (photo.image !== null) {
           const { data } = this.service.getImageByCategoryId(photo.image, photo.categoryId);
@@ -64,9 +66,13 @@ export class PhotographyComponent implements OnInit {
             photo.image = data.publicUrl;
           }
         }
+        if (!categories.includes(photo.category)) {
+          categories.push(photo.category);
+          listByCategory.push(photo);
+        }
       });
 
-      this.photos = formattedData;
+      this.photos = listByCategory;
       this.status = Status.SUCCESS;
     }
 

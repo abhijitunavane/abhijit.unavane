@@ -13,8 +13,7 @@
         <button (click)="onToggleModal(null)" 
             role="navigation" 
             tabindex="0" 
-            class="transition-all icon-button-white absolute top-2 right-2"
-            (keyup)="onToggleModal(null)">
+            class="transition-all icon-button-white absolute top-2 right-2">
             <fa-icon class="px-1" [icon]="this.faXmark" size="2x" title="Close"></fa-icon>
         </button>
         <div class="px-6 flex flex-col h-full justify-center bg-black space-y-6">
@@ -31,15 +30,15 @@
                      #brandList (wheel)="scrollBrandList($event)"
                      (scroll)="scrollListener()">
                     <button class="brand" (click)="shareUrl(sharingOption.LINKEDIN)">
-                        <fa-icon [icon]="this.faLinkedin" size="3x" title="LINKEDIN"></fa-icon>
+                        <fa-icon [icon]="this.faLinkedin" size="3x" title="LinkedIn"></fa-icon>
                         <span class="text-xs">LinkedIn</span>
                     </button>
                     <button class="brand" (click)="shareUrl(sharingOption.XTWITTER)">
-                        <fa-icon [icon]="this.faXTwitter" size="3x" title="XTWITTER"></fa-icon>
+                        <fa-icon [icon]="this.faXTwitter" size="3x" title="X"></fa-icon>
                         <span class="text-xs">X</span>
                     </button>
-                    <button class="brand" (click)="shareUrl(sharingOption.WHATSAPPP)">
-                        <fa-icon [icon]="this.faWhatsapp" size="3x" title="WHATSAPPP"></fa-icon>
+                    <button class="brand" (click)="shareUrl(sharingOption.WHATSAPP)">
+                        <fa-icon [icon]="this.faWhatsapp" size="3x" title="Whatsapp"></fa-icon>
                         <span class="text-xs">Whatsapp</span>
                     </button>
                     <button class="brand" (click)="shareUrl(sharingOption.FACEBOOK)">
