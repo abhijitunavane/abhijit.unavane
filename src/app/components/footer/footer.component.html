@@ -7,7 +7,7 @@
     <ul class="flex flex-row flex-wrap justify-center items-center text-lg gap-5 font-extrabold">
         <li *ngFor="let link of links">
             <a href="{{link.route}}" target="_blank">
-                <fa-icon [title]="link.type" [icon]="getLinkIcon(link.type)" size="xl"></fa-icon>
+                <fa-icon [title]="link.type" [class]="link.type === 'Photography' ? 'text-red-600': ''" [icon]="getLinkIcon(link.type)" size="xl"></fa-icon>
             </a>
         </li>
     </ul>

@@ -40,7 +40,7 @@
                       focus:bg-white focus:text-black
                         m-2 py-4 px-6 rounded-lg flex justify-between transition-all"
                     [ngClass]="i === 0 && focusedSearchResultIndex === i ? 'bg-white text-black' : ''"
-                    href="work/react/react-"
+                    href="work/{{project.domainId}}/{{project.id}}"
                     (focus)="focusedSearchResultIndex = i">
                     <p>{{project.name}}</p>
                     <fa-icon *ngIf="focusedSearchResultIndex === i"

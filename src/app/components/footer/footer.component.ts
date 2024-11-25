@@ -38,6 +38,10 @@ export class FooterComponent {
       route: "mailto:abhijit.unavane@gmail.com",
       type: "Email"
     },
+    {
+      route: "https://www.instagram.com/shotby.abhi/",
+      type: "Photography"
+    },
   ];
 
   getLinkIcon(type: string) {
@@ -45,6 +49,7 @@ export class FooterComponent {
       case 'CV': return faFileLines;
       case 'Github': return faGithubSquare;
       case 'Instagram': return faInstagramSquare;
+      case 'Photography': return faInstagramSquare;
       case 'LinkedIn': return faLinkedin;
       case 'Email': return faEnvelope;
       default: return faXTwitter;
