@@ -1,10 +1,10 @@
 <!-- Photo Dialog -->
+<!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
 <div *ngIf="selectedPhoto"
     class="fixed z-50 w-full h-full top-0 bottom-0 left-0 right-0 backdrop-blur-lg bg-black bg-opacity-40 text-white"
     (click)="onTogglePhotoDialog(null)"
     role="region"
-    tabindex="0"
-    autofocus>
+    tabindex="0">
     <div class="w-full h-full"
         (click)="$event.stopPropagation()"
         role="none" tabindex="0">

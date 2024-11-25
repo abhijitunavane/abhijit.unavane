@@ -58,7 +58,7 @@ export class PhotosService extends NetworkService {
    * 
    * @returns Public image url
    */
-  override getImage(imageName: string): any {
+  override getImage(): any {
     throw new Error('Method not implemented.');
   }
 

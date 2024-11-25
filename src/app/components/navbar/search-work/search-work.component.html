@@ -1,6 +1,7 @@
-<div @close tabindex="-1" class="fixed bg-black bg-opacity-10 backdrop-blur-md w-full h-full z-[60] flex justify-center items-start p-2 text-white"
-    *ngIf="isVisible" (click)="this.close()" role="dialog">
+<div role="dialog" @close tabindex="-1" class="fixed bg-black bg-opacity-10 backdrop-blur-md w-full h-full z-[60] flex justify-center items-start p-2 text-white"
+    *ngIf="isVisible" (click)="this.close()" (keyup)="this.close()" role="dialog">
     <div class="flex flex-col relative w-full max-h-full sm:w-1/2 ring-1 bg-black ring-white ring-opacity-30 bg-opacity-80 rounded-2xl top-10 xl:top-20 transition-all"
+        tabindex="0"
         (click)="$event.stopPropagation()"
         (keyup)="$event.stopPropagation()"
         *ngIf="isVisible"
@@ -17,8 +18,7 @@
                        name="search work input"
                        [value]="searchValue"
                        placeholder="Search work..."
-                       (input)="this.searchValue = inputField.value;"
-                       autofocus>
+                       (input)="this.searchValue = inputField.value;">
                 <button #clearTextButton
                         *ngIf="searchValue !== ''"
                         title="Clear text"

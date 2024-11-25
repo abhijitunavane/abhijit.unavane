@@ -56,8 +56,8 @@ export class PhotographyComponent implements OnInit {
       });
     } else if (data && data.length > 0) {
       const formattedData = data as Tables<'photos'>[];
-      var listByCategory: Tables<'photos'>[] = []; 
-      var categories: string[] = [];
+      const listByCategory: Tables<'photos'>[] = []; 
+      const categories: string[] = [];
       formattedData.map(photo => {
         if (photo.image !== null) {
           const { data } = this.service.getImageByCategoryId(photo.image, photo.categoryId);
@@ -94,7 +94,7 @@ export class PhotographyComponent implements OnInit {
                 if (data && data.publicUrl) {
                   updatedPhoto.image = data.publicUrl;
                 }
-              };
+              }
               this.photos[index] = updatedPhoto;
             }
             break;

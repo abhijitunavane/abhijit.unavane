@@ -123,10 +123,10 @@ export class SearchWorkComponent implements OnInit {
       return;
     }
 
-    var localName: string = (event.target as HTMLElement).localName;
-    var isInput: boolean = localName === 'input';
-    var isButton: boolean = localName === 'button';
-    var lengthOfLinks: number = linkElements.length;
+    const localName: string = (event.target as HTMLElement).localName;
+    const isInput: boolean = localName === 'input';
+    const isButton: boolean = localName === 'button';
+    const lengthOfLinks: number = linkElements.length;
 
     if (event.key === 'ArrowDown') {
       this.focusedSearchResultIndex = isInput ? 0 : (this.focusedSearchResultIndex + 1) % lengthOfLinks; // Loop back to the first item

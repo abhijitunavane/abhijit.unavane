@@ -108,7 +108,7 @@ export class PhotographyCategoryComponent implements OnInit {
                 if (data && data.publicUrl) {
                   updatedPhoto.image = data.publicUrl;
                 }
-              };
+              }
               this.photosByCategory[index] = updatedPhoto;
             }
             break;

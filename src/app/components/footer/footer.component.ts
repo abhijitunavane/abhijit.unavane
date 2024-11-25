@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Link } from '../../utils/link';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
 import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons/faInstagramSquare';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
