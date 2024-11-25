@@ -1,0 +1,22 @@
+name: Keep Supabase Alive
+
+# Run every 10 minutes
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # This cron expression means every 10 minutes
+  workflow_dispatch:  # Allows manual triggering via the GitHub UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Ping Supabase API
+        run: |
+            curl 'https://ggdkxylpcxforpoexgyd.supabase.co/rest/v1/about?select=*' \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdnZGt4eWxwY3hmb3Jwb2V4Z3lkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk2Njc3MzAsImV4cCI6MjAyNTI0MzczMH0.wnoeN5cFo6WIVRwUs6-4yChfia4kdvrHCeCq39WjlXY" \
+            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdnZGt4eWxwY3hmb3Jwb2V4Z3lkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk2Njc3MzAsImV4cCI6MjAyNTI0MzczMH0.wnoeN5cFo6WIVRwUs6-4yChfia4kdvrHCeCq39WjlXY"
+          
