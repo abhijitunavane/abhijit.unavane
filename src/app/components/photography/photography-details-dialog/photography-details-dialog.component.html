@@ -9,15 +9,14 @@
         (click)="$event.stopPropagation()"
         role="none" tabindex="0">
         <div class="flex flex-col h-full">
-            <div class="bg-[#222] border-b-2 border-black py-2 px-4 flex items-center justify-end gap-4">
-                <button class="btn-primary" 
-                        [class]="shouldDisplayInfo ? 'hover:bg-opacity-80 active:bg-opacity-90 bg-white bg-opacity-90 text-black': ''"
-                        (click)="shouldDisplayInfo = !shouldDisplayInfo">
+            <div class="bg-black border-b-2 border-black py-2 px-4 flex items-center justify-end gap-4">
+                <p class="nav-title flex-1 text-start">Details</p>
+                <a target="_blank" *ngIf="selectedPhoto.instagramUrl" [href]="selectedPhoto.instagramUrl" class="btn-primary flex items-center">
+                    <p class="hidden md:block">Check out this here</p>
                     <fa-stack>
-                        <fa-icon [icon]="faCircle" stackItemSize="2x"></fa-icon>
-                        <fa-icon [icon]="faInfo" stackItemSize="1x"></fa-icon>
+                        <fa-icon [icon]="faInstagram" stackItemSize="2x"></fa-icon>
                     </fa-stack>
-                </button>
+                </a>
                 <button (click)="onTogglePhotoDialog(null)" class="btn-primary">
                     <fa-stack>
                         <fa-icon [icon]="faXmark" stackItemSize="2x"></fa-icon>
