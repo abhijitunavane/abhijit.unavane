@@ -58,7 +58,7 @@
             
             
             <div class="bg-white pt-6 px-6 text-2xl font-semibold uppercase">    
-                <a [routerLink]="getProjectUrl(project.domainId, project.id)" class="hover:underline hover:text-sky-600">
+                <a [routerLink]="getProjectUrl(project.domainId, project.id)" class="hover:underline">
                     {{project.name}}
                 </a>
             </div>
@@ -69,13 +69,13 @@
                 <div class="flex space-x-2">
                     <button class="relative icon-button flex" (click)="onLike(project)" clickable>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-                            <path [ngClass]="this.project.likes >= 0 && isProjectLiked(project)
+                            <path [ngClass]="project.likes >= 0 && isProjectLiked(project)
                                 ? 'fill-red-500 stroke-red-500'
                                 : 'fill-none stroke-black'"
                                 class="stroke-2"
                                 d="M12,8,10.7,6.8a4.7,4.7,0,0,0-6.4,0,4.7,4.7,0,0,0,0,6.4L12,21l7.7-7.8a4.7,4.7,0,0,0,0-6.4,4.7,4.7,0,0,0-6.4,0Z" />
                         </svg>
-                        <div *ngIf="this.project.likes > 0"
+                        <div *ngIf="project.likes > 0"
                             [ngClass]="isProjectLiked(project) ? 'text-red-500' : 'text-black'"
                             class="text-base ms-2 font-semibold">
                             {{project.likes}}
