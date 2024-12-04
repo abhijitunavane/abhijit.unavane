@@ -25,7 +25,10 @@
           "options": {
             "outputPath": "dist/abhijit-unavane",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
+            "customWebpackConfig": {
+              "path": "webpack.config.ts"
+            },
             "polyfills": [
               "zone.js"
             ],
